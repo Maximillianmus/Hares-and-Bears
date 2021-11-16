@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json.Serialization;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
@@ -10,6 +11,8 @@ public class SpawnableManager : MonoBehaviour
     [SerializeField] private GameObject spawnablePrefab;
 
     [SerializeField] Camera arCam;
+    private bool mapSpawned = false;
+    private bool locked = false;
     private GameObject spawnedObject;
 
 
@@ -47,12 +50,13 @@ public class SpawnableManager : MonoBehaviour
                     {
                         spawnedObject = hit.collider.gameObject;
                     }
-                    else
+                    else if (!mapSpawned)
                     {
                         SpawnPrefab(hits[0].pose.position);
+                        mapSpawned = true;
                     }
                 }
-            } else if (Input.GetTouch(0).phase == TouchPhase.Moved && spawnedObject != null)
+            } else if (Input.GetTouch(0).phase == TouchPhase.Moved && spawnedObject != null && !locked)
             {
                 spawnedObject.transform.position = hits[0].pose.position;
             }
