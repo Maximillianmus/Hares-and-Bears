@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json.Serialization;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 
 public class SpawnableManager : MonoBehaviour
 {
     [SerializeField] private ARRaycastManager raycastManager;
-    private List<ARRaycastHit> hits = new List<ARRaycastHit>();
     [SerializeField] private GameObject spawnablePrefab;
-
     [SerializeField] Camera arCam;
-    private bool mapSpawned = false;
-    private bool locked = false;
+    
     private GameObject spawnedObject;
+    private List<ARRaycastHit> hits = new List<ARRaycastHit>();
+
+    private bool onPlacement;
+
+    [SerializeField] private UnityEvent onPlacementBegin, onPlacementEnd;
 
 
 
@@ -22,6 +26,7 @@ public class SpawnableManager : MonoBehaviour
     void Start()
     {
         spawnedObject = null;
+        onPlacement = false;
     }
 
     private void SpawnPrefab(Vector3 position)
@@ -30,41 +35,33 @@ public class SpawnableManager : MonoBehaviour
 
     }
 
+    public void PlacementUnlock()
+    {
+        onPlacement = true;
+        onPlacementBegin.Invoke();
+    }
+
+    public void PlacementLock()
+    {
+        onPlacement = false;
+        onPlacementEnd.Invoke();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount == 0)
-        {
+        if (!onPlacement)
             return;
-        }
 
-        RaycastHit hit;
-        Ray ray = arCam.ScreenPointToRay(Input.GetTouch(0).position);
-        if (raycastManager.Raycast(Input.GetTouch(0).position, hits))
+        var screenCenter = arCam.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
+        if (raycastManager.Raycast(screenCenter, hits, TrackableType.PlaneWithinBounds))
         {
-            if (Input.GetTouch(0).phase == TouchPhase.Began && spawnedObject == null)
+            if (spawnedObject == null)
             {
-                if (Physics.Raycast(ray, out hit))
-                {
-                    if (hit.collider.gameObject.CompareTag("Spawnable"))
-                    {
-                        spawnedObject = hit.collider.gameObject;
-                    }
-                    else if (!mapSpawned)
-                    {
-                        SpawnPrefab(hits[0].pose.position);
-                        mapSpawned = true;
-                    }
-                }
-            } else if (Input.GetTouch(0).phase == TouchPhase.Moved && spawnedObject != null && !locked)
-            {
-                spawnedObject.transform.position = hits[0].pose.position;
+                SpawnPrefab(hits[0].pose.position);
             }
 
-            if (Input.GetTouch(0).phase == TouchPhase.Ended)
-            {
-                spawnedObject = null;
-            }
+            spawnedObject.transform.position = hits[0].pose.position;
         }
         
     }
