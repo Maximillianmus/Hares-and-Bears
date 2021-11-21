@@ -97,9 +97,9 @@ public class MeshGenerator : MonoBehaviour
 
                 vert++;
                 tris += 6;
-                yield return new WaitForSeconds(generationDelay);
             }
             //skip one connection when switching row
+            yield return new WaitForSeconds(generationDelay);
             vert++;
         }
 
