@@ -1,0 +1,91 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel Main
+
+//just simpel vector math
+#include "NMGPyramidComputeHelpers.hlsl"
+
+struct SourceVertex 
+{
+    float3 positionOS;
+    float2 uv;
+};
+
+
+struct DrawVertex
+{
+    float3 positionWS;
+    float2 uv;
+};
+
+struct DrawTriangle
+{
+    float3 normalWS;
+    DrawVertex vertices[3];
+};
+
+
+//compute buffers
+StructuredBuffer<SourceVertex> _SourceVertices;
+StructuredBuffer<int> _SourceTriangles;
+AppendStructuredBuffer<DrawTriangle> _DrawTriangles;
+
+//Shader variables
+int _NumSourceTriangles;
+float _PyramidHeight;
+float4x4 _LocalToWorld;
+
+
+//helper function for transformiing a coordinate to worldspace
+DrawVertex TransformToWorldSpace(SourceVertex v)
+{
+    DrawVertex o;
+    o.positionWS = mul(_LocalToWorld, float4(v.positionOS, 1).xyz);
+    o.uv = v.uv;
+    return o;
+}
+
+void SetupAndOutputTriangle(DrawVertex a, DrawVertex b, DrawVertex c)
+{
+    float3 normalWS = GetNormalFromTriangle(a.positionWS, b.positionWS, c.positionWS);
+    
+    //create output(triangle)
+    DrawTriangle tri;
+    tri.normalWS = normalWS;
+    tri.vertices[0] = a;
+    tri.vertices[1] = b;
+    tri.vertices[2] = c;
+
+    _DrawTriangles.Append(tri);
+
+}
+
+
+//number of threads to create per "dispatch", this only uses the x dimension of the thread group assignment 
+[numthreads(128,1,1)]
+void Main(uint3 id : SV_DispatchThreadID)
+{
+    if ((int) id.x >= _NumSourceTriangles)
+    {
+        return;
+    }
+    
+    int tristart = id.x * 3;
+    DrawVertex inputs[3];
+    inputs[0] = TransformToWorldSpace(_SourceVertices[_SourceTriangles[tristart]]);
+    inputs[1] = TransformToWorldSpace(_SourceVertices[_SourceTriangles[tristart + 1]]);
+    inputs[2] = TransformToWorldSpace(_SourceVertices[_SourceTriangles[tristart + 2]]);
+    
+    DrawVertex center;
+    
+    float3 triNormal = GetNormalFromTriangle(inputs[0].positionWS, inputs[1].positionWS, inputs[2].positionWS);
+    
+    center.positionWS = GetTriangleCenter(inputs[0].positionWS, inputs[1].positionWS, inputs[2].positionWS);
+    
+    center.uv = GetTriangleCenter(inputs[0].uv, inputs[1].uv, inputs[2].uv);
+    
+    SetupAndOutputTriangle(inputs[0], inputs[1], center);
+    SetupAndOutputTriangle(inputs[1], inputs[2], center);
+    SetupAndOutputTriangle(inputs[2], inputs[0], center);
+    
+    
+}
