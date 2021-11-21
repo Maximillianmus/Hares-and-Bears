@@ -17,7 +17,7 @@ public class MeshGenerator : MonoBehaviour
     [Tooltip("The number of Quads in the Z direction")]
     public int TerrainSizeZ = 10;
     [Tooltip("Controls how high the tops are")]
-    public int heightStrenght = 2;
+    public float heightStrength = 2;
     [Tooltip("Time between quad generation")]
     public float generationDelay = 0.01f;
     [Tooltip("Interpolation multiplier for height generation")]
@@ -97,9 +97,9 @@ public class MeshGenerator : MonoBehaviour
 
                 vert++;
                 tris += 6;
-                yield return new WaitForSeconds(generationDelay);
             }
             //skip one connection when switching row
+            yield return new WaitForSeconds(generationDelay);
             vert++;
         }
 
@@ -108,7 +108,7 @@ public class MeshGenerator : MonoBehaviour
 
     void CreateHills()
     {
-        float currentHeightStrenght = Mathf.Lerp(0, heightStrenght, InterpolationValue);
+        float currentHeightStrenght = Mathf.Lerp(0, heightStrength, InterpolationValue);
         for (int i = 0, z = 0; z <= TerrainSizeZ; z++)
         {
             for (int x = 0; x <= TerrainSizeX; x++)
@@ -121,7 +121,7 @@ public class MeshGenerator : MonoBehaviour
             }
         }
 
-        if (currentHeightStrenght == heightStrenght)
+        if (currentHeightStrenght == heightStrength)
             heightGenerationDone = true;
 
     }
