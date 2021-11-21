@@ -773,9 +773,9 @@ Light:
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_Bias: 0
+    m_NormalBias: 0
+    m_NearPlane: 0.27
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -841,7 +841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Version: 1
-  m_UsePipelineSettings: 1
+  m_UsePipelineSettings: 0
   m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
   m_CustomShadowLayers: 0
@@ -1800,6 +1800,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1706696609}
     m_Modifications:
+    - target: {fileID: 1223488629655169899, guid: 3b5fb3d075095ac4d8a1fbbcefa1e7a7,
+        type: 3}
+      propertyPath: m_BaseOffset
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2368727691363587633, guid: 3b5fb3d075095ac4d8a1fbbcefa1e7a7,
         type: 3}
       propertyPath: m_Name
@@ -1818,7 +1823,7 @@ PrefabInstance:
     - target: {fileID: 7872614466073460598, guid: 3b5fb3d075095ac4d8a1fbbcefa1e7a7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.908058
+      value: 8.52
       objectReference: {fileID: 0}
     - target: {fileID: 7872614466073460598, guid: 3b5fb3d075095ac4d8a1fbbcefa1e7a7,
         type: 3}
@@ -1956,7 +1961,7 @@ PrefabInstance:
     - target: {fileID: 4160767914834271680, guid: f0bdc7df799179b4aa682a6b806686d1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.533058
+      value: 8.4
       objectReference: {fileID: 0}
     - target: {fileID: 4160767914834271680, guid: f0bdc7df799179b4aa682a6b806686d1,
         type: 3}
