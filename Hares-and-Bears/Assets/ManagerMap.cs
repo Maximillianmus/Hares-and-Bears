@@ -8,7 +8,12 @@ public class ManagerMap : MonoBehaviour
 
     public void OnPlacementBegin()
     {
-        gameObject.GetComponent<ARPlaneManager>().enabled = false;
+        ARPlaneManager planeManager = gameObject.GetComponent<ARPlaneManager>();
+        foreach (var plane in planeManager.trackables)
+        {
+            plane.gameObject.SetActive(false);
+        }
+        planeManager.enabled = false;
     }
     
     
