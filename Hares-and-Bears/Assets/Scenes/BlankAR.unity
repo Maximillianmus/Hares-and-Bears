@@ -955,7 +955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastManager: {fileID: 1659859601}
-  spawnablePrefab: {fileID: 4342422981023315812, guid: b6f0058878dede348ae44cc57d346596,
+  spawnablePrefab: {fileID: 595962289170038173, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
     type: 3}
   arCam: {fileID: 1354141926}
   onPlacementBegin:
