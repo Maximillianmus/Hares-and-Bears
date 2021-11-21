@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 595962289170038169}
   - component: {fileID: 595962289170038168}
   - component: {fileID: 595962289170038171}
+  - component: {fileID: 1867867727}
   m_Layer: 0
   m_Name: Mesh Generator
   m_TagString: Untagged
@@ -99,7 +100,21 @@ MonoBehaviour:
   QuadSize: 0.5
   TerrainSizeX: 40
   TerrainSizeZ: 40
-  heightStrenght: 1
+  heightStrenght: 2
   generationDelay: 0
   heightGenerationSpeed: 0.0005
   perlinZoom: 0.2
+--- !u!64 &1867867727
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595962289170038173}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
