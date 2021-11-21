@@ -34,6 +34,8 @@ public class MeshGenerator : MonoBehaviour
     private float InterpolationValue = 0;
     private float perlinStartPos = 0;
     private NavMeshSurface navMesh;
+    private float positionOffsetX = 0;
+    private float positionOffsetZ = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +44,9 @@ public class MeshGenerator : MonoBehaviour
         perlinStartPos = UnityEngine.Random.Range(0, 10000);
         GetComponent<MeshFilter>().mesh = mesh;
         navMesh = gameObject.GetComponent<NavMeshSurface>();
-        StartCoroutine(CreateShape()); 
+        positionOffsetX = -TerrainSizeX / 2;
+        positionOffsetZ = -TerrainSizeZ / 2;
+        StartCoroutine(CreateShape());
 
 
     }
@@ -74,7 +78,7 @@ public class MeshGenerator : MonoBehaviour
         {
             for (int x = 0; x <= TerrainSizeX; x++)
             {
-                vertices[i] = new Vector3(x* QuadSize, 0, z* QuadSize);
+                vertices[i] = new Vector3((positionOffsetX + x) * QuadSize, 0, (positionOffsetZ + z)* QuadSize);
                 i++;
             }
         }
@@ -116,7 +120,7 @@ public class MeshGenerator : MonoBehaviour
                 
                 float y = Mathf.PerlinNoise(perlinStartPos+ x * perlinZoom * QuadSize, perlinStartPos + z * perlinZoom * QuadSize) * currentHeightStrenght;
                 InterpolationValue += Time.deltaTime * heightGenerationSpeed;
-                vertices[i] = new Vector3(x * QuadSize, y, z * QuadSize);
+                vertices[i] = new Vector3((positionOffsetX + x) * QuadSize, y, (positionOffsetZ + z) * QuadSize);
                 i++;
             }
         }
