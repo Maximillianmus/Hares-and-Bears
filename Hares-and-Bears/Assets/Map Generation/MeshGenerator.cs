@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 
 
 [RequireComponent(typeof(MeshFilter))]
+[RequireComponent(typeof(NavMeshSurface))]
 public class MeshGenerator : MonoBehaviour
 {
     [Tooltip("Size multiplier for quads")]
@@ -31,6 +33,7 @@ public class MeshGenerator : MonoBehaviour
     private bool heightGenerationDone = false;
     private float InterpolationValue = 0;
     private float perlinStartPos = 0;
+    private NavMeshSurface navMesh;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +41,7 @@ public class MeshGenerator : MonoBehaviour
         mesh = new Mesh();
         perlinStartPos = UnityEngine.Random.Range(0, 10000);
         GetComponent<MeshFilter>().mesh = mesh;
-
+        navMesh = gameObject.GetComponent<NavMeshSurface>();
         StartCoroutine(CreateShape()); 
 
 
@@ -58,6 +61,8 @@ public class MeshGenerator : MonoBehaviour
         {
             UpdateMesh();
             //we are done with the generation
+            gameObject.GetComponent<MeshCollider>().sharedMesh = mesh;
+            navMesh.BuildNavMesh();
             this.enabled = false;
         }
     }
