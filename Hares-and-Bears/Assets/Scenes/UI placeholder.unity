@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rabbit: {fileID: 5013560299326194145, guid: 0b31723f1db71f246ae56fa0a690a68b, type: 3}
   Bear: {fileID: 3685490733665178746, guid: 3da126b42376dca40a1a1fa0603d547c, type: 3}
-  Fox: {fileID: 8297970477520902235, guid: b8c900eb0eb45b64ca3838ba52e3623d, type: 3}
+  Fox: {fileID: 2368727691363587633, guid: 3b5fb3d075095ac4d8a1fbbcefa1e7a7, type: 3}
   yourButton: {fileID: 61156785}
   choices: {fileID: 134500347}
 --- !u!114 &61156785
