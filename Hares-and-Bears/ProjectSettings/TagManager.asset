@@ -7,6 +7,7 @@ TagManager:
   - Plant
   - Animal
   - WaterSource
+  - Spawnable
   layers:
   - Default
   - TransparentFX
