@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b758c47efce8cab4383cf99cfbe05422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuadSize: 0.1
+  QuadSize: 0.0025
   TerrainSizeX: 40
   TerrainSizeZ: 40
   heightStrength: 0.25
