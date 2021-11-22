@@ -12,6 +12,8 @@ public class SpawnOnPress : MonoBehaviour
     public Button yourButton;
     public Dropdown choices;
     
+    private Bool pressed = false;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -19,33 +21,51 @@ public class SpawnOnPress : MonoBehaviour
         gameObject.GetComponent<Button>().onClick.AddListener(spawning); //Connect spawning function with button
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    void FixedUpdate()
     {
+    
+    //create ray from camera to mouse position
+	Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+	RaycastHit hit;
+	
+    //only if ray hits plane and button was pressed
+	if (Physics.Raycast(ray, out hit) && pressed)
+	{
+	
+		//Debug.DrawLine(ray.origin, hit.point);
         
-    }
-
-    private void spawning()
-    {
-        Debug.Log("You have clicked the button!");
-        Debug.Log(choices.captionText.text); //Get string of active choice from dropdown object
-
-
+        
+		//check animal condition
         //Spawn animal depending on what choice was set
         if (choices.captionText.text == "Rabbit")
         {
-            Instantiate(Rabbit);
+            Instantiate(Rabbit, hit.point);
         }
 
         if (choices.captionText.text == "Fox")
         {
-            Instantiate(Fox);
+            Instantiate(Fox, hit.point);
         }
 
         if (choices.captionText.text == "Bear")
         {
-            Instantiate(Bear);
+            Instantiate(Bear, hit.point);
         }
+	}
+    
+    else{
+        //change button state back to inactive
+        pressed ^= false;
+    }
+    }
+    
+    private void spawning()
+    {
+        Debug.Log("You have clicked the button!");
+        Debug.Log(choices.captionText.text); //Get string of active choice from dropdown object
+        pressed ^= false;
+    
     }
 
 }
