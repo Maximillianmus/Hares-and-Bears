@@ -12,7 +12,7 @@ public class SpawnOnPress : MonoBehaviour
     public Button yourButton;
     public Dropdown choices;
     
-    private Bool pressed = false;
+    private bool pressed = false;
     
     
     // Start is called before the first frame update
@@ -40,17 +40,17 @@ public class SpawnOnPress : MonoBehaviour
         //Spawn animal depending on what choice was set
         if (choices.captionText.text == "Rabbit")
         {
-            Instantiate(Rabbit, hit.point);
+            Instantiate(Rabbit, hit.point, Quaternion.identity);
         }
 
         if (choices.captionText.text == "Fox")
         {
-            Instantiate(Fox, hit.point);
+            Instantiate(Fox, hit.point, Quaternion.identity);
         }
 
         if (choices.captionText.text == "Bear")
         {
-            Instantiate(Bear, hit.point);
+            Instantiate(Bear, hit.point, Quaternion.identity);
         }
 	}
     
