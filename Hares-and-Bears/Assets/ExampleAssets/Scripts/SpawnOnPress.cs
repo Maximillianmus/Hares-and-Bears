@@ -13,12 +13,21 @@ public class SpawnOnPress : MonoBehaviour
     public Dropdown choices;
     
     private bool pressed = false;
+
+    public Canvas canvas;
     
     
     // Start is called before the first frame update
     void Start()
     {
         gameObject.GetComponent<Button>().onClick.AddListener(spawning); //Connect spawning function with button
+    }
+
+    public void OnPlacementEnd()
+    {
+        pressed = true;
+        canvas.gameObject.SetActive(true);
+
     }
 
     
@@ -60,7 +69,6 @@ public class SpawnOnPress : MonoBehaviour
         
         else {
             //change button state back to inactive
-            pressed ^= false;
         }
     }
         

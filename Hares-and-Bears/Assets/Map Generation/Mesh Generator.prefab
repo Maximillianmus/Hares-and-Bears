@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1867867727}
   - component: {fileID: 6992281405378013377}
   - component: {fileID: 5338397100273076156}
+  - component: {fileID: 6807361741705916533}
   m_Layer: 6
   m_Name: Mesh Generator
   m_TagString: Untagged
@@ -99,14 +100,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b758c47efce8cab4383cf99cfbe05422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuadSize: 0.02
+  QuadSize: 0.04
   TerrainSizeX: 40
   TerrainSizeZ: 40
-  heightStrength: 0.25
+  heightStrength: 0.1
   generationDelay: 0
   heightGenerationSpeed: 0.0005
-  perlinZoom: 2
-  spawnAnimalsPlants: {fileID: 0}
+  perlinZoom: 4
+  spawnAnimalsPlants: {fileID: 6807361741705916533}
 --- !u!64 &1867867727
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -161,7 +162,31 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.016666668
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
+--- !u!114 &6807361741705916533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595962289170038173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3ce454545e5419fa6c1d6165689a87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terrain: {fileID: 595962289170038171}
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  rabbitPrefab: {fileID: 3489300068431621582, guid: e023561760d07cb40b084bd8bf87f55d,
+    type: 3}
+  foxPrefab: {fileID: 2368727691363587633, guid: 3b5fb3d075095ac4d8a1fbbcefa1e7a7,
+    type: 3}
+  minBoundryX: 0
+  minBoundryZ: 0
+  maxBoundryX: 0
+  maxBoundryZ: 0
