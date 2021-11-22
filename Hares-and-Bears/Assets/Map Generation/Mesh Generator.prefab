@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1867867727}
   - component: {fileID: 6992281405378013377}
   - component: {fileID: 5338397100273076156}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mesh Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,6 +106,7 @@ MonoBehaviour:
   generationDelay: 0
   heightGenerationSpeed: 0.0005
   perlinZoom: 2
+  spawnAnimalsPlants: {fileID: 0}
 --- !u!64 &1867867727
 MeshCollider:
   m_ObjectHideFlags: 0
