@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7872614466073460598}
-  - component: {fileID: 1694879862944345485}
   - component: {fileID: 1223488629655169899}
   - component: {fileID: 1803952118715159693}
+  - component: {fileID: 8679838164667434070}
   m_Layer: 0
   m_Name: Fox
   m_TagString: Untagged
@@ -35,19 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1694879862944345485
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2368727691363587633}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &1223488629655169899
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -102,6 +89,19 @@ MonoBehaviour:
   exploring: 0
   timeManager: {fileID: 0}
   agent: {fileID: 1223488629655169899}
+--- !u!65 &8679838164667434070
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368727691363587633}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &4806140734406108320
 PrefabInstance:
   m_ObjectHideFlags: 0

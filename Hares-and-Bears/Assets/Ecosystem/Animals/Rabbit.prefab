@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3489300068431621427}
-  - component: {fileID: 3489300068431621580}
   - component: {fileID: 3489300068431621425}
   - component: {fileID: 3489300068431621430}
+  - component: {fileID: 7199963742465439761}
   m_Layer: 0
   m_Name: Rabbit
   m_TagString: Animal
@@ -35,19 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3489300068431621580
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3489300068431621582}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &3489300068431621425
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -67,7 +54,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.5
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &3489300068431621430
@@ -102,6 +89,19 @@ MonoBehaviour:
   exploring: 0
   timeManager: {fileID: 0}
   agent: {fileID: 3489300068431621425}
+--- !u!65 &7199963742465439761
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3489300068431621582}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &551233316160340302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -127,7 +127,7 @@ PrefabInstance:
     - target: {fileID: 5599031839743946794, guid: 615032d65855dd64d94bb1d49ae14c48,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.223
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5599031839743946794, guid: 615032d65855dd64d94bb1d49ae14c48,
         type: 3}
