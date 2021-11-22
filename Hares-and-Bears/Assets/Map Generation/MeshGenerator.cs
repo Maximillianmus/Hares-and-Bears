@@ -36,6 +36,7 @@ public class MeshGenerator : MonoBehaviour
     private NavMeshSurface navMesh;
     private float positionOffsetX = 0;
     private float positionOffsetZ = 0;
+    private Material material;
 
     public SpawnAnimalsPlants spawnAnimalsPlants;
 
@@ -48,6 +49,8 @@ public class MeshGenerator : MonoBehaviour
         navMesh = gameObject.GetComponent<NavMeshSurface>();
         positionOffsetX = -TerrainSizeX / 2;
         positionOffsetZ = -TerrainSizeZ / 2;
+        material =GetComponent<MeshRenderer>().material;
+     
         StartCoroutine(CreateShape());
 
 
