@@ -37,6 +37,8 @@ public class MeshGenerator : MonoBehaviour
     private float positionOffsetX = 0;
     private float positionOffsetZ = 0;
 
+    public SpawnAnimalsPlants spawnAnimalsPlants;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +69,7 @@ public class MeshGenerator : MonoBehaviour
             //we are done with the generation
             gameObject.GetComponent<MeshCollider>().sharedMesh = mesh;
             navMesh.BuildNavMesh();
+            spawnAnimalsPlants.startSpawn();
             this.enabled = false;
         }
     }
