@@ -425,26 +425,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!1 &1867867722 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 595962289170038173, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
-    type: 3}
-  m_PrefabInstance: {fileID: 6807361741705916530}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1867867727
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1867867722}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1001 &6807361741705916530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -506,41 +486,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
-        type: 3}
-      propertyPath: QuadSize
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
-        type: 3}
-      propertyPath: perlinZoom
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
-        type: 3}
-      propertyPath: TerrainSizeX
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
-        type: 3}
-      propertyPath: TerrainSizeZ
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
-        type: 3}
-      propertyPath: heightStrenght
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
-        type: 3}
-      propertyPath: heightStrength
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
-        type: 3}
-      propertyPath: heightGenerationSpeed
-      value: 0.0005
       objectReference: {fileID: 0}
     - target: {fileID: 595962289170038173, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
         type: 3}

@@ -101,7 +101,7 @@ MonoBehaviour:
   QuadSize: 0.1
   TerrainSizeX: 40
   TerrainSizeZ: 40
-  heightStrength: 1
+  heightStrength: 0.25
   generationDelay: 0
   heightGenerationSpeed: 0.0005
   perlinZoom: 0.5
