@@ -15,6 +15,9 @@ public class SpawnOnPress : MonoBehaviour
     private bool pressed = false;
 
     public Canvas canvas;
+
+    private float cooldown = 0.5f;
+    private float lastTime = 0.0f;
     
     
     // Start is called before the first frame update
@@ -33,7 +36,7 @@ public class SpawnOnPress : MonoBehaviour
     
     void FixedUpdate()
     {
-        if (Input.touchCount == 0)
+        if (Input.touchCount == 0 || Time.time - lastTime < cooldown)
         {
             return;
         }
@@ -45,6 +48,7 @@ public class SpawnOnPress : MonoBehaviour
         //only if ray hits plane and button was pressed
         if (Physics.Raycast(ray, out hit) && pressed)
         {
+            lastTime = Time.time;
         
             //Debug.DrawLine(ray.origin, hit.point);
             

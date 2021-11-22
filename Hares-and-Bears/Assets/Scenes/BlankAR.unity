@@ -697,6 +697,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1400333055569505792, guid: 77b65f1d71887bc429f58f017b9b807f,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1400333055569505793, guid: 77b65f1d71887bc429f58f017b9b807f,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -826,6 +831,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400333056565091766, guid: 77b65f1d71887bc429f58f017b9b807f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400333056624394617, guid: 77b65f1d71887bc429f58f017b9b807f,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400333056624394617, guid: 77b65f1d71887bc429f58f017b9b807f,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77b65f1d71887bc429f58f017b9b807f, type: 3}
