@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -509,8 +509,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
         type: 3}
+      propertyPath: QuadSize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: perlinZoom
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: TerrainSizeX
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: TerrainSizeZ
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
       propertyPath: heightStrenght
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: heightStrength
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: heightGenerationSpeed
+      value: 0.0005
       objectReference: {fileID: 0}
     - target: {fileID: 595962289170038173, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
         type: 3}
