@@ -24,48 +24,52 @@ public class SpawnOnPress : MonoBehaviour
     
     void FixedUpdate()
     {
+        if (Input.touchCount == 0)
+        {
+            return;
+        }
     
-    //create ray from camera to mouse position
-	Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-	RaycastHit hit;
-	
-    //only if ray hits plane and button was pressed
-	if (Physics.Raycast(ray, out hit) && pressed)
-	{
-	
-		//Debug.DrawLine(ray.origin, hit.point);
+        //create ray from camera to mouse position
+        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+        RaycastHit hit;
         
+        //only if ray hits plane and button was pressed
+        if (Physics.Raycast(ray, out hit) && pressed)
+        {
         
-		//check animal condition
-        //Spawn animal depending on what choice was set
-        if (choices.captionText.text == "Rabbit")
-        {
-            Instantiate(Rabbit, hit.point, Quaternion.identity);
-        }
+            //Debug.DrawLine(ray.origin, hit.point);
+            
+            
+            //check animal condition
+            //Spawn animal depending on what choice was set
+            if (choices.captionText.text == "Rabbit")
+            {
+                Instantiate(Rabbit, hit.point, Quaternion.identity);
+            }
 
-        if (choices.captionText.text == "Fox")
-        {
-            Instantiate(Fox, hit.point, Quaternion.identity);
-        }
+            if (choices.captionText.text == "Fox")
+            {
+                Instantiate(Fox, hit.point, Quaternion.identity);
+            }
 
-        if (choices.captionText.text == "Bear")
-        {
-            Instantiate(Bear, hit.point, Quaternion.identity);
+            if (choices.captionText.text == "Bear")
+            {
+                Instantiate(Bear, hit.point, Quaternion.identity);
+            }
         }
-	}
-    
-    else{
-        //change button state back to inactive
-        pressed ^= false;
+        
+        else {
+            //change button state back to inactive
+            pressed ^= false;
+        }
     }
-    }
-    
-    private void spawning()
-    {
-        Debug.Log("You have clicked the button!");
-        Debug.Log(choices.captionText.text); //Get string of active choice from dropdown object
-        pressed ^= false;
-    
-    }
+        
+        private void spawning()
+        {
+            Debug.Log("You have clicked the button!");
+            Debug.Log(choices.captionText.text); //Get string of active choice from dropdown object
+            pressed ^= false;
+        
+        }
 
 }

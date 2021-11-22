@@ -76,8 +76,8 @@ MonoBehaviour:
   maxHunger: 5
   maxThirst: 5
   maxAge: 10
-  maxMovespeed: 1
-  viewDistance: 5
+  maxMovespeed: 0.1
+  viewDistance: 0.5
   eatRange: 1
   timeBetweenExploring: 2
   comfortableHungerLevel: 0.5
