@@ -3,7 +3,27 @@ guid: ab50dc572b11fca498638fb1d9c8cc83
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BearEyeNoseMat
+    second: {fileID: 2100000, guid: 85cd1466db5c3724eb988e2dbf0fc14b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BearFurMat
+    second: {fileID: 2100000, guid: 2887e6de9647d594ba52efd4811b5028, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BearInsideEarMat
+    second: {fileID: 2100000, guid: a2a97824a8bc1ef45815bdd26b30d9bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BearMouthMat
+    second: {fileID: 2100000, guid: b4cae5bea879df14982b8ad1de60cfab, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
