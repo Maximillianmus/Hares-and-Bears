@@ -59,14 +59,7 @@ public abstract class Animal : Lifeform
         if(!timeManager.paused)
         {
             // If game is fast forwarded, scale movementspeed
-            if (timeManager.fastForward)
-            {
-                agent.speed = maxMovespeed * timeManager.fastForwardMultiplier;
-            }
-            else
-            {
-                agent.speed = maxMovespeed;
-            }
+            agent.speed = maxMovespeed * timeManager.GetMultiplier();
 
             AreaScanResult asr = scanArea();
             Act(asr);
@@ -157,10 +150,7 @@ public abstract class Animal : Lifeform
         exploring = true;
         agent.SetDestination(transform.position + Quaternion.Euler(0, Random.Range(0, 360), 0) * new Vector3(viewDistance, 0, 0));
 
-        if(timeManager.fastForward)
-            yield return new WaitForSeconds(timeBetweenExploring / timeManager.fastForwardMultiplier);
-        else
-            yield return new WaitForSeconds(timeBetweenExploring);
+        yield return new WaitForSeconds(timeBetweenExploring / timeManager.GetMultiplier());
 
         exploring = false;
     }
