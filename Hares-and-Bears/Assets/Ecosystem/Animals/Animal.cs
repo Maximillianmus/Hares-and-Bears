@@ -165,6 +165,12 @@ public abstract class Animal : Lifeform
         return asr;
     }
 
+    public void OnDestroy()
+    {
+        alive = false;
+        TimeManager.onTimeAdvance -= gameUpdate;
+    }
+
     public virtual void Act(AreaScanResult asr)
     {
         // Check nearby area for food, water, other animals
