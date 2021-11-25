@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7821145117636878085}
   m_Layer: 0
   m_Name: Fox
-  m_TagString: Untagged
+  m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +53,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 0.01
+  m_Height: 0.05
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -70,23 +70,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   species: 2
+  prefab: {fileID: 2368727691363587633}
   male: 0
   diet: 01000000
   predators: 
   maxHunger: 5
   maxThirst: 5
   maxAge: 10
+  ageRequiredToMate: 3
+  requiredDesireForMating: 0.5
+  pregnantForTicks: 15
+  minOffspring: 1
+  maxOffspring: 2
   maxMovespeed: 0.12
   viewDistance: 0.5
-  eatRange: 2
+  interactRange: 0.1
   timeBetweenExploring: 2
-  comfortableHungerLevel: 0.5
+  comfortableHungerLevel: 0.802
   comfortableThirstLevel: 0.5
   hunger: 0
   thirst: 0
   age: 0
+  desireToMate: 0
   alive: 0
   exploring: 0
+  pregnant: 0
+  currentPregnantTicks: 0
   timeManager: {fileID: 0}
   agent: {fileID: 1223488629655169899}
 --- !u!65 &7821145117636878085
