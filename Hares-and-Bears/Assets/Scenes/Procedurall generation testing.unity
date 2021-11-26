@@ -403,6 +403,75 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!1001 &1498162744102960213
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1498162745876596676, guid: 392fade9003801944ac0b8c3a9bc1f29,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498162745876596676, guid: 392fade9003801944ac0b8c3a9bc1f29,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498162745876596676, guid: 392fade9003801944ac0b8c3a9bc1f29,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498162745876596676, guid: 392fade9003801944ac0b8c3a9bc1f29,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498162745876596676, guid: 392fade9003801944ac0b8c3a9bc1f29,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498162745876596676, guid: 392fade9003801944ac0b8c3a9bc1f29,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498162745876596676, guid: 392fade9003801944ac0b8c3a9bc1f29,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498162745876596676, guid: 392fade9003801944ac0b8c3a9bc1f29,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498162745876596676, guid: 392fade9003801944ac0b8c3a9bc1f29,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498162745876596676, guid: 392fade9003801944ac0b8c3a9bc1f29,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498162745876596676, guid: 392fade9003801944ac0b8c3a9bc1f29,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498162745876596696, guid: 392fade9003801944ac0b8c3a9bc1f29,
+        type: 3}
+      propertyPath: m_Name
+      value: Water
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 392fade9003801944ac0b8c3a9bc1f29, type: 3}
 --- !u!1001 &6807361741705916530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -473,8 +542,24 @@ PrefabInstance:
     - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
         type: 3}
       propertyPath: maxHeight
-      value: 0.4
+      value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: grassStart
+      value: 0.388
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: waterLevel
+      value: 0.429
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: waterPrefab
+      value: 
+      objectReference: {fileID: 1498162745876596696, guid: 392fade9003801944ac0b8c3a9bc1f29,
+        type: 3}
     - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
         type: 3}
       propertyPath: TerrainSizeX

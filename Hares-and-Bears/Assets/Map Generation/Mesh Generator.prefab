@@ -100,16 +100,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b758c47efce8cab4383cf99cfbe05422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuadSize: 0.04
-  TerrainSizeX: 40
-  TerrainSizeZ: 40
-  heightStrength: 0.1
+  QuadSize: 0.02
+  TerrainSizeX: 80
+  TerrainSizeZ: 80
+  maxHeight: 0.3
   generationDelay: 0
   heightGenerationSpeed: 0.0005
-  perlinZoom: 4
   octaves:
-  - frequency: 4
-    amplitude: 0.1
+  - frequency: 0.03
+    amplitude: 4
+  - frequency: 0.05
+    amplitude: 2
+  - frequency: 0.1
+    amplitude: 1
+  - frequency: 0.2
+    amplitude: 0.5
+  - frequency: 0.3
+    amplitude: 0.25
+  waterLevel: 0.429
+  waterPrefab: {fileID: 1498162745876596696, guid: 392fade9003801944ac0b8c3a9bc1f29,
+    type: 3}
+  grassStart: 0.388
+  grassMax: 0.7
   spawnAnimalsPlants: {fileID: 6807361741705916533}
 --- !u!64 &1867867727
 MeshCollider:
