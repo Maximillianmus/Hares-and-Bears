@@ -200,14 +200,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163366720}
-  m_LocalRotation: {x: 0.2952925, y: -0, z: -0, w: 0.9554069}
-  m_LocalPosition: {x: 0, y: 10.44, z: -10.98}
+  m_LocalRotation: {x: 0.29932275, y: -0, z: -0, w: 0.9541519}
+  m_LocalPosition: {x: 11.02, y: 1.139, z: -0.285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 34.35, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 34.834, y: 0, z: 0}
 --- !u!114 &163366724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,9 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inGameTimesteps: 0
   timeStepDuration: 0.1
-  fastForwardMultiplier: 5
   paused: 0
-  fastForward: 0
 --- !u!4 &979953358
 Transform:
   m_ObjectHideFlags: 0
@@ -425,7 +423,7 @@ PrefabInstance:
     - target: {fileID: 595962289170038170, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.555
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 595962289170038170, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
         type: 3}
@@ -466,6 +464,81 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: QuadSize
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: maxHeight
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: TerrainSizeX
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: TerrainSizeZ
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: octaves.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: octaves.Array.data[0].amplitude
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: octaves.Array.data[0].frequency
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: octaves.Array.data[1].amplitude
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: octaves.Array.data[1].frequency
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: octaves.Array.data[2].amplitude
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: octaves.Array.data[2].frequency
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: octaves.Array.data[3].amplitude
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: octaves.Array.data[3].frequency
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: octaves.Array.data[4].amplitude
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: octaves.Array.data[4].frequency
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 595962289170038173, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
         type: 3}

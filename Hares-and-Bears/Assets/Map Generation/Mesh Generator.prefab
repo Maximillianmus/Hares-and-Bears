@@ -107,6 +107,9 @@ MonoBehaviour:
   generationDelay: 0
   heightGenerationSpeed: 0.0005
   perlinZoom: 4
+  octaves:
+  - frequency: 4
+    amplitude: 0.1
   spawnAnimalsPlants: {fileID: 6807361741705916533}
 --- !u!64 &1867867727
 MeshCollider:
