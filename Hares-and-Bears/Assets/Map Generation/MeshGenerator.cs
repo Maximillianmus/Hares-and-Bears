@@ -73,7 +73,6 @@ public class MeshGenerator : MonoBehaviour
     private bool groundGenerationDone = false;
     private bool heightGenerationDone = false;
     private float InterpolationValue = 0;
-    private float perlinStartPos = 0;
     private NavMeshSurface navMesh;
     private float positionOffsetX = 0;
     private float positionOffsetZ = 0;
@@ -87,7 +86,7 @@ public class MeshGenerator : MonoBehaviour
     void Start()
     {
         mesh = new Mesh();
-        perlinStartPos = UnityEngine.Random.Range(0, 10000);
+
         GetComponent<MeshFilter>().mesh = mesh;
         navMesh = gameObject.GetComponent<NavMeshSurface>();
         positionOffsetX = -TerrainSizeX / 2;
@@ -195,14 +194,14 @@ public class MeshGenerator : MonoBehaviour
             for (int x = 0; x <= TerrainSizeX; x++)
             {
 
-                float y = combinedNoiseMap[x, z] * maxHeight ;
+                float y = combinedNoiseMap[x, z] * currentHeightStrenght;
                 InterpolationValue += Time.deltaTime * heightGenerationSpeed;
                 vertices[i] = new Vector3((positionOffsetX + x) * QuadSize, y, (positionOffsetZ + z) * QuadSize);
                 i++;
             }
         }
 
-        if (currentHeightStrenght == 1)
+        if (currentHeightStrenght == maxHeight)
             heightGenerationDone = true;
 
     }
