@@ -108,6 +108,8 @@ MonoBehaviour:
   heightGenerationSpeed: 0.0005
   octaves:
   - frequency: 0.03
+    amplitude: 5
+  - frequency: 0.03
     amplitude: 4
   - frequency: 0.05
     amplitude: 2
@@ -117,11 +119,11 @@ MonoBehaviour:
     amplitude: 0.5
   - frequency: 0.3
     amplitude: 0.25
-  waterLevel: 0.429
+  waterLevel: 0.347
   waterPrefab: {fileID: 1498162745876596696, guid: 392fade9003801944ac0b8c3a9bc1f29,
     type: 3}
-  grassStart: 0.388
-  grassMax: 0.7
+  grassStart: 0.369
+  grassMax: 0.625
   spawnAnimalsPlants: {fileID: 6807361741705916533}
 --- !u!64 &1867867727
 MeshCollider:

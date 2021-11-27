@@ -483,12 +483,12 @@ PrefabInstance:
     - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
         type: 3}
       propertyPath: grassStart
-      value: 0.41
+      value: 0.369
       objectReference: {fileID: 0}
     - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
         type: 3}
       propertyPath: waterLevel
-      value: 0.429
+      value: 0.347
       objectReference: {fileID: 0}
     - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
         type: 3}
@@ -524,7 +524,7 @@ PrefabInstance:
     - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
         type: 3}
       propertyPath: octaves.Array.data[0].frequency
-      value: 0.02
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 595962289170038171, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
         type: 3}
