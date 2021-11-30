@@ -73,6 +73,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   prefabToPropagate: {fileID: 4160767914834271692}
+  maxPlants: 30
 --- !u!1001 &7666651806115238780
 PrefabInstance:
   m_ObjectHideFlags: 0

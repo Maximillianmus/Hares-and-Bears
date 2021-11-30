@@ -28,6 +28,7 @@ public abstract class Plant : Lifeform
     [SerializeField] private int maxNumberOfPropagation = 2;
     [SerializeField] private LayerMask terrainLayer;
     [SerializeField] private GameObject prefabToPropagate;
+    [SerializeField] private int maxPlants;
     
 
     // Start is called before the first frame update
@@ -52,6 +53,9 @@ public abstract class Plant : Lifeform
                                   (aps.numberOfPlantInRange - 1) * plantEffectInArea +
                                   aps.numberOfWatersource * waterEffectInArea;
             canPropagate = false;
+            var plants = GameObject.FindGameObjectsWithTag("Plant");
+            if (plants.Length >= maxPlants)
+                return;
             for (int i = 0; i < Math.Min((int) coefPropagation, maxNumberOfPropagation); ++i)
             {
                 PropagatePlant();
