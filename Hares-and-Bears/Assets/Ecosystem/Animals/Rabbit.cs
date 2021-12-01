@@ -30,10 +30,10 @@ public class Rabbit : Animal
 
             }
             // Animal wants to drink
-            else if (thirst <= comfortableThirstLevel * maxThirst && asr.closestWater != null)
+            else if (thirst <= comfortableThirstLevel * maxThirst && asr.waterClose)
             {
                 // If close enough, drink!
-                if (Vector3.Distance(asr.closestWater.transform.position, transform.position) <= eatRange)
+                if (Vector3.Distance(asr.closestWater, transform.position) <= eatRange)
                 {
                     thirst = maxThirst;
                     agent.SetDestination(transform.position);
@@ -41,7 +41,7 @@ public class Rabbit : Animal
                 // Go to watersource
                 else
                 {
-                    agent.SetDestination(asr.closestWater.transform.position);
+                    agent.SetDestination(asr.closestWater);
                 }
             }
             // Look for Mate

@@ -8,6 +8,7 @@ TagManager:
   - Animal
   - WaterSource
   - Spawnable
+  - WaterFinder
   layers:
   - Default
   - TransparentFX

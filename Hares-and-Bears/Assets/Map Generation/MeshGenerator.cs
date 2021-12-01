@@ -63,8 +63,9 @@ public class MeshGenerator : MonoBehaviour
     public float grassStart = 0.5f; 
     [Tooltip("The level wehre grass interpolation has reached it's max. 0 is the lowest point and 1 is the highest")]
     [Range(0.0f, 1f)]
-    public float grassMax = 0.7f; 
+    public float grassMax = 0.7f;
 
+    public Vector3[] Vertices => vertices;
 
     Mesh mesh;
 
