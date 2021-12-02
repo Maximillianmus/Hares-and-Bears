@@ -11,7 +11,7 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: 6621c0282ef0a694a9901d0cc4407caf,
     type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 2
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -35,13 +35,22 @@ Material:
     m_Ints: []
     m_Floats:
     - _Base_Color_1: -0.1
+    - _Base_end: 0.7
+    - _Base_min: 0
+    - _Base_start: 0.5
+    - _Grass_Noise_Scale: 100
+    - _Grass_end: 1
+    - _Grass_start: 0
     - _Height_Color_1: -0.7
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 0
     m_Colors:
-    - _Base_Color: {r: 0.05873977, g: 0.3773585, b: 0.09786839, a: 0}
+    - _Base_Color: {r: 0.08232467, g: 0.4716981, b: 0.1305656, a: 0}
+    - _Grass_Color: {r: 0.44161436, g: 0.6509434, b: 0.11360805, a: 0}
+    - _Grass_detail: {r: 0.6374014, g: 1, b: 0.031372547, a: 0}
     - _Height_Color: {r: 0.745283, g: 0.5420488, b: 0.31990921, a: 0}
+    - _Sand_Color: {r: 0.5943396, g: 0.4261531, b: 0.2439035, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8029101111755157331
 MonoBehaviour:
