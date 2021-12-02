@@ -254,10 +254,10 @@ public abstract class Animal : Lifeform
 
                 }
                 // Animal wants to drink
-                else if (thirst <= comfortableThirstLevel * maxThirst && asr.closestWater != null)
+                else if (thirst <= comfortableThirstLevel * maxThirst && asr.waterClose)
                 {
                     // If close enough, drink!
-                    if (Vector3.Distance(asr.closestWater.transform.position, transform.position) <= interactRange)
+                    if (Vector3.Distance(asr.closestWater, transform.position) <= interactRange)
                     {
                         thirst = maxThirst;
                         agent.SetDestination(transform.position);
@@ -265,7 +265,7 @@ public abstract class Animal : Lifeform
                     // Go to watersource
                     else
                     {
-                        agent.SetDestination(asr.closestWater.transform.position);
+                        agent.SetDestination(asr.closestWater);
                     }
                 }
                 // If not found anything interesting, go explore
