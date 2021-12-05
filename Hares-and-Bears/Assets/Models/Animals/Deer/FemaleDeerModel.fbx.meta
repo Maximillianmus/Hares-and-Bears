@@ -8,16 +8,25 @@ ModelImporter:
     second: DeerEatAnimation
   - first:
       74: 2722406950464381600
-    second: DeerIdleAnimation.001
+    second: DeerIdleAnimation
   - first:
       74: -2107180188839140075
     second: DeerRunningAnimation
   - first:
       74: 709573065511711736
-    second: DeerTPoseAnimation.001
+    second: DeerTPoseAnimation
   - first:
       74: -8642540553527111884
     second: DeerWalkAnimation
+  - first:
+      74: 2722406950464381600
+    second: DeerIdleAnimation
+  - first:
+      74: 709573065511711736
+    second: DeerTPoseAnimation (1)
+  - first:
+      74: -2916914011008698609
+    second: DeerTPoseAnimation
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -69,7 +78,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -87,7 +96,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: DeerIdleAnimation.001
+      name: DeerIdleAnimation
       takeName: DeerIdleAnimation.001
       internalID: 0
       firstFrame: 0
@@ -127,7 +136,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -145,7 +154,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: DeerTPoseAnimation.001
+      name: DeerTPoseAnimation
       takeName: DeerTPoseAnimation.001
       internalID: 0
       firstFrame: 0
@@ -156,7 +165,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
