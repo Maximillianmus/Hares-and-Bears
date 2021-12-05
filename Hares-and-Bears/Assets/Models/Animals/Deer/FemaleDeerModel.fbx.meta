@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 96a2ee0be072a9743bed168f1e5fba7d
+guid: 0f0a16a037e3f1246bc3e931357d4fae
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
@@ -19,14 +19,8 @@ ModelImporter:
       74: -8642540553527111884
     second: DeerWalkAnimation
   - first:
-      74: 2722406950464381600
-    second: DeerIdleAnimation
-  - first:
-      74: 709573065511711736
-    second: DeerTPoseAnimation (1)
-  - first:
-      74: -2916914011008698609
-    second: DeerTPoseAnimation
+      74: -60876033568509041
+    second: DeerArmature|DeerTPoseAnimation
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -165,7 +159,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -195,6 +189,35 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DeerArmature|DeerTPoseAnimation
+      takeName: DeerArmature|DeerTPoseAnimation
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
