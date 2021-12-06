@@ -43,7 +43,12 @@ public class SpawnOnPress : MonoBehaviour
         {
             return;
         }
-    
+
+        if (RectTransformUtility.RectangleContainsScreenPoint(panelTouch, Input.GetTouch(0).position))
+        {
+            return;
+        }
+
         //create ray from camera to mouse position
         Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
         RaycastHit hit;
