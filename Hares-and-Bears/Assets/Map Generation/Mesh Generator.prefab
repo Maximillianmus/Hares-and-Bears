@@ -125,6 +125,7 @@ MonoBehaviour:
     type: 3}
   grassStart: 0.369
   grassMax: 0.625
+  isSolid: 1
   spawnAnimalsPlants: {fileID: 6807361741705916533}
 --- !u!64 &1867867727
 MeshCollider:
