@@ -99,7 +99,8 @@ public class MeshGenerator : MonoBehaviour
         material.SetFloat("_Grass_end", grassMax * maxHeight);
 
 
-        Instantiate(waterPrefab,  new Vector3(transform.position.x, transform.position.y + waterLevel * maxHeight, transform.position.z), transform.rotation) ;
+        GameObject waterplane = Instantiate(waterPrefab,  new Vector3(transform.position.x, transform.position.y + waterLevel * maxHeight, transform.position.z), transform.rotation);
+        waterplane.transform.parent = transform;
 
         StartCoroutine(CreateShape());
     
@@ -289,45 +290,7 @@ public class MeshGenerator : MonoBehaviour
             vert += TerrainSizeZ+1;
 
         }
-        //x == 0 and x == max
-
-
-        /*
-        if (z == 0)
-        {
-            
-            zTris += 6;
-
-        }
-        else if (z == TerrainSizeZ - 1)
-        {
-
-            triangles[zTris + standardSizeTris * 2 + TerrainSizeX * 6 + 0] = vert + TerrainSizeX + 0 + standardSizeVerts;
-            triangles[zTris + standardSizeTris * 2 + TerrainSizeX * 6 + 1] = vert + TerrainSizeX + 1;
-            triangles[zTris + standardSizeTris * 2 + TerrainSizeX * 6 + 2] = vert + TerrainSizeX + 0;
-            triangles[zTris + standardSizeTris * 2 + TerrainSizeX * 6 + 3] = vert + TerrainSizeX + 1 + standardSizeVerts;
-            triangles[zTris + standardSizeTris * 2 + TerrainSizeX * 6 + 4] = vert + TerrainSizeX + 1;
-            triangles[zTris + standardSizeTris * 2 + TerrainSizeX * 6 + 5] = vert + TerrainSizeX + 0 + standardSizeVerts;
-            zTris += 6;
-
-
-        }
-        if (x == 0)
-        {
-                        triangles[xTris + standardSizeTris * 2 + TerrainSizeX * 12 + 0] = vert + 0;
-                        triangles[xTris + standardSizeTris * 2 + TerrainSizeX * 12 + 1] = vert + TerrainSizeX + 1;
-                        triangles[xTris + standardSizeTris * 2 + TerrainSizeX * 12 + 2] = vert + 1;
-                        triangles[xTris + standardSizeTris * 2 + TerrainSizeX * 12 + 3] = vert + 1;
-                        triangles[xTris + standardSizeTris * 2 + TerrainSizeX * 12 + 4] = vert + TerrainSizeX + 1;
-                        triangles[xTris + standardSizeTris * 2 + TerrainSizeX * 12 + 5] = vert + TerrainSizeX + 2;
-                        xTris++;
-                        
-        }
-        else if (x == TerrainSizeX - 1)
-        {
-
-        }
-        */
+       
     }
     void CreateHills()
     {
