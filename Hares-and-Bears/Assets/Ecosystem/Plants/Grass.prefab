@@ -61,6 +61,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   species: 0
   nutritionValue: 1
+  fruitProducing: 0
+  tickPropagation: 0.5
+  toPropagageThreshold: 40
+  plantEffectInArea: 0.5
+  waterEffectInArea: 0.5
+  animalEffectInArea: 0.1
+  RadiusAreaOfEffect: 0.3
+  maxNumberOfPropagation: 2
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  prefabToPropagate: {fileID: 4160767914834271692}
+  maxPlants: 30
 --- !u!1001 &7666651806115238780
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.AI;
 using UnityEngine;
 
 public abstract class Animal : Lifeform
 {
     [Header("Animal Attributes")]
+    public GameObject prefab;
     public bool male;
     public List<Species> diet;
     public List<Species> predators;
@@ -14,10 +16,17 @@ public abstract class Animal : Lifeform
     public float maxHunger = 5f;
     public float maxThirst = 5f;
     public float maxAge = 10f;
+    public float ageRequiredToMate = 2f;
+    [Range(0, 1)]
+    public float requiredDesireForMating = 0.7f;
+    public int pregnantForTicks = 10;
+    public int minOffspring = 1;
+    public int maxOffspring = 4;
+
     [Space]
     public float maxMovespeed = 1f;
     public float viewDistance = 5f;
-    public float eatRange = 1f;
+    public float interactRange = 1f;
     public float timeBetweenExploring = 2f;
     [Range(0, 1)]
     public float comfortableHungerLevel = 0.5f;
@@ -28,12 +37,19 @@ public abstract class Animal : Lifeform
     public float hunger;
     public float thirst;
     public float age;
+    public float desireToMate;
     public bool alive;
     public bool exploring;
+    public bool pregnant;
+    public int currentPregnantTicks;
+    public bool scaredOfPlayer = false;
 
     [Header("Other")]
     public TimeManager timeManager;
     public NavMeshAgent agent;
+    public Transform player;
+
+    private WaterFinder waterFinder;
 
     public void Start()
     {
@@ -43,16 +59,28 @@ public abstract class Animal : Lifeform
         // Make it so gameUpdate is called every in game tick
         TimeManager.onTimeAdvance += gameUpdate;
 
-        male = Random.Range(0, 1) < 0.5f;
+        male = Random.Range(0, 2) == 1;
         hunger = maxHunger;
         thirst = maxThirst;
         age = 0;
         alive = true;
+        exploring = false;
+        pregnant = false;
+        desireToMate = 0;
+        currentPregnantTicks = 0;
         agent.speed = maxMovespeed;
     }
 
     public void Update()
     {
+        if (waterFinder == null)
+        {
+            if (!GameObject.FindGameObjectWithTag("WaterFinder").TryGetComponent<WaterFinder>(out waterFinder))
+            {
+                Debug.LogError("WaterFinder can not be found ! ");
+                return;
+            }
+        }
         if (!alive)
             agent.speed = 0;
 
@@ -61,8 +89,11 @@ public abstract class Animal : Lifeform
             // If game is fast forwarded, scale movementspeed
             agent.speed = maxMovespeed * timeManager.GetMultiplier();
 
-            AreaScanResult asr = scanArea();
-            Act(asr);
+            if(alive)
+            {
+                AreaScanResult asr = scanArea();
+                Act(asr);
+            }
         }
         else
         {
@@ -72,27 +103,42 @@ public abstract class Animal : Lifeform
 
     public virtual AreaScanResult scanArea()
     {
+        if (scaredOfPlayer)
+            return new AreaScanResult();
+
         float distToFood = viewDistance + 1;
-        float distToWater = viewDistance + 1;
+        float distToWater = distToFood;
+        float distToMate = distToFood;
+        float distToPredator = distToFood;
+        float dist;
 
         // Class that holds results from the scan
         AreaScanResult asr = new AreaScanResult();
+
+        if (waterFinder.pointsGenerated)
+        {
+            var waterNear = waterFinder.waterNear(transform.position, distToWater);
+            var orderingPoint = waterNear.OrderBy(point => Vector3.Distance(transform.position, point));
+            if (orderingPoint.Count() == 0)
+            {
+                asr.waterClose = false;
+            }
+            else
+            {
+                asr.closestWater = orderingPoint.First(); 
+                asr.waterClose = true;
+            }
+        }
+        else
+        {
+            asr.waterClose = false;
+
+        }
 
         // Check for colliders within viewDistance of animal
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, viewDistance);
         foreach (var hitCollider in hitColliders)
         {
-            // Check for water
-            if (hitCollider.tag == "WaterSource")
-            {
-                float dist = Vector3.Distance(transform.position, hitCollider.transform.position);
-                // Animal will go to closest water source
-                if (dist < distToWater)
-                {
-                    asr.closestWater = hitCollider.gameObject;
-                    distToWater = dist;
-                }
-            }
             // Check for food
             if (hitCollider.tag == "Animal" || hitCollider.tag == "Plant")
             {
@@ -102,7 +148,7 @@ public abstract class Animal : Lifeform
                 // Animals don't eat others of the same species, and only eats things in their diet
                 if(species != lf.species && diet.Contains(lf.species))
                 {
-                    float dist = Vector3.Distance(transform.position, hitCollider.transform.position);
+                    dist = Vector3.Distance(transform.position, hitCollider.transform.position);
                     // Animal will go to closest food source
                     if (dist < distToFood)
                     {
@@ -112,22 +158,159 @@ public abstract class Animal : Lifeform
                 }
 
             }
+            // Check for mate and predator
+            if (hitCollider.tag == "Animal")
+            {
+                Animal animal;
+                hitCollider.TryGetComponent<Animal>(out animal);
 
-            // Check for possible mates
-            // TODO
-
-            // Check for possible predators
-            // TODO
+                // Can only mate with other of its species and opposite sex
+                // potential mate must desire to mate and be of age
+                if (animal.species == species && animal.male != male && animal.desireToMate >= animal.requiredDesireForMating && animal.age >= animal.ageRequiredToMate)
+                {
+                    dist = Vector3.Distance(transform.position, hitCollider.transform.position);
+                    if (dist < distToMate)
+                    {
+                        asr.closestMate = hitCollider.gameObject;
+                        distToMate = dist;
+                    }
+                }
+                // Check for possible predators
+                if (predators.Contains(animal.species))
+                {
+                    dist = Vector3.Distance(transform.position, hitCollider.transform.position);
+                    if (dist < distToPredator)
+                    {
+                        asr.closestPredator = hitCollider.gameObject;
+                        distToPredator = dist;
+                    }
+                }
+            }
         }
         return asr;
     }
 
-    public abstract void Act(AreaScanResult asr);
+    public void OnDestroy()
+    {
+        alive = false;
+        TimeManager.onTimeAdvance -= gameUpdate;
+    }
 
+    public virtual void Act(AreaScanResult asr)
+    {
+        if(scaredOfPlayer)
+        {
+            Vector3 vToPred = Vector3.Normalize(player.position - transform.position);
+            agent.SetDestination(transform.position - vToPred * viewDistance);
+        }
+        else
+        {
+            // If no predator near
+            if (asr.closestPredator == null)
+            {
+                // Look for Mate
+                if (asr.closestMate != null)
+                {
+
+                    // Must have desire to mate, and be of age
+                    if (desireToMate >= requiredDesireForMating && age >= ageRequiredToMate)
+                    {
+
+                        // Close enough to mate
+                        if (Vector3.Distance(asr.closestMate.transform.position, transform.position) <= interactRange)
+                        {
+
+                            print("MATING!");
+                            desireToMate = 0;
+                            if (!male)
+                            {
+                                pregnant = true;
+                            }
+                        }
+                        // go to mate
+                        else
+                        {
+                            agent.SetDestination(Vector3.MoveTowards(transform.position, asr.closestMate.transform.position, viewDistance));
+                            //agent.SetDestination(asr.closestMate.transform.position);
+                        }
+                    }
+                }
+
+                // Animal wants to eat
+                else if (hunger <= comfortableHungerLevel * maxHunger && asr.closestFood != null)
+                {
+                    // If close enough, eat!
+                    if (Vector3.Distance(asr.closestFood.transform.position, transform.position) <= interactRange)
+                    {
+                        Destroy(asr.closestFood);
+                        hunger = maxHunger;
+                        agent.SetDestination(transform.position);
+                    }
+                    // Go to foodsource
+                    else
+                    {
+                        agent.SetDestination(asr.closestFood.transform.position);
+                    }
+
+                }
+                // Animal wants to drink
+                else if (thirst <= comfortableThirstLevel * maxThirst && asr.waterClose)
+                {
+                    // If close enough, drink!
+                    if (Vector3.Distance(asr.closestWater, transform.position) <= interactRange)
+                    {
+                        thirst = maxThirst;
+                        agent.SetDestination(transform.position);
+                    }
+                    // Go to watersource
+                    else
+                    {
+                        agent.SetDestination(asr.closestWater);
+                    }
+                }
+                // If not found anything interesting, go explore
+                else
+                {
+                    if (!exploring)
+                    {
+                        StartCoroutine("Explore");
+                    }
+
+                }
+            }
+            // If a predator is near, move away from it
+            else
+            {
+                Vector3 vToPred = Vector3.Normalize(asr.closestPredator.transform.position - transform.position);
+                agent.SetDestination(transform.position - vToPred * viewDistance);
+            }
+        }
+    }
+
+    // Is called every ingame tick
     public void gameUpdate()
     {
         if(alive)
         {
+            if(pregnant)
+            {
+                if(currentPregnantTicks >= pregnantForTicks)
+                {
+                    int numKids = Random.Range(minOffspring, maxOffspring);
+                    for(int i = 0; i < numKids; i++)
+                    {
+                        Instantiate(prefab, transform.position, Quaternion.identity);
+                    }
+                    pregnant = false;
+                    currentPregnantTicks = 0;
+                }
+                currentPregnantTicks++;
+            }
+            else
+            {
+                desireToMate += 0.05f;
+            }
+
             age += 0.05f;
 
             if(age >= maxAge)
@@ -142,6 +325,17 @@ public abstract class Animal : Lifeform
 
             if (thirst <= 0)
                 alive = false;
+        }
+        else
+        {
+            NavMeshAgent agent;
+            if(gameObject.TryGetComponent<NavMeshAgent>(out agent))
+            {
+                agent.enabled = false;
+            }
+            TimeManager.onTimeAdvance -= gameUpdate;
+            // Have had trouble with using destroy, using this for now to remove corpses
+            Destroy(gameObject);
         }
     }
 

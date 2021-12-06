@@ -41,7 +41,6 @@ public class SpawnAnimalsPlants : MonoBehaviour
         if(Physics.Raycast(randomPos, Vector3.down, out hit, 1000, terrainLayer))
         {
             Instantiate(toSpawn, hit.point, Quaternion.identity);
-            print(hit.point);
         }
     }
 

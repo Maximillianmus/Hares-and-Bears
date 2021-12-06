@@ -46,6 +46,7 @@ public class TimeManager : MonoBehaviour
 
                 // update total inGameTime
                 inGameTimesteps += 1;
+                
 
                 // Calls all functions that are "bound to onTimeAdvance
                 onTimeAdvance?.Invoke();
