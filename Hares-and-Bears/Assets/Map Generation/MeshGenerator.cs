@@ -94,9 +94,6 @@ public class MeshGenerator : MonoBehaviour
         navMesh = gameObject.GetComponent<NavMeshSurface>();
         positionOffsetX = -TerrainSizeX / 2;
         positionOffsetZ = -TerrainSizeZ / 2;
-        material = GetComponent<MeshRenderer>().material;
-        material.SetFloat("_Grass_start", grassStart * maxHeight);
-        material.SetFloat("_Grass_end", grassMax * maxHeight);
 
 
         GameObject waterplane = Instantiate(waterPrefab,  new Vector3(transform.position.x, transform.position.y + waterLevel * maxHeight, transform.position.z), transform.rotation);
@@ -135,6 +132,10 @@ public class MeshGenerator : MonoBehaviour
         UpdateMesh();
         else if (!heightGenerationDone)
         {
+            material = GetComponent<MeshRenderer>().material;
+            material.SetFloat("_Grass_start", transform.position.y + grassStart * maxHeight);
+            material.SetFloat("_Grass_end", transform.position.y + grassMax * maxHeight);
+
             CreateHills();
             UpdateMesh();
         }
