@@ -335,7 +335,7 @@ public abstract class Animal : Lifeform
             }
             TimeManager.onTimeAdvance -= gameUpdate;
             // Have had trouble with using destroy, using this for now to remove corpses
-            transform.position = transform.position + new Vector3(0, -4, 0);
+            Destroy(gameObject);
         }
     }
 

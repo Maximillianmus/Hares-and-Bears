@@ -20,7 +20,6 @@ public class MeshGenerator : MonoBehaviour
         [Tooltip("This is the strength")]
         public float amplitude;
         public float[,] noiseMap;
-
         public void CreateNoise(int width, int height)
         {
             noiseMap = new float[width+1, height+1];
@@ -64,6 +63,9 @@ public class MeshGenerator : MonoBehaviour
     [Tooltip("The level wehre grass interpolation has reached it's max. 0 is the lowest point and 1 is the highest")]
     [Range(0.0f, 1f)]
     public float grassMax = 0.7f;
+    [Tooltip("Enables solid sides of the terrain")]
+    [SerializeField]
+    bool isSolid = false;
 
     public Vector3[] Vertices => vertices;
 
@@ -97,7 +99,8 @@ public class MeshGenerator : MonoBehaviour
         material.SetFloat("_Grass_end", grassMax * maxHeight);
 
 
-        Instantiate(waterPrefab,  new Vector3(transform.position.x, transform.position.y + waterLevel * maxHeight, transform.position.z), transform.rotation) ;
+        GameObject waterplane = Instantiate(waterPrefab,  new Vector3(transform.position.x, transform.position.y + waterLevel * maxHeight, transform.position.z), transform.rotation);
+        waterplane.transform.parent = transform;
 
         StartCoroutine(CreateShape());
     
@@ -107,8 +110,6 @@ public class MeshGenerator : MonoBehaviour
             noise.CreateNoise(TerrainSizeX, TerrainSizeZ);
             highestPoint += noise.amplitude;
         }
-
-        
 
         //find the highest point
         for (int y = 0; y <= TerrainSizeZ; y++)
@@ -149,44 +150,148 @@ public class MeshGenerator : MonoBehaviour
     }
     IEnumerator CreateShape()
     {
-        vertices = new Vector3[(TerrainSizeX + 1) * (TerrainSizeZ + 1)];
-
-        for (int i = 0, z = 0; z <= TerrainSizeZ; z++)
+        int standardSizeVerts = (TerrainSizeX + 1) * (TerrainSizeZ + 1);
+        if (isSolid)
         {
-            for (int x = 0; x <= TerrainSizeX; x++)
+            vertices = new Vector3[standardSizeVerts * 2];
+
+            for (int i = 0, z = 0; z <= TerrainSizeZ; z++)
             {
-                vertices[i] = new Vector3((positionOffsetX + x) * QuadSize, 0, (positionOffsetZ + z)* QuadSize);
-                i++;
+                for (int x = 0; x <= TerrainSizeX; x++)
+                {
+                    vertices[i] = new Vector3((positionOffsetX + x) * QuadSize, 0, (positionOffsetZ + z) * QuadSize);
+                    vertices[i+ standardSizeVerts] = new Vector3((positionOffsetX + x) * QuadSize, 0, (positionOffsetZ + z) * QuadSize);
+                    i++;
+                }
             }
-        }
 
-        int vert = 0;
-        int tris = 0;
-        triangles = new int[TerrainSizeX * TerrainSizeZ * 6];
+            int vert = 0;
+            int tris = 0;
+            int standardSizeTris = TerrainSizeX * TerrainSizeZ * 6;
+            //TerrainSizeZ*2 +TerrainSizeX*2 is the sides
+            triangles = new int[standardSizeTris*2+((TerrainSizeZ * 2 + TerrainSizeX * 2)*6)];
+            print(standardSizeTris * 2 + ((TerrainSizeZ * 2 + TerrainSizeX * 2) * 6));
 
-
-        for(int z = 0; z < TerrainSizeZ; z++)
-        {
-            for (int x = 0; x < TerrainSizeX; x++)
+            for (int z = 0; z < TerrainSizeZ; z++)
             {
-                triangles[tris + 0] = vert + 0;
-                triangles[tris + 1] = vert + TerrainSizeX + 1;
-                triangles[tris + 2] = vert + 1;
-                triangles[tris + 3] = vert + 1;
-                triangles[tris + 4] = vert + TerrainSizeX + 1;
-                triangles[tris + 5] = vert + TerrainSizeX + 2;
+                for (int x = 0; x < TerrainSizeX; x++)
+                {
+                    //code for a quad containing two triangles
+                    triangles[tris + 0] = vert + 0;
+                    triangles[tris + 1] = vert + TerrainSizeX + 1;
+                    triangles[tris + 2] = vert + 1;
+                    triangles[tris + 3] = vert + 1;
+                    triangles[tris + 4] = vert + TerrainSizeX + 1;
+                    triangles[tris + 5] = vert + TerrainSizeX + 2;
 
+                    //creating the bottom layer
+                    triangles[tris + standardSizeTris + 0] = vert + standardSizeVerts + 1;
+                    triangles[tris + standardSizeTris + 1] = vert + standardSizeVerts + TerrainSizeX + 1;
+                    triangles[tris + standardSizeTris + 2] = vert + standardSizeVerts + 0;
+                    triangles[tris + standardSizeTris + 3] = vert + standardSizeVerts + TerrainSizeX + 2;
+                    triangles[tris + standardSizeTris + 4] = vert + standardSizeVerts + TerrainSizeX + 1;
+                    triangles[tris + standardSizeTris + 5] = vert + standardSizeVerts + 1;
+
+                    vert++;
+                    tris += 6;
+                }
+                //skip one connection when switching row
+                yield return new WaitForSeconds(generationDelay);
                 vert++;
-                tris += 6;
             }
-            //skip one connection when switching row
-            yield return new WaitForSeconds(generationDelay);
-            vert++;
+
+            CreateSides(standardSizeTris,standardSizeVerts);
         }
+        else
+        {
+            vertices = new Vector3[(TerrainSizeX + 1) * (TerrainSizeZ + 1)];
+
+            for (int i = 0, z = 0; z <= TerrainSizeZ; z++)
+            {
+                for (int x = 0; x <= TerrainSizeX; x++)
+                {
+                    vertices[i] = new Vector3((positionOffsetX + x) * QuadSize, 0, (positionOffsetZ + z) * QuadSize);
+                    i++;
+                }
+            }
+
+            int vert = 0;
+            int tris = 0;
+            triangles = new int[TerrainSizeX * TerrainSizeZ * 6];
+
+
+            for (int z = 0; z < TerrainSizeZ; z++)
+            {
+                for (int x = 0; x < TerrainSizeX; x++)
+                {
+                    //code for a quad containing two triangles
+                    triangles[tris + 0] = vert + 0;
+                    triangles[tris + 1] = vert + TerrainSizeX + 1;
+                    triangles[tris + 2] = vert + 1;
+                    triangles[tris + 3] = vert + 1;
+                    triangles[tris + 4] = vert + TerrainSizeX + 1;
+                    triangles[tris + 5] = vert + TerrainSizeX + 2;
+
+                    vert++;
+                    tris += 6;
+                }
+                //skip one connection when switching row
+                yield return new WaitForSeconds(generationDelay);
+                vert++;
+            }
+        }
+            
 
         groundGenerationDone = true;
     }
 
+
+    void CreateSides(int standardSizeTris,int standardSizeVerts)
+    {
+        int vert = 0;
+        int offset = vertices.Length-TerrainSizeX-1;
+        //z == 0 and z == max 
+        for(int z = 0; z < TerrainSizeX*6; z += 6)
+        {
+            triangles[z + standardSizeTris * 2 + 0] = vert + 0;
+            triangles[z + standardSizeTris * 2 + 1] = vert + 1;
+            triangles[z + standardSizeTris * 2 + 2] = vert + 0 + standardSizeVerts;
+            triangles[z + standardSizeTris * 2 + 3] = vert + 0 + standardSizeVerts;
+            triangles[z + standardSizeTris * 2 + 4] = vert + 1;
+            triangles[z + standardSizeTris * 2 + 5] = vert + 1 + standardSizeVerts;
+
+            triangles[z + standardSizeTris * 2 + TerrainSizeX * 6 + 0] = vert + offset + 0;
+            triangles[z + standardSizeTris * 2 + TerrainSizeX * 6 + 1] = vert + offset + 1;
+            triangles[z + standardSizeTris * 2 + TerrainSizeX * 6 + 2] = vert + offset + 0 - standardSizeVerts;
+            triangles[z + standardSizeTris * 2 + TerrainSizeX * 6 + 3] = vert + offset + 0 - standardSizeVerts;
+            triangles[z + standardSizeTris * 2 + TerrainSizeX * 6 + 4] = vert + offset + 1;
+            triangles[z + standardSizeTris * 2 + TerrainSizeX * 6 + 5] = vert + offset + 1 - standardSizeVerts;
+            vert++;
+        }
+
+        vert = 0;
+        offset = TerrainSizeX;
+        for (int x = 0; x < TerrainSizeZ * 6; x += 6)
+        {
+            triangles[x + standardSizeTris * 2 + TerrainSizeX * 12 + 0] = vert;
+            triangles[x + standardSizeTris * 2 + TerrainSizeX * 12 + 1] = vert + standardSizeVerts;
+            triangles[x + standardSizeTris * 2 + TerrainSizeX * 12 + 2] = vert + TerrainSizeZ+1;
+            triangles[x + standardSizeTris * 2 + TerrainSizeX * 12 + 3] = vert + TerrainSizeZ+1;
+            triangles[x + standardSizeTris * 2 + TerrainSizeX * 12 + 4] = vert + standardSizeVerts;
+            triangles[x + standardSizeTris * 2 + TerrainSizeX * 12 + 5] = vert + TerrainSizeZ+1 + standardSizeVerts;
+                       
+            triangles[x + standardSizeTris * 2 + TerrainSizeX * 12 + TerrainSizeZ * 6 + 0] = vert + offset + TerrainSizeZ + 1;
+            triangles[x + standardSizeTris * 2 + TerrainSizeX * 12 + TerrainSizeZ * 6 + 1] = vert + offset + standardSizeVerts;
+            triangles[x + standardSizeTris * 2 + TerrainSizeX * 12 + TerrainSizeZ * 6 + 2] = vert + offset;
+            triangles[x + standardSizeTris * 2 + TerrainSizeX * 12 + TerrainSizeZ * 6 + 3] = vert + offset + TerrainSizeZ+1 + standardSizeVerts;
+            triangles[x + standardSizeTris * 2 + TerrainSizeX * 12 + TerrainSizeZ * 6 + 4] = vert + offset + standardSizeVerts;
+            triangles[x + standardSizeTris * 2 + TerrainSizeX * 12 + TerrainSizeZ * 6 + 5] = vert + offset + TerrainSizeZ+1;
+            
+            vert += TerrainSizeZ+1;
+
+        }
+       
+    }
     void CreateHills()
     {
         float currentHeightStrenght = Mathf.Lerp(0, maxHeight, InterpolationValue);

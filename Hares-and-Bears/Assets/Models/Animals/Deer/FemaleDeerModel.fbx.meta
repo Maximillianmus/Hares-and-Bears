@@ -1,34 +1,37 @@
 fileFormatVersion: 2
-guid: 1ec2f2587f519954aa1f654e718754df
+guid: 0f0a16a037e3f1246bc3e931357d4fae
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
-      74: 5641838509463695334
-    second: BearAmature|BearEatAnimation
+      74: -7864016224671718477
+    second: DeerEatAnimation
   - first:
-      74: 6726216897889723762
-    second: BearAmature|BearIdleAnimation
+      74: 2722406950464381600
+    second: DeerIdleAnimation
   - first:
-      74: 4784281143617138633
-    second: BearAmature|BearRunAnimation
+      74: -2107180188839140075
+    second: DeerRunningAnimation
   - first:
-      74: 7054246686227939548
-    second: BearAmature|BearTPoseAnimation
+      74: 709573065511711736
+    second: DeerTPoseAnimation
   - first:
-      74: -8723174803589604949
-    second: BearAmature|BearWalkAnimation
+      74: -8642540553527111884
+    second: DeerWalkAnimation
+  - first:
+      74: -60876033568509041
+    second: DeerArmature|DeerTPoseAnimation
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: BearEyeMat
-    second: {fileID: 2100000, guid: c4df36b7b4c3cfc41b1b0c40ae33d8ca, type: 2}
+      name: DeerEyeMat
+    second: {fileID: 2100000, guid: b1b79d13eac447641a6483ca338c0c2b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: BearFurMat
-    second: {fileID: 2100000, guid: 513974404da921842a337d498aa34dfe, type: 2}
+      name: DeerFurMat
+    second: {fileID: 2100000, guid: 8c4712d09db969d449f4d5cc07351b85, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -58,11 +61,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: BearAmature|BearEatAnimation
-      takeName: BearAmature|BearEatAnimation
+      name: DeerEatAnimation
+      takeName: DeerEatAnimation
       internalID: 0
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 79
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -87,11 +90,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: BearAmature|BearIdleAnimation
-      takeName: BearAmature|BearIdleAnimation
+      name: DeerIdleAnimation
+      takeName: DeerIdleAnimation.001
       internalID: 0
       firstFrame: 0
-      lastFrame: 35
+      lastFrame: 49
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -116,66 +119,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: BearAmature|BearRunAnimation
-      takeName: BearAmature|BearRunAnimation
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 29
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: BearAmature|BearTPoseAnimation
-      takeName: BearAmature|BearTPoseAnimation
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: BearAmature|BearWalkAnimation
-      takeName: BearAmature|BearWalkAnimation
+      name: DeerRunningAnimation
+      takeName: DeerRunningAnimation
       internalID: 0
       firstFrame: 0
       lastFrame: 39
@@ -186,6 +131,93 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DeerTPoseAnimation
+      takeName: DeerTPoseAnimation.001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DeerWalkAnimation
+      takeName: DeerWalkAnimation
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 34
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: DeerArmature|DeerTPoseAnimation
+      takeName: DeerArmature|DeerTPoseAnimation
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
