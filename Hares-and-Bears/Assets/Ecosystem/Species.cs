@@ -1,1 +1,1 @@
-public enum Species {Grass, Hare, Fox, Deer};
+public enum Species {Grass, Hare, Fox, Deer, Bear};

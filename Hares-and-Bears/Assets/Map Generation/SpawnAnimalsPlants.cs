@@ -11,6 +11,7 @@ public class SpawnAnimalsPlants : MonoBehaviour
     public GameObject rabbitPrefab;
     public GameObject foxPrefab;
     public GameObject deerPrefab;
+    public GameObject bearPrefab;
     
     public float minBoundryX;
     public float minBoundryZ;
@@ -35,7 +36,8 @@ public class SpawnAnimalsPlants : MonoBehaviour
             spawnOnAnimals(deerPrefab);
         }
         spawnOnAnimals(foxPrefab);
-       
+        spawnOnAnimals(bearPrefab);
+
     }
 
     public void spawnOnAnimals(GameObject toSpawn)
