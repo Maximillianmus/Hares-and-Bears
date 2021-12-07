@@ -28,11 +28,11 @@ public class SpawnAnimalsPlants : MonoBehaviour
 
     public void startSpawn()
     {
-        spawnOnAnimals(deerPrefab);
 
         for (int i = 0; i < 4; ++i)
         {
             spawnOnAnimals(rabbitPrefab);
+            spawnOnAnimals(deerPrefab);
         }
         spawnOnAnimals(foxPrefab);
        

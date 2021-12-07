@@ -1334,7 +1334,7 @@ GameObject:
   - component: {fileID: 6580766154576857488}
   - component: {fileID: 3256217404695135059}
   m_Layer: 0
-  m_Name: DeerFemale
+  m_Name: Deer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
