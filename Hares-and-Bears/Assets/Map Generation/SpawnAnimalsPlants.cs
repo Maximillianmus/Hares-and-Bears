@@ -10,6 +10,7 @@ public class SpawnAnimalsPlants : MonoBehaviour
     public LayerMask terrainLayer;
     public GameObject rabbitPrefab;
     public GameObject foxPrefab;
+    public GameObject deerPrefab;
     
     public float minBoundryX;
     public float minBoundryZ;
@@ -27,11 +28,14 @@ public class SpawnAnimalsPlants : MonoBehaviour
 
     public void startSpawn()
     {
+        spawnOnAnimals(deerPrefab);
+
         for (int i = 0; i < 4; ++i)
         {
             spawnOnAnimals(rabbitPrefab);
         }
         spawnOnAnimals(foxPrefab);
+       
     }
 
     public void spawnOnAnimals(GameObject toSpawn)
