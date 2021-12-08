@@ -67,6 +67,8 @@ public abstract class Animal : Lifeform
         desireToMate = 0;
         currentPregnantTicks = 0;
         agent.speed = maxMovespeed;
+
+        player = GameObject.Find("AR Session Origin/AR Camera").transform;
     }
 
     public void Update()

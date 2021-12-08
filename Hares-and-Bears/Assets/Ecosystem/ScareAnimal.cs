@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class ScareAnimal : MonoBehaviour
 {
+    public TimeManager timeManager;
     public float range = 1f;
-    public float scaredDuration = 2f;
+    public int scaredForTicks = 10;
+    public int currentTicks = 0;
+    public bool activated = false;
     public List<Animal> animals;
 
-    public bool a = false;
-
-    // Update is called once per frame
-    void Update()
+    public void Start()
     {
-        if(a)
-        {
-            a = false;
-            scareAnimals();
-        }
+        if (timeManager == null)
+            GameObject.Find("TimeManager").TryGetComponent<TimeManager>(out timeManager);
+
+        TimeManager.onTimeAdvance += gameUpdate;
     }
 
     public void scareAnimals()
     {
+        activated = true;
         animals = new List<Animal>();
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, range);
 
@@ -34,19 +34,28 @@ public class ScareAnimal : MonoBehaviour
 
                 animal.scaredOfPlayer = true;
                 animals.Add(animal);
-                StartCoroutine("turnOffScared");
             }
         }
     }
 
-    public IEnumerator turnOffScared()
+    public void gameUpdate()
     {
-        yield return new WaitForSeconds(scaredDuration);
-        foreach(var animal in animals)
+        if(activated)
         {
-            if(animal != null)
-                animal.scaredOfPlayer = false;
+            if (currentTicks > scaredForTicks)
+            {
+                foreach (var animal in animals)
+                {
+                    if (animal != null)
+                        animal.scaredOfPlayer = false;
+                }
+                currentTicks = 0;
+                activated = false;
+            }
+            else
+            {
+                currentTicks++;
+            }
         }
     }
-
 }
