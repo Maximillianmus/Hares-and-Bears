@@ -37,11 +37,11 @@ public class SpawnAnimalsPlants : MonoBehaviour
 
         for (int i = 0; i < numberOfEachAnimalsHerbivor; ++i)
         {
-            spawnOnAnimals(rabbitPrefab);
-            spawnOnAnimals(deerPrefab);
+            Spawn(rabbitPrefab);
+            Spawn(deerPrefab);
         }
-        spawnOnAnimals(foxPrefab);
-        spawnOnAnimals(bearPrefab);
+        Spawn(foxPrefab);
+        Spawn(bearPrefab);
 
         for (int i = 0; i < numberOfPlantsBegin; ++i)
         {
