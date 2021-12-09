@@ -79,7 +79,16 @@ public abstract class Animal : Lifeform
         if(!timeManager.paused)
         {
             // If game is fast forwarded, scale movementspeed
-            agent.speed = maxMovespeed * timeManager.GetMultiplier();
+
+            if (!scaredOfPlayer)
+            {
+                agent.speed = maxMovespeed * timeManager.GetMultiplier();
+            }
+            else
+            {
+                // While agent is scared, move a bit faster
+                agent.speed = maxMovespeed * timeManager.GetMultiplier() * 2.0f;
+            }
 
             if(alive)
             {
