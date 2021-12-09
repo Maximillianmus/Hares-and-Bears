@@ -1332,9 +1332,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6580766154576857488}
-  - component: {fileID: -2642412416588423702}
+  - component: {fileID: 3256217404695135059}
   m_Layer: 0
-  m_Name: DeerFemale
+  m_Name: Deer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1349,15 +1349,15 @@ Transform:
   m_GameObject: {fileID: 5771436998242325290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.013, y: 0.013, z: 0.013}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5868050605103957837}
   - {fileID: 4362586358589655198}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &-2642412416588423702
+--- !u!95 &3256217404695135059
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0

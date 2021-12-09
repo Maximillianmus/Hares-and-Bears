@@ -12,12 +12,16 @@ public class SpawnAnimalsPlants : MonoBehaviour
     public GameObject foxPrefab;
     public List<GameObject> plantPrefabs = new List<GameObject>();
 
+    public GameObject deerPrefab;
+    public GameObject bearPrefab;
+    
     public float minBoundryX;
     public float minBoundryZ;
     public float maxBoundryX;
     public float maxBoundryZ;
 
     public int numberOfPlantsBegin = 3;
+    public int numberOfEachAnimalsHerbivor = 4;
 
     // Start is called before the first frame update
     void Start()
@@ -30,11 +34,15 @@ public class SpawnAnimalsPlants : MonoBehaviour
 
     public void startSpawn()
     {
-        for (int i = 0; i < 4; ++i)
+
+        for (int i = 0; i < numberOfEachAnimalsHerbivor; ++i)
         {
-            Spawn(rabbitPrefab);
+            spawnOnAnimals(rabbitPrefab);
+            spawnOnAnimals(deerPrefab);
         }
-        Spawn(foxPrefab);
+        spawnOnAnimals(foxPrefab);
+        spawnOnAnimals(bearPrefab);
+
         for (int i = 0; i < numberOfPlantsBegin; ++i)
         {
             var plant = plantPrefabs[Random.Range(0, plantPrefabs.Count - 1)];
