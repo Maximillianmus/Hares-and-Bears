@@ -205,10 +205,13 @@ MonoBehaviour:
     type: 3}
   foxPrefab: {fileID: 2368727691363587633, guid: 3b5fb3d075095ac4d8a1fbbcefa1e7a7,
     type: 3}
+  plantPrefabs:
+  - {fileID: 4160767914834271692, guid: f0bdc7df799179b4aa682a6b806686d1, type: 3}
   minBoundryX: 0
   minBoundryZ: 0
   maxBoundryX: 0
   maxBoundryZ: 0
+  numberOfPlantsBegin: 3
 --- !u!1 &4586633486437128353
 GameObject:
   m_ObjectHideFlags: 0
