@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4160767914834271692
+--- !u!1 &5464141513902321304
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,58 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4160767914834271680}
-  - component: {fileID: 4160767914834271683}
-  - component: {fileID: 4160767914834271687}
+  - component: {fileID: 8184053076500129557}
+  - component: {fileID: 1170599092947192093}
+  - component: {fileID: 2898776181037538441}
   m_Layer: 0
-  m_Name: Grass
+  m_Name: Lingonberry
   m_TagString: Plant
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4160767914834271680
+--- !u!4 &8184053076500129557
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4160767914834271692}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.013, z: -0.0007549}
+  m_GameObject: {fileID: 5464141513902321304}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5201617101483279096}
+  - {fileID: 2092240087947140573}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4160767914834271683
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4160767914834271692}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.014792256, y: 0.0070557427, z: 0.014936026}
-  m_Center: {x: -0.000048125163, y: 0.003343123, z: 0.0001029314}
---- !u!114 &4160767914834271687
+--- !u!114 &1170599092947192093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4160767914834271692}
+  m_GameObject: {fileID: 5464141513902321304}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dfb27575a74ad04fa3168a94fdc72ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 893654026bc91ae4f93cd34444db8714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  species: 0
+  species: 2
   nutritionValue: 1
   fruitProducing: 0
   tickPropagation: 0.5
@@ -67,85 +54,98 @@ MonoBehaviour:
   plantEffectInArea: 0.5
   waterEffectInArea: 0.5
   animalEffectInArea: 0.1
-  RadiusAreaOfEffect: 0.3
+  RadiusAreaOfEffect: 0.5
   maxNumberOfPropagation: 2
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
-  prefabToPropagate: {fileID: 4160767914834271692}
-  maxPlants: 30
---- !u!1001 &4698144224365256343
+  prefabToPropagate: {fileID: 5464141513902321304}
+  maxPlants: 10
+--- !u!65 &2898776181037538441
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464141513902321304}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02720841, y: 0.019173026, z: 0.027988724}
+  m_Center: {x: -0.00095420703, y: 0.009007845, z: 0.001498539}
+--- !u!1001 &371789475071188953
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4160767914834271680}
+    m_TransformParent: {fileID: 8184053076500129557}
     m_Modifications:
-    - target: {fileID: 168641834538125013, guid: 7366ffbafe59cca4284824a866b00880,
+    - target: {fileID: 1398980541914765502, guid: 203e338bbf0d39c4badd7c11c678dad2,
         type: 3}
       propertyPath: m_Name
-      value: Grass
+      value: LingonBerry
       objectReference: {fileID: 0}
-    - target: {fileID: 656666236378815599, guid: 7366ffbafe59cca4284824a866b00880,
+    - target: {fileID: 1738949969029825028, guid: 203e338bbf0d39c4badd7c11c678dad2,
         type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 656666236378815599, guid: 7366ffbafe59cca4284824a866b00880,
+    - target: {fileID: 1738949969029825028, guid: 203e338bbf0d39c4badd7c11c678dad2,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 656666236378815599, guid: 7366ffbafe59cca4284824a866b00880,
+    - target: {fileID: 1738949969029825028, guid: 203e338bbf0d39c4badd7c11c678dad2,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 656666236378815599, guid: 7366ffbafe59cca4284824a866b00880,
+    - target: {fileID: 1738949969029825028, guid: 203e338bbf0d39c4badd7c11c678dad2,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 656666236378815599, guid: 7366ffbafe59cca4284824a866b00880,
+    - target: {fileID: 1738949969029825028, guid: 203e338bbf0d39c4badd7c11c678dad2,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 656666236378815599, guid: 7366ffbafe59cca4284824a866b00880,
+    - target: {fileID: 1738949969029825028, guid: 203e338bbf0d39c4badd7c11c678dad2,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 656666236378815599, guid: 7366ffbafe59cca4284824a866b00880,
+    - target: {fileID: 1738949969029825028, guid: 203e338bbf0d39c4badd7c11c678dad2,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 656666236378815599, guid: 7366ffbafe59cca4284824a866b00880,
+    - target: {fileID: 1738949969029825028, guid: 203e338bbf0d39c4badd7c11c678dad2,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 656666236378815599, guid: 7366ffbafe59cca4284824a866b00880,
+    - target: {fileID: 1738949969029825028, guid: 203e338bbf0d39c4badd7c11c678dad2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 656666236378815599, guid: 7366ffbafe59cca4284824a866b00880,
+    - target: {fileID: 1738949969029825028, guid: 203e338bbf0d39c4badd7c11c678dad2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 656666236378815599, guid: 7366ffbafe59cca4284824a866b00880,
+    - target: {fileID: 1738949969029825028, guid: 203e338bbf0d39c4badd7c11c678dad2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7366ffbafe59cca4284824a866b00880, type: 3}
---- !u!4 &5201617101483279096 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 203e338bbf0d39c4badd7c11c678dad2, type: 3}
+--- !u!4 &2092240087947140573 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 656666236378815599, guid: 7366ffbafe59cca4284824a866b00880,
+  m_CorrespondingSourceObject: {fileID: 1738949969029825028, guid: 203e338bbf0d39c4badd7c11c678dad2,
     type: 3}
-  m_PrefabInstance: {fileID: 4698144224365256343}
+  m_PrefabInstance: {fileID: 371789475071188953}
   m_PrefabAsset: {fileID: 0}
