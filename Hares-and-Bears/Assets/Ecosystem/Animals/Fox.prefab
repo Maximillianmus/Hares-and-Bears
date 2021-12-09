@@ -96,8 +96,12 @@ MonoBehaviour:
   exploring: 0
   pregnant: 0
   currentPregnantTicks: 0
+  scaredOfPlayer: 0
   timeManager: {fileID: 0}
   agent: {fileID: 1223488629655169899}
+  player: {fileID: 0}
+  mateEffect: {fileID: 4588090793607289183, guid: c6f5051164fabd744864d1a1dd625c62,
+    type: 3}
 --- !u!65 &7821145117636878085
 BoxCollider:
   m_ObjectHideFlags: 0

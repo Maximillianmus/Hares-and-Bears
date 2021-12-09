@@ -47,7 +47,7 @@ public abstract class Animal : Lifeform
     public TimeManager timeManager;
     public NavMeshAgent agent;
     public Transform player;
-
+    public ParticleSystem mateEffect;
 
     public void Start()
     {
@@ -211,8 +211,8 @@ public abstract class Animal : Lifeform
                         // Close enough to mate
                         if (Vector3.Distance(asr.closestMate.transform.position, transform.position) <= interactRange)
                         {
-
-                            print("MATING!");
+                            ParticleSystem ps =  Instantiate(mateEffect, transform.position, Quaternion.identity);
+                            StartCoroutine(destroyParticleSystem(ps));
                             desireToMate = 0;
                             if (!male)
                             {
@@ -341,5 +341,9 @@ public abstract class Animal : Lifeform
         exploring = false;
     }
 
-
+    public IEnumerator destroyParticleSystem(ParticleSystem ps)
+    {
+        yield return new WaitForSeconds(0.6f);
+        Destroy(ps);
+    }
 }
