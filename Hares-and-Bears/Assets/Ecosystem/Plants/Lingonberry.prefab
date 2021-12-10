@@ -51,10 +51,9 @@ MonoBehaviour:
   fruitProducing: 0
   tickPropagation: 0.5
   toPropagageThreshold: 40
-  plantEffectInArea: 0.5
-  waterEffectInArea: 0.5
-  animalEffectInArea: 0.1
-  RadiusAreaOfEffect: 0.5
+  plantEffectInArea: 1
+  animalEffectInArea: 0.3
+  RadiusAreaOfEffect: 0.7
   maxNumberOfPropagation: 2
   terrainLayer:
     serializedVersion: 2

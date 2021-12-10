@@ -205,10 +205,20 @@ MonoBehaviour:
     type: 3}
   foxPrefab: {fileID: 2368727691363587633, guid: 3b5fb3d075095ac4d8a1fbbcefa1e7a7,
     type: 3}
+  plantPrefabs:
+  - {fileID: 4160767914834271692, guid: f0bdc7df799179b4aa682a6b806686d1, type: 3}
+  - {fileID: 2266778476913843337, guid: a8954cf330313fb458b2f25035f0ac9a, type: 3}
+  - {fileID: 5464141513902321304, guid: 0c3bced57c1593f4c806d7693ad0d61a, type: 3}
+  deerPrefab: {fileID: 3985607647021474161, guid: 0ba32ea68cfa7ee488ac22de9a68fe96,
+    type: 3}
+  bearPrefab: {fileID: 6328454639450985751, guid: 485a27d4f1f5c544d84be6dd317d8bf8,
+    type: 3}
   minBoundryX: 0
   minBoundryZ: 0
   maxBoundryX: 0
   maxBoundryZ: 0
+  numberOfPlantsBegin: 10
+  numberOfEachAnimalsHerbivor: 4
 --- !u!1 &4586633486437128353
 GameObject:
   m_ObjectHideFlags: 0
