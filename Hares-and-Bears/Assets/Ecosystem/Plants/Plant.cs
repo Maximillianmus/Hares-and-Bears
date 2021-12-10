@@ -8,7 +8,6 @@ struct AreaPlantScan
 {
     public int numberOfAnimalInRange;
     public int numberOfPlantInRange;
-    public int numberOfWatersource;
 }
 
 
@@ -21,9 +20,8 @@ public abstract class Plant : Lifeform
     [SerializeField] private float tickPropagation = 0.5f;
     [SerializeField] private float toPropagageThreshold = 18.0f;
      private bool canPropagate = false;
-    [SerializeField] private float plantEffectInArea = 0.5f;
-    [SerializeField] private float waterEffectInArea = 0.5f;
-    [SerializeField] private float animalEffectInArea = 0.1f;
+    [SerializeField] private float plantEffectInArea = 1.0f;
+    [SerializeField] private float animalEffectInArea = 0.3f;
     [SerializeField] private float RadiusAreaOfEffect = 0.5f;
     [SerializeField] private int maxNumberOfPropagation = 2;
     [SerializeField] private LayerMask terrainLayer;
@@ -50,8 +48,7 @@ public abstract class Plant : Lifeform
         if (canPropagate)
         {
             var coefPropagation = aps.numberOfAnimalInRange * animalEffectInArea +
-                                  (aps.numberOfPlantInRange - 1) * plantEffectInArea +
-                                  aps.numberOfWatersource * waterEffectInArea;
+                                  (aps.numberOfPlantInRange - 1) * plantEffectInArea;
             canPropagate = false;
             var plants = GameObject.FindGameObjectsWithTag("Plant");
             if (plants.Length >= maxPlants)
@@ -92,10 +89,7 @@ public abstract class Plant : Lifeform
             } else if (collider.CompareTag("Plant"))
             {
                 aps.numberOfPlantInRange++;
-            } else if (collider.CompareTag("WaterSource"))
-            {
-                aps.numberOfWatersource++;
-            }
+            } 
         }
 
         return aps;

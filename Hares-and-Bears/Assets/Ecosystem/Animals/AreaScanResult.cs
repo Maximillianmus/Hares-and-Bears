@@ -5,7 +5,8 @@ using UnityEngine;
 public class AreaScanResult
 {
     public GameObject closestFood;
-    public GameObject closestWater;
+    public Vector3 closestWater;
+    public bool waterClose;
     public GameObject closestMate;
     public GameObject closestPredator;
 

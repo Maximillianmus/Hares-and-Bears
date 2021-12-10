@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.AI;
 using UnityEngine;
 
@@ -48,6 +49,7 @@ public abstract class Animal : Lifeform
     public NavMeshAgent agent;
     public Transform player;
 
+    private WaterFinder waterFinder;
 
     public void Start()
     {
@@ -73,6 +75,14 @@ public abstract class Animal : Lifeform
 
     public void Update()
     {
+        if (waterFinder == null)
+        {
+            if (!GameObject.FindGameObjectWithTag("WaterFinder").TryGetComponent<WaterFinder>(out waterFinder))
+            {
+                Debug.LogError("WaterFinder can not be found ! ");
+                return;
+            }
+        }
         if (!alive)
             agent.speed = 0;
 
@@ -116,21 +126,30 @@ public abstract class Animal : Lifeform
         // Class that holds results from the scan
         AreaScanResult asr = new AreaScanResult();
 
+        if (waterFinder.pointsGenerated)
+        {
+            var waterNear = waterFinder.waterNear(transform.position, distToWater);
+            var orderingPoint = waterNear.OrderBy(point => Vector3.Distance(transform.position, point));
+            if (orderingPoint.Count() == 0)
+            {
+                asr.waterClose = false;
+            }
+            else
+            {
+                asr.closestWater = orderingPoint.First(); 
+                asr.waterClose = true;
+            }
+        }
+        else
+        {
+            asr.waterClose = false;
+
+        }
+
         // Check for colliders within viewDistance of animal
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, viewDistance);
         foreach (var hitCollider in hitColliders)
         {
-            // Check for water
-            if (hitCollider.tag == "WaterSource")
-            {
-                dist = Vector3.Distance(transform.position, hitCollider.transform.position);
-                // Animal will go to closest water source
-                if (dist < distToWater)
-                {
-                    asr.closestWater = hitCollider.gameObject;
-                    distToWater = dist;
-                }
-            }
             // Check for food
             if (hitCollider.tag == "Animal" || hitCollider.tag == "Plant")
             {
@@ -246,10 +265,10 @@ public abstract class Animal : Lifeform
 
                 }
                 // Animal wants to drink
-                else if (thirst <= comfortableThirstLevel * maxThirst && asr.closestWater != null)
+                else if (thirst <= comfortableThirstLevel * maxThirst && asr.waterClose)
                 {
                     // If close enough, drink!
-                    if (Vector3.Distance(asr.closestWater.transform.position, transform.position) <= interactRange)
+                    if (Vector3.Distance(asr.closestWater, transform.position) <= interactRange)
                     {
                         thirst = maxThirst;
                         agent.SetDestination(transform.position);
@@ -257,7 +276,7 @@ public abstract class Animal : Lifeform
                     // Go to watersource
                     else
                     {
-                        agent.SetDestination(asr.closestWater.transform.position);
+                        agent.SetDestination(asr.closestWater);
                     }
                 }
                 // If not found anything interesting, go explore
@@ -327,7 +346,7 @@ public abstract class Animal : Lifeform
             }
             TimeManager.onTimeAdvance -= gameUpdate;
             // Have had trouble with using destroy, using this for now to remove corpses
-            transform.position = transform.position + new Vector3(0, -4, 0);
+            Destroy(gameObject);
         }
     }
 

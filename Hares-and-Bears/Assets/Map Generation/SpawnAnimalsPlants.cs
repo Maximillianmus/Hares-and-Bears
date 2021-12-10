@@ -10,11 +10,18 @@ public class SpawnAnimalsPlants : MonoBehaviour
     public LayerMask terrainLayer;
     public GameObject rabbitPrefab;
     public GameObject foxPrefab;
+    public List<GameObject> plantPrefabs = new List<GameObject>();
+
+    public GameObject deerPrefab;
+    public GameObject bearPrefab;
     
     public float minBoundryX;
     public float minBoundryZ;
     public float maxBoundryX;
     public float maxBoundryZ;
+
+    public int numberOfPlantsBegin = 3;
+    public int numberOfEachAnimalsHerbivor = 4;
 
     // Start is called before the first frame update
     void Start()
@@ -27,21 +34,29 @@ public class SpawnAnimalsPlants : MonoBehaviour
 
     public void startSpawn()
     {
-        for (int i = 0; i < 4; ++i)
+
+        for (int i = 0; i < numberOfEachAnimalsHerbivor; ++i)
         {
-            spawnOnAnimals(rabbitPrefab);
+            Spawn(rabbitPrefab);
+            Spawn(deerPrefab);
         }
-        spawnOnAnimals(foxPrefab);
+        Spawn(foxPrefab);
+        Spawn(bearPrefab);
+
+        for (int i = 0; i < numberOfPlantsBegin; ++i)
+        {
+            var plant = plantPrefabs[Random.Range(0, plantPrefabs.Count - 1)];
+            Spawn(plant);
+        } 
     }
 
-    public void spawnOnAnimals(GameObject toSpawn)
+    public void Spawn(GameObject toSpawn)
     {
         Vector3 randomPos = new Vector3(Random.Range(minBoundryX, maxBoundryX), 20, Random.Range(minBoundryZ, maxBoundryZ));
         RaycastHit hit;
         if(Physics.Raycast(randomPos, Vector3.down, out hit, 1000, terrainLayer))
         {
             Instantiate(toSpawn, hit.point, Quaternion.identity);
-            print(hit.point);
         }
     }
 
