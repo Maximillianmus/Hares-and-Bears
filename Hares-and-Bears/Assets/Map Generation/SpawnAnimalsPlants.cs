@@ -20,7 +20,7 @@ public class SpawnAnimalsPlants : MonoBehaviour
     public float maxBoundryX;
     public float maxBoundryZ;
 
-    public int numberOfPlantsBegin = 3;
+    public int numberOfPlantsBegin = 6;
     public int numberOfEachAnimalsHerbivor = 4;
 
     // Start is called before the first frame update
