@@ -12,6 +12,7 @@ public class SpawnAnimalsPlants : MonoBehaviour
     public GameObject foxPrefab;
     public List<GameObject> plantPrefabs = new List<GameObject>();
 
+    public GameObject treePrefab;
     public GameObject deerPrefab;
     public GameObject bearPrefab;
     
@@ -22,6 +23,8 @@ public class SpawnAnimalsPlants : MonoBehaviour
 
     public int numberOfPlantsBegin = 3;
     public int numberOfEachAnimalsHerbivor = 4;
+    public int minNumberOfTrees = 2;
+    public int maxNumberOfTrees = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +50,13 @@ public class SpawnAnimalsPlants : MonoBehaviour
         {
             var plant = plantPrefabs[Random.Range(0, plantPrefabs.Count - 1)];
             Spawn(plant);
-        } 
+        }
+
+        int numTrees = Random.Range(minNumberOfTrees, maxNumberOfTrees);
+        for(int i = 0; i < numTrees; i++)
+        {
+            Spawn(treePrefab);
+        }
     }
 
     public void Spawn(GameObject toSpawn)
