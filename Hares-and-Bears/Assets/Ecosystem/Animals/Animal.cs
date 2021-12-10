@@ -63,8 +63,8 @@ public abstract class Animal : Lifeform
         TimeManager.onTimeAdvance += gameUpdate;
 
         male = Random.Range(0, 2) == 1;
-        hunger = maxHunger;
-        thirst = maxThirst;
+        hunger = maxHunger * 2/3;
+        thirst = maxThirst * 2/3;
         age = 0;
         alive = true;
         exploring = false;
@@ -73,7 +73,7 @@ public abstract class Animal : Lifeform
         currentPregnantTicks = 0;
         agent.speed = maxMovespeed;
 
-        player = GameObject.Find("AR Session Origin/AR Camera").transform;
+        //player = GameObject.Find("AR Session Origin/AR Camera").transform;
     }
 
     public void Update()
@@ -232,20 +232,21 @@ public abstract class Animal : Lifeform
                 if (asr.closestMate != null)
                 {
 
-                    // Must have desire to mate, and be of age
-                    if (desireToMate >= requiredDesireForMating && age >= ageRequiredToMate)
+                    // Must have desire to mate, and be of age. And must have high enough hunger and thirst
+                    if (desireToMate >= requiredDesireForMating && age >= ageRequiredToMate && hunger >= comfortableHungerLevel * maxHunger && thirst >= comfortableThirstLevel)
                     {
-
                         // Close enough to mate
                         if (Vector3.Distance(asr.closestMate.transform.position, transform.position) <= interactRange)
                         {
-                            ParticleSystem ps =  Instantiate(mateEffect, transform.position, Quaternion.identity);
-                            StartCoroutine(destroyParticleSystem(ps));
                             desireToMate = 0;
-                            //print(species);
+                            hunger -= 2f;
+                            thirst -= 2f;
                             if (!male)
                             {
+                                print("bla");
                                 pregnant = true;
+                                ParticleSystem ps =  Instantiate(mateEffect, transform.position, Quaternion.identity);
+                                StartCoroutine(destroyParticleSystem(ps));
                             }
                         }
                         // go to mate
@@ -380,9 +381,8 @@ public abstract class Animal : Lifeform
 
     public IEnumerator destroyParticleSystem(ParticleSystem ps)
     {
-        yield return new WaitForSeconds(0.6f);
-        //print("Mate effect!");
-        Destroy(ps);
+        yield return new WaitForSeconds(1.2f);
+        Destroy(ps.gameObject);
     }
 
     private void eatOrDrink() {

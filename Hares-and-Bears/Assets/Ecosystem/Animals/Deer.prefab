@@ -86,19 +86,19 @@ MonoBehaviour:
   prefab: {fileID: 3985607647021474161}
   male: 0
   diet: 00000000
-  predators: 
-  maxHunger: 25
-  maxThirst: 25
+  predators: 06000000
+  maxHunger: 40
+  maxThirst: 40
   maxAge: 120
   ageRequiredToMate: 30
   requiredDesireForMating: 0.7
   pregnantForTicks: 10
   minOffspring: 1
   maxOffspring: 2
-  maxMovespeed: 0.12
+  maxMovespeed: 0.14
   viewDistance: 0.5
   interactRange: 0.2
-  timeBetweenExploring: 2
+  timeBetweenExploring: 3
   comfortableHungerLevel: 0.7
   comfortableThirstLevel: 0.7
   hunger: 0
