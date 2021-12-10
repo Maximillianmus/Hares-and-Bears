@@ -69,6 +69,8 @@ public abstract class Animal : Lifeform
         desireToMate = 0;
         currentPregnantTicks = 0;
         agent.speed = maxMovespeed;
+
+        player = GameObject.Find("AR Session Origin/AR Camera").transform;
     }
 
     public void Update()
@@ -87,7 +89,16 @@ public abstract class Animal : Lifeform
         if(!timeManager.paused)
         {
             // If game is fast forwarded, scale movementspeed
-            agent.speed = maxMovespeed * timeManager.GetMultiplier();
+
+            if (!scaredOfPlayer)
+            {
+                agent.speed = maxMovespeed * timeManager.GetMultiplier();
+            }
+            else
+            {
+                // While agent is scared, move a bit faster
+                agent.speed = maxMovespeed * timeManager.GetMultiplier() * 2.0f;
+            }
 
             if(alive)
             {
