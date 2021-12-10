@@ -69,20 +69,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8fcd71809fa6194fbd05cd0c683f455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  species: 1
+  species: 3
   prefab: {fileID: 3489300068431621582}
   male: 0
   diet: 00000000
   predators: 02000000
-  maxHunger: 5
-  maxThirst: 5
-  maxAge: 10
-  ageRequiredToMate: 2
-  requiredDesireForMating: 0.3
+  maxHunger: 25
+  maxThirst: 25
+  maxAge: 120
+  ageRequiredToMate: 10
+  requiredDesireForMating: 0.4
   pregnantForTicks: 10
   minOffspring: 1
   maxOffspring: 4
-  maxMovespeed: 0.1
+  maxMovespeed: 0.15
   viewDistance: 0.5
   interactRange: 0.1
   timeBetweenExploring: 2
@@ -96,8 +96,12 @@ MonoBehaviour:
   exploring: 0
   pregnant: 0
   currentPregnantTicks: 0
+  scaredOfPlayer: 0
   timeManager: {fileID: 0}
   agent: {fileID: 3489300068431621425}
+  player: {fileID: 0}
+  mateEffect: {fileID: 4588090793607289183, guid: c6f5051164fabd744864d1a1dd625c62,
+    type: 3}
 --- !u!65 &7199963742465439761
 BoxCollider:
   m_ObjectHideFlags: 0

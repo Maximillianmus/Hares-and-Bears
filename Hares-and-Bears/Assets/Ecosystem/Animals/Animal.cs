@@ -48,7 +48,7 @@ public abstract class Animal : Lifeform
     public TimeManager timeManager;
     public NavMeshAgent agent;
     public Transform player;
-
+    public ParticleSystem mateEffect;
     private WaterFinder waterFinder;
 
     public void Start()
@@ -69,6 +69,8 @@ public abstract class Animal : Lifeform
         desireToMate = 0;
         currentPregnantTicks = 0;
         agent.speed = maxMovespeed;
+
+        player = GameObject.Find("AR Session Origin/AR Camera").transform;
     }
 
     public void Update()
@@ -87,7 +89,16 @@ public abstract class Animal : Lifeform
         if(!timeManager.paused)
         {
             // If game is fast forwarded, scale movementspeed
-            agent.speed = maxMovespeed * timeManager.GetMultiplier();
+
+            if (!scaredOfPlayer)
+            {
+                agent.speed = maxMovespeed * timeManager.GetMultiplier();
+            }
+            else
+            {
+                // While agent is scared, move a bit faster
+                agent.speed = maxMovespeed * timeManager.GetMultiplier() * 2.0f;
+            }
 
             if(alive)
             {
@@ -219,9 +230,10 @@ public abstract class Animal : Lifeform
                         // Close enough to mate
                         if (Vector3.Distance(asr.closestMate.transform.position, transform.position) <= interactRange)
                         {
-
-                            print("MATING!");
+                            ParticleSystem ps =  Instantiate(mateEffect, transform.position, Quaternion.identity);
+                            StartCoroutine(destroyParticleSystem(ps));
                             desireToMate = 0;
+                            //print(species);
                             if (!male)
                             {
                                 pregnant = true;
@@ -311,17 +323,17 @@ public abstract class Animal : Lifeform
                 desireToMate += 0.05f;
             }
 
-            age += 0.05f;
+            age += 0.1f;
 
             if(age >= maxAge)
                 alive = false;
 
-            hunger -= 0.05f;
+            hunger -= 0.1f;
 
             if (hunger <= 0)
                 alive = false;
 
-            thirst -= 0.05f;
+            thirst -= 0.1f;
 
             if (thirst <= 0)
                 alive = false;
@@ -349,5 +361,10 @@ public abstract class Animal : Lifeform
         exploring = false;
     }
 
-
+    public IEnumerator destroyParticleSystem(ParticleSystem ps)
+    {
+        yield return new WaitForSeconds(0.6f);
+        //print("Mate effect!");
+        Destroy(ps);
+    }
 }

@@ -54,7 +54,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.08
-  m_BaseOffset: -0.005
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!65 &844819842661630490
@@ -82,25 +82,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a664be1ca22d474b90a7931f28519f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  species: 3
+  species: 5
   prefab: {fileID: 3985607647021474161}
   male: 0
   diet: 00000000
   predators: 
-  maxHunger: 5
-  maxThirst: 5
-  maxAge: 10
-  ageRequiredToMate: 2
+  maxHunger: 25
+  maxThirst: 25
+  maxAge: 120
+  ageRequiredToMate: 30
   requiredDesireForMating: 0.7
   pregnantForTicks: 10
   minOffspring: 1
-  maxOffspring: 4
+  maxOffspring: 2
   maxMovespeed: 0.12
   viewDistance: 0.5
-  interactRange: 0.1
+  interactRange: 0.2
   timeBetweenExploring: 2
-  comfortableHungerLevel: 0.5
-  comfortableThirstLevel: 0.5
+  comfortableHungerLevel: 0.7
+  comfortableThirstLevel: 0.7
   hunger: 0
   thirst: 0
   age: 0
@@ -113,6 +113,8 @@ MonoBehaviour:
   timeManager: {fileID: 0}
   agent: {fileID: 7218103330784423777}
   player: {fileID: 0}
+  mateEffect: {fileID: 4588090793607289183, guid: c6f5051164fabd744864d1a1dd625c62,
+    type: 3}
   maleModelMesh: {fileID: 2223670522894240929, guid: 7bdedc17e5de61f42b998c8580c68b58,
     type: 3}
 --- !u!1001 &4045412170771277415
