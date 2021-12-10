@@ -233,6 +233,7 @@ public abstract class Animal : Lifeform
                             ParticleSystem ps =  Instantiate(mateEffect, transform.position, Quaternion.identity);
                             StartCoroutine(destroyParticleSystem(ps));
                             desireToMate = 0;
+                            //print(species);
                             if (!male)
                             {
                                 pregnant = true;
@@ -322,17 +323,17 @@ public abstract class Animal : Lifeform
                 desireToMate += 0.05f;
             }
 
-            age += 0.05f;
+            age += 0.1f;
 
             if(age >= maxAge)
                 alive = false;
 
-            hunger -= 0.05f;
+            hunger -= 0.1f;
 
             if (hunger <= 0)
                 alive = false;
 
-            thirst -= 0.05f;
+            thirst -= 0.1f;
 
             if (thirst <= 0)
                 alive = false;
@@ -363,6 +364,7 @@ public abstract class Animal : Lifeform
     public IEnumerator destroyParticleSystem(ParticleSystem ps)
     {
         yield return new WaitForSeconds(0.6f);
+        //print("Mate effect!");
         Destroy(ps);
     }
 }
