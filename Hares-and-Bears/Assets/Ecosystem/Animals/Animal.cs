@@ -48,8 +48,11 @@ public abstract class Animal : Lifeform
     public TimeManager timeManager;
     public NavMeshAgent agent;
     public Transform player;
-
+    public ParticleSystem mateEffect;
     private WaterFinder waterFinder;
+
+    public Animator animator;
+    public bool eatingDrinking;
 
     public void Start()
     {
@@ -60,8 +63,8 @@ public abstract class Animal : Lifeform
         TimeManager.onTimeAdvance += gameUpdate;
 
         male = Random.Range(0, 2) == 1;
-        hunger = maxHunger;
-        thirst = maxThirst;
+        hunger = maxHunger * 2/3;
+        thirst = maxThirst * 2/3;
         age = 0;
         alive = true;
         exploring = false;
@@ -69,13 +72,17 @@ public abstract class Animal : Lifeform
         desireToMate = 0;
         currentPregnantTicks = 0;
         agent.speed = maxMovespeed;
+        eatingDrinking = false;
+
+        //player = GameObject.Find("AR Session Origin/AR Camera").transform;
     }
 
     public void Update()
     {
+
         if (waterFinder == null)
         {
-            if (!GameObject.FindGameObjectWithTag("WaterFinder").TryGetComponent<WaterFinder>(out waterFinder))
+            if (!GameObject.FindGameObjectWithTag("Terrain").TryGetComponent<WaterFinder>(out waterFinder))
             {
                 Debug.LogError("WaterFinder can not be found ! ");
                 return;
@@ -87,7 +94,16 @@ public abstract class Animal : Lifeform
         if(!timeManager.paused)
         {
             // If game is fast forwarded, scale movementspeed
-            agent.speed = maxMovespeed * timeManager.GetMultiplier();
+
+            if (!scaredOfPlayer)
+            {
+                agent.speed = maxMovespeed * timeManager.GetMultiplier();
+            }
+            else
+            {
+                // While agent is scared, move a bit faster
+                agent.speed = maxMovespeed * timeManager.GetMultiplier() * 2.0f;
+            }
 
             if(alive)
             {
@@ -97,6 +113,10 @@ public abstract class Animal : Lifeform
         }
         else
         {
+            agent.speed = 0;
+        }
+
+        if(eatingDrinking == true) {
             agent.speed = 0;
         }
     }
@@ -111,21 +131,22 @@ public abstract class Animal : Lifeform
         float distToMate = distToFood;
         float distToPredator = distToFood;
         float dist;
+        
 
         // Class that holds results from the scan
         AreaScanResult asr = new AreaScanResult();
 
         if (waterFinder.pointsGenerated)
         {
-            var waterNear = waterFinder.waterNear(transform.position, distToWater);
-            var orderingPoint = waterNear.OrderBy(point => Vector3.Distance(transform.position, point));
-            if (orderingPoint.Count() == 0)
+
+            var foundPoints = waterFinder.waterNear(transform.position, distToWater);
+            if (foundPoints.Count == 0)
             {
                 asr.waterClose = false;
             }
             else
             {
-                asr.closestWater = orderingPoint.First(); 
+                asr.closestWater = foundPoints[Random.Range(0,foundPoints.Count)]; 
                 asr.waterClose = true;
             }
         }
@@ -154,6 +175,7 @@ public abstract class Animal : Lifeform
                     {
                         asr.closestFood = hitCollider.gameObject;
                         distToFood = dist;
+
                     }
                 }
 
@@ -212,19 +234,21 @@ public abstract class Animal : Lifeform
                 if (asr.closestMate != null)
                 {
 
-                    // Must have desire to mate, and be of age
-                    if (desireToMate >= requiredDesireForMating && age >= ageRequiredToMate)
+                    // Must have desire to mate, and be of age. And must have high enough hunger and thirst
+                    if (desireToMate >= requiredDesireForMating && age >= ageRequiredToMate && hunger >= comfortableHungerLevel * maxHunger && thirst >= comfortableThirstLevel)
                     {
-
                         // Close enough to mate
                         if (Vector3.Distance(asr.closestMate.transform.position, transform.position) <= interactRange)
                         {
-
-                            print("MATING!");
                             desireToMate = 0;
+                            hunger -= 2f;
+                            thirst -= 2f;
                             if (!male)
                             {
+                                print("bla");
                                 pregnant = true;
+                                ParticleSystem ps =  Instantiate(mateEffect, transform.position, Quaternion.identity);
+                                StartCoroutine(destroyParticleSystem(ps));
                             }
                         }
                         // go to mate
@@ -245,6 +269,12 @@ public abstract class Animal : Lifeform
                         Destroy(asr.closestFood);
                         hunger = maxHunger;
                         agent.SetDestination(transform.position);
+
+                        // Stand still and play eating/drinking animation
+                        if(animator != null) {
+                            eatOrDrink();
+                            StartCoroutine(waitEatDrink(4.5f));
+                        }
                     }
                     // Go to foodsource
                     else
@@ -261,6 +291,12 @@ public abstract class Animal : Lifeform
                     {
                         thirst = maxThirst;
                         agent.SetDestination(transform.position);
+
+                        // Stand still and play eating/drinking animation
+                        if (animator != null) {
+                            eatOrDrink();
+                            StartCoroutine(waitEatDrink(4.5f));
+                        }
                     }
                     // Go to watersource
                     else
@@ -311,17 +347,17 @@ public abstract class Animal : Lifeform
                 desireToMate += 0.05f;
             }
 
-            age += 0.05f;
+            age += 0.1f;
 
             if(age >= maxAge)
                 alive = false;
 
-            hunger -= 0.05f;
+            hunger -= 0.1f;
 
             if (hunger <= 0)
                 alive = false;
 
-            thirst -= 0.05f;
+            thirst -= 0.1f;
 
             if (thirst <= 0)
                 alive = false;
@@ -349,5 +385,21 @@ public abstract class Animal : Lifeform
         exploring = false;
     }
 
+    public IEnumerator destroyParticleSystem(ParticleSystem ps)
+    {
+        yield return new WaitForSeconds(1.2f);
+        Destroy(ps.gameObject);
+    }
+
+    private void eatOrDrink() {
+
+        eatingDrinking = true;
+        animator.SetTrigger("Eat_Drink");
+    }
+
+    public IEnumerator waitEatDrink(float waitTime) {
+        yield return new WaitForSeconds(waitTime);
+        eatingDrinking = false;
+    }
 
 }

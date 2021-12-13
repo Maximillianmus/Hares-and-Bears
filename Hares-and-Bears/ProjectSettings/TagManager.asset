@@ -9,6 +9,7 @@ TagManager:
   - WaterSource
   - Spawnable
   - WaterFinder
+  - Terrain
   layers:
   - Default
   - TransparentFX

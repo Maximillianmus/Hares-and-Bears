@@ -8,7 +8,6 @@ struct AreaPlantScan
 {
     public int numberOfAnimalInRange;
     public int numberOfPlantInRange;
-    public int numberOfWatersource;
 }
 
 
@@ -21,20 +20,23 @@ public abstract class Plant : Lifeform
     [SerializeField] private float tickPropagation = 0.5f;
     [SerializeField] private float toPropagageThreshold = 18.0f;
      private bool canPropagate = false;
-    [SerializeField] private float plantEffectInArea = 0.5f;
-    [SerializeField] private float waterEffectInArea = 0.5f;
-    [SerializeField] private float animalEffectInArea = 0.1f;
+    [SerializeField] private float plantEffectInArea = 1.0f;
+    [SerializeField] private float animalEffectInArea = 0.3f;
     [SerializeField] private float RadiusAreaOfEffect = 0.5f;
     [SerializeField] private int maxNumberOfPropagation = 2;
     [SerializeField] private LayerMask terrainLayer;
     [SerializeField] private GameObject prefabToPropagate;
     [SerializeField] private int maxPlants;
+    [SerializeField] private SpawnAnimalsPlants spawnAnimalPlants;
     
 
     // Start is called before the first frame update
     public virtual void Start()
     {
         TimeManager.onTimeAdvance += onTick;
+        var meshGenerator = GameObject.FindGameObjectWithTag("Terrain");
+        spawnAnimalPlants = meshGenerator.GetComponent<SpawnAnimalsPlants>();
+
 
     }
 
@@ -50,8 +52,7 @@ public abstract class Plant : Lifeform
         if (canPropagate)
         {
             var coefPropagation = aps.numberOfAnimalInRange * animalEffectInArea +
-                                  (aps.numberOfPlantInRange - 1) * plantEffectInArea +
-                                  aps.numberOfWatersource * waterEffectInArea;
+                                  (aps.numberOfPlantInRange - 1) * plantEffectInArea;
             canPropagate = false;
             var plants = GameObject.FindGameObjectsWithTag("Plant");
             if (plants.Length >= maxPlants)
@@ -65,10 +66,18 @@ public abstract class Plant : Lifeform
 
     private void PropagatePlant()
     {
-        Vector3 noise = (new Vector3(Random.Range(0, RadiusAreaOfEffect), 0, Random.Range(0, RadiusAreaOfEffect)));
+        var x = Random.Range(Math.Max(spawnAnimalPlants.minBoundryX, transform.position.x - RadiusAreaOfEffect),
+            Math.Min(spawnAnimalPlants.maxBoundryX, transform.position.x + RadiusAreaOfEffect));
+        var z = Random.Range(Math.Max(spawnAnimalPlants.minBoundryZ, transform.position.z - RadiusAreaOfEffect),
+            Math.Min(spawnAnimalPlants.maxBoundryZ, transform.position.z + RadiusAreaOfEffect));
+        
+        
+        
+        
+        Vector3 noise = (new Vector3(x, 0, z));
         
         RaycastHit hit;
-        Vector3 sourcePoint = transform.position + noise + new Vector3(0, 20, 0);
+        Vector3 sourcePoint =  noise + new Vector3(0, 20, 0);
         if(Physics.Raycast(sourcePoint, Vector3.down, out hit, 1000, terrainLayer))
         {
             Instantiate(prefabToPropagate, hit.point, Quaternion.identity);
@@ -92,10 +101,7 @@ public abstract class Plant : Lifeform
             } else if (collider.CompareTag("Plant"))
             {
                 aps.numberOfPlantInRange++;
-            } else if (collider.CompareTag("WaterSource"))
-            {
-                aps.numberOfWatersource++;
-            }
+            } 
         }
 
         return aps;
