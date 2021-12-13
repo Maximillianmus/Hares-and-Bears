@@ -97,7 +97,7 @@ MonoBehaviour:
   maxOffspring: 2
   maxMovespeed: 0.12
   viewDistance: 0.15
-  interactRange: 0.2
+  interactRange: 0.1
   timeBetweenExploring: 3
   comfortableHungerLevel: 0.5
   comfortableThirstLevel: 0.6
