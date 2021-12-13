@@ -66,13 +66,14 @@ MonoBehaviour:
   toPropagageThreshold: 40
   plantEffectInArea: 1
   animalEffectInArea: 0.3
-  RadiusAreaOfEffect: 0.7
+  RadiusAreaOfEffect: 0.5
   maxNumberOfPropagation: 2
   terrainLayer:
     serializedVersion: 2
     m_Bits: 64
   prefabToPropagate: {fileID: 2266778476913843337}
   maxPlants: 20
+  spawnAnimalPlants: {fileID: 0}
 --- !u!1001 &4202175989910133381
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -115,6 +115,8 @@ MonoBehaviour:
   player: {fileID: 0}
   mateEffect: {fileID: 4588090793607289183, guid: c6f5051164fabd744864d1a1dd625c62,
     type: 3}
+  watersplash: {fileID: 5095193951450511491, guid: 62bf19fee24404b0c95ba222a55b9470,
+    type: 3}
   maleModelMesh: {fileID: 2223670522894240929, guid: 7bdedc17e5de61f42b998c8580c68b58,
     type: 3}
 --- !u!1001 &4045412170771277415
