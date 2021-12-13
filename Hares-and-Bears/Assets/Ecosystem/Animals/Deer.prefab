@@ -117,6 +117,9 @@ MonoBehaviour:
     type: 3}
   watersplash: {fileID: 5095193951450511491, guid: 62bf19fee24404b0c95ba222a55b9470,
     type: 3}
+  skull: {fileID: 6279519643462881522, guid: 974a7af97c7c2e64abf6a4bb587be385, type: 3}
+  animator: {fileID: 0}
+  eatingDrinking: 0
   maleModelMesh: {fileID: 2223670522894240929, guid: 7bdedc17e5de61f42b998c8580c68b58,
     type: 3}
 --- !u!1001 &4045412170771277415

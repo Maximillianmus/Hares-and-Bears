@@ -104,6 +104,9 @@ MonoBehaviour:
     type: 3}
   watersplash: {fileID: 5095193951450511491, guid: 62bf19fee24404b0c95ba222a55b9470,
     type: 3}
+  skull: {fileID: 6279519643462881522, guid: 974a7af97c7c2e64abf6a4bb587be385, type: 3}
+  animator: {fileID: 0}
+  eatingDrinking: 0
 --- !u!65 &7821145117636878085
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -50,6 +50,7 @@ public abstract class Animal : Lifeform
     public Transform player;
     public ParticleSystem mateEffect;
     public ParticleSystem watersplash;
+    public ParticleSystem skull;
     private WaterFinder waterFinder;
 
     public Animator animator;
@@ -353,17 +354,30 @@ public abstract class Animal : Lifeform
             age += 0.1f;
 
             if(age >= maxAge)
+            {
+                Quaternion rotation = Quaternion.Euler(-90, 0, 0);
+                ParticleSystem death = Instantiate(skull, transform.position, rotation);
+                StartCoroutine(destroyParticleSystem(death));
                 alive = false;
-
+            }
             hunger -= 0.1f;
 
             if (hunger <= 0)
+            {
+                Quaternion rotation = Quaternion.Euler(-90, 0, 0);
+                ParticleSystem death = Instantiate(skull, transform.position, rotation);
+                StartCoroutine(destroyParticleSystem(death));
                 alive = false;
-
+            }
             thirst -= 0.1f;
 
             if (thirst <= 0)
+            {
+                Quaternion rotation = Quaternion.Euler(-90, 0, 0);
+                ParticleSystem death = Instantiate(skull, transform.position, rotation);
+                StartCoroutine(destroyParticleSystem(death));
                 alive = false;
+            }
         }
         else
         {
