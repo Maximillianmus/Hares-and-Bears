@@ -298,6 +298,7 @@ public abstract class Animal : Lifeform
                     if (Vector3.Distance(asr.closestWater, transform.position) <= interactRange)
                     {
                         currentAction = "drinking";
+                        Instantiate(watersplash, transform.position, Quaternion.identity);
                         thirst = maxThirst;
                         agent.SetDestination(transform.position);
 
@@ -367,8 +368,7 @@ public abstract class Animal : Lifeform
             if(age >= maxAge)
             {
                 Quaternion rotation = Quaternion.Euler(-90, 0, 0);
-                ParticleSystem death = Instantiate(skull, transform.position, rotation);
-                StartCoroutine(destroyParticleSystem(death));
+                Instantiate(skull, transform.position, rotation);
                 alive = false;
             }
             hunger -= 0.1f;
@@ -376,8 +376,7 @@ public abstract class Animal : Lifeform
             if (hunger <= 0)
             {
                 Quaternion rotation = Quaternion.Euler(-90, 0, 0);
-                ParticleSystem death = Instantiate(skull, transform.position, rotation);
-                StartCoroutine(destroyParticleSystem(death));
+                Instantiate(skull, transform.position, rotation);
                 alive = false;
             }
             thirst -= 0.1f;
@@ -385,8 +384,7 @@ public abstract class Animal : Lifeform
             if (thirst <= 0)
             {
                 Quaternion rotation = Quaternion.Euler(-90, 0, 0);
-                ParticleSystem death = Instantiate(skull, transform.position, rotation);
-                StartCoroutine(destroyParticleSystem(death));
+                Instantiate(skull, transform.position, rotation);
                 alive = false;
             }
         }
