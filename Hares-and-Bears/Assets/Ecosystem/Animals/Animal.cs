@@ -54,10 +54,15 @@ public abstract class Animal : Lifeform
     public Animator animator;
     public bool eatingDrinking;
 
+    private FoodSpawner foodSpawner;
+
     public void Start()
     {
         if(timeManager == null)
             GameObject.Find("TimeManager").TryGetComponent<TimeManager>(out timeManager);
+
+        var foodSpawnerGo = GameObject.FindGameObjectWithTag("FoodSpawner");
+        foodSpawner = foodSpawnerGo.GetComponent<FoodSpawner>();
 
         // Make it so gameUpdate is called every in game tick
         TimeManager.onTimeAdvance += gameUpdate;
@@ -208,6 +213,12 @@ public abstract class Animal : Lifeform
                     }
                 }
             }
+        }
+
+        if (foodSpawner.Hand != null && Vector3.Distance(foodSpawner.Hand.transform.position, transform.position) <= viewDistance
+            && foodSpawner.Food != null)
+        {
+            asr.closestFood = foodSpawner.Food;
         }
         return asr;
     }

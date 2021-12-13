@@ -3,45 +3,58 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 
 public class FoodSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject foodPrefab;
+    [SerializeField] private GameObject handPrefab;
     [SerializeField] private Camera arCam;
+    private GameObject hand = null;
     private GameObject food = null;
-    
-    
-    public void OnSpawnFood()
+
+    public GameObject Hand => hand;
+
+    public GameObject Food => food;
+
+
+    public void OnSpawnHand()
     {
-        if (food != null) return;
+        if (this.hand != null) return;
         var hand = ManomotionManager.Instance.Hand_infos[0].hand_info;
         var positionHand = hand.tracking_info.palm_center;
         var spawnPos = ManoUtils.Instance.CalculateNewPosition(positionHand,
             hand.tracking_info.depth_estimation);
-        food = Instantiate(foodPrefab, spawnPos, Quaternion.identity);
+        this.hand = Instantiate(handPrefab, spawnPos, Quaternion.identity);
+        food = GameObject.FindGameObjectWithTag("HandFood");
     }
 
-    public void DespawnFood()
+    public void DespawnHand()
     {
-        if (food == null) return;
+        if (hand == null) return;
         
-        Destroy(food);
+        Destroy(hand);
+        hand = null;
+        food = null;
+    }
+
+    public void EatFood()
+    {
         food = null;
     }
 
     public void Update()
     {
-        if (food == null) return;
+        if (this.hand == null) return;
 
         var hand = ManomotionManager.Instance.Hand_infos[0].hand_info;
         var positionHand = hand.tracking_info.palm_center;
         var newPos = ManoUtils.Instance.CalculateNewPosition(positionHand,
             hand.tracking_info.depth_estimation);
-        food.transform.position = newPos;
+        this.hand.transform.position = newPos;
         var bodyPosHand = arCam.transform.position - new Vector3(0, (arCam.transform.position.y - newPos.y), 0);
         var bodyToHand = bodyPosHand - newPos;
-        food.transform.rotation = Quaternion.LookRotation(bodyToHand);
-        food.transform.Rotate(0, 180, 0);
+        this.hand.transform.rotation = Quaternion.LookRotation(bodyToHand);
+        this.hand.transform.Rotate(0, 180, 0);
 
     }
 }
