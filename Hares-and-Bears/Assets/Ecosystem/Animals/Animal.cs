@@ -51,6 +51,9 @@ public abstract class Animal : Lifeform
     public ParticleSystem mateEffect;
     private WaterFinder waterFinder;
 
+    public Animator animator;
+    public bool eatingDrinking;
+
     public void Start()
     {
         if(timeManager == null)
@@ -69,12 +72,14 @@ public abstract class Animal : Lifeform
         desireToMate = 0;
         currentPregnantTicks = 0;
         agent.speed = maxMovespeed;
+        eatingDrinking = false;
 
         //player = GameObject.Find("AR Session Origin/AR Camera").transform;
     }
 
     public void Update()
     {
+
         if (waterFinder == null)
         {
             if (!GameObject.FindGameObjectWithTag("Terrain").TryGetComponent<WaterFinder>(out waterFinder))
@@ -108,6 +113,10 @@ public abstract class Animal : Lifeform
         }
         else
         {
+            agent.speed = 0;
+        }
+
+        if(eatingDrinking == true) {
             agent.speed = 0;
         }
     }
@@ -166,6 +175,7 @@ public abstract class Animal : Lifeform
                     {
                         asr.closestFood = hitCollider.gameObject;
                         distToFood = dist;
+
                     }
                 }
 
@@ -259,6 +269,12 @@ public abstract class Animal : Lifeform
                         Destroy(asr.closestFood);
                         hunger = maxHunger;
                         agent.SetDestination(transform.position);
+
+                        // Stand still and play eating/drinking animation
+                        if(animator != null) {
+                            eatOrDrink();
+                            StartCoroutine(waitEatDrink(4.5f));
+                        }
                     }
                     // Go to foodsource
                     else
@@ -275,6 +291,12 @@ public abstract class Animal : Lifeform
                     {
                         thirst = maxThirst;
                         agent.SetDestination(transform.position);
+
+                        // Stand still and play eating/drinking animation
+                        if (animator != null) {
+                            eatOrDrink();
+                            StartCoroutine(waitEatDrink(4.5f));
+                        }
                     }
                     // Go to watersource
                     else
@@ -368,4 +390,16 @@ public abstract class Animal : Lifeform
         yield return new WaitForSeconds(1.2f);
         Destroy(ps.gameObject);
     }
+
+    private void eatOrDrink() {
+
+        eatingDrinking = true;
+        animator.SetTrigger("Eat_Drink");
+    }
+
+    public IEnumerator waitEatDrink(float waitTime) {
+        yield return new WaitForSeconds(waitTime);
+        eatingDrinking = false;
+    }
+
 }
