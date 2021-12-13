@@ -270,8 +270,10 @@ public abstract class Animal : Lifeform
                         agent.SetDestination(transform.position);
 
                         // Stand still and play eating/drinking animation
-                        eatOrDrink();
-                        StartCoroutine(waitEatDrink(4.5f));
+                        if(animator != null) {
+                            eatOrDrink();
+                            StartCoroutine(waitEatDrink(4.5f));
+                        }
                     }
                     // Go to foodsource
                     else
@@ -290,8 +292,10 @@ public abstract class Animal : Lifeform
                         agent.SetDestination(transform.position);
 
                         // Stand still and play eating/drinking animation
-                        eatOrDrink();
-                        StartCoroutine(waitEatDrink(4.5f));
+                        if (animator != null) {
+                            eatOrDrink();
+                            StartCoroutine(waitEatDrink(4.5f));
+                        }
                     }
                     // Go to watersource
                     else

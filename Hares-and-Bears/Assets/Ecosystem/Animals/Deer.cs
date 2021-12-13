@@ -32,7 +32,7 @@ public class Deer : Animal
 
         if (male)
         {
-            print("is male");
+            //print("is male");
 
             if (deerPrefab != null)
             {
