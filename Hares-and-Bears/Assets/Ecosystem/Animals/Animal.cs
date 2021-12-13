@@ -49,6 +49,7 @@ public abstract class Animal : Lifeform
     public NavMeshAgent agent;
     public Transform player;
     public ParticleSystem mateEffect;
+    public ParticleSystem watersplash;
     private WaterFinder waterFinder;
 
     public void Start()
@@ -274,6 +275,8 @@ public abstract class Animal : Lifeform
                     if (Vector3.Distance(asr.closestWater, transform.position) <= interactRange)
                     {
                         thirst = maxThirst;
+                        ParticleSystem ws = Instantiate(watersplash, transform.position, Quaternion.identity);
+                        StartCoroutine(destroyParticleSystem(ws));
                         agent.SetDestination(transform.position);
                     }
                     // Go to watersource

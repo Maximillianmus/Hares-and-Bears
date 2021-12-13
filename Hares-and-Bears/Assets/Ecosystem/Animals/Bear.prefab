@@ -115,6 +115,8 @@ MonoBehaviour:
   player: {fileID: 0}
   mateEffect: {fileID: 4588090793607289183, guid: c6f5051164fabd744864d1a1dd625c62,
     type: 3}
+  watersplash: {fileID: 5095193951450511491, guid: 62bf19fee24404b0c95ba222a55b9470,
+    type: 3}
 --- !u!1001 &6676744330943938403
 PrefabInstance:
   m_ObjectHideFlags: 0
