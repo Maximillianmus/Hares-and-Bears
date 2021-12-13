@@ -52,7 +52,7 @@ public abstract class Animal : Lifeform
     private WaterFinder waterFinder;
 
     public Animator animator;
-    private bool eatingDrinking = false;
+    public bool eatingDrinking;
 
     public void Start()
     {
@@ -72,6 +72,7 @@ public abstract class Animal : Lifeform
         desireToMate = 0;
         currentPregnantTicks = 0;
         agent.speed = maxMovespeed;
+        eatingDrinking = false;
 
         //player = GameObject.Find("AR Session Origin/AR Camera").transform;
     }
