@@ -85,7 +85,7 @@ MonoBehaviour:
   species: 5
   prefab: {fileID: 3985607647021474161}
   male: 0
-  diet: 00000000
+  diet: 000000000100000002000000
   predators: 06000000
   maxHunger: 40
   maxThirst: 40
