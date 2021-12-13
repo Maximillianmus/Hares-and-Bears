@@ -83,17 +83,19 @@ MonoBehaviour:
   minOffspring: 2
   maxOffspring: 4
   maxMovespeed: 0.17
-  viewDistance: 0.6
+  viewDistance: 0.2
   interactRange: 0.1
   timeBetweenExploring: 3
   comfortableHungerLevel: 0.5
   comfortableThirstLevel: 0.6
+  currentAction: default
   hunger: 0
   thirst: 0
   age: 0
   desireToMate: 0
   alive: 0
   exploring: 0
+  prevExploreLocation: {x: 0, y: 0, z: 0}
   pregnant: 0
   currentPregnantTicks: 0
   scaredOfPlayer: 0

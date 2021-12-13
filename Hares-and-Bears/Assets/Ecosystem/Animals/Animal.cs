@@ -45,9 +45,6 @@ public abstract class Animal : Lifeform
     public bool pregnant;
     public int currentPregnantTicks;
     public bool scaredOfPlayer = false;
-    public bool scaredOfPredator = false;
-    public int scaredForTicks = 0;
-    public Transform prevPred;
 
     [Header("Other")]
     public TimeManager timeManager;
@@ -238,93 +235,84 @@ public abstract class Animal : Lifeform
             // If no predator near
             if (asr.closestPredator == null)
             {
-                // Animal keeps being scared of predator for a bit after it can't see the predator anymore
-                if(scaredOfPredator && prevPred != null)
+                // Look for Mate
+                if (asr.closestMate != null)
                 {
-                    Vector3 vToPred = Vector3.Normalize(prevPred.position - transform.position);
-                    agent.SetDestination(transform.position - vToPred * viewDistance);
+                    // Must have desire to mate, and be of age. And must have high enough hunger and thirst
+                    if (desireToMate >= requiredDesireForMating && age >= ageRequiredToMate && hunger >= comfortableHungerLevel * maxHunger && thirst >= comfortableThirstLevel)
+                    {
+                        // Close enough to mate
+                        if (Vector3.Distance(asr.closestMate.transform.position, transform.position) <= interactRange)
+                        {
+                            currentAction = "mating";
+                            desireToMate = 0;
+                            hunger -= 2f;
+                            thirst -= 2f;
+                            if (!male)
+                            {
+                                print("bla");
+                                pregnant = true;
+                                ParticleSystem ps = Instantiate(mateEffect, transform.position, Quaternion.identity);
+                                StartCoroutine(destroyParticleSystem(ps));
+                            }
+                        }
+                        // go to mate
+                        else
+                        {
+                            currentAction = "moving to mate";
+                            agent.SetDestination(Vector3.MoveTowards(transform.position, asr.closestMate.transform.position, viewDistance));
+                            //agent.SetDestination(asr.closestMate.transform.position);
+                        }
+                    }
                 }
-                else
+
+                // Animal wants to eat
+                else if (hunger <= comfortableHungerLevel * maxHunger && asr.closestFood != null)
                 {
-                    // Look for Mate
-                    if (asr.closestMate != null)
+                    // If close enough, eat!
+                    if (Vector3.Distance(asr.closestFood.transform.position, transform.position) <= interactRange)
                     {
-                        // Must have desire to mate, and be of age. And must have high enough hunger and thirst
-                        if (desireToMate >= requiredDesireForMating && age >= ageRequiredToMate && hunger >= comfortableHungerLevel * maxHunger && thirst >= comfortableThirstLevel)
-                        {
-                            // Close enough to mate
-                            if (Vector3.Distance(asr.closestMate.transform.position, transform.position) <= interactRange)
-                            {
-                                currentAction = "mating";
-                                desireToMate = 0;
-                                hunger -= 2f;
-                                thirst -= 2f;
-                                if (!male)
-                                {
-                                    print("bla");
-                                    pregnant = true;
-                                    ParticleSystem ps = Instantiate(mateEffect, transform.position, Quaternion.identity);
-                                    StartCoroutine(destroyParticleSystem(ps));
-                                }
-                            }
-                            // go to mate
-                            else
-                            {
-                                currentAction = "moving to mate";
-                                agent.SetDestination(Vector3.MoveTowards(transform.position, asr.closestMate.transform.position, viewDistance));
-                                //agent.SetDestination(asr.closestMate.transform.position);
-                            }
-                        }
+                        currentAction = "eating";
+                        Destroy(asr.closestFood);
+                        hunger = maxHunger;
+                        agent.SetDestination(transform.position);
                     }
-
-                    // Animal wants to eat
-                    else if (hunger <= comfortableHungerLevel * maxHunger && asr.closestFood != null)
-                    {
-                        // If close enough, eat!
-                        if (Vector3.Distance(asr.closestFood.transform.position, transform.position) <= interactRange)
-                        {
-                            currentAction = "eating";
-                            Destroy(asr.closestFood);
-                            hunger = maxHunger;
-                            agent.SetDestination(transform.position);
-                        }
-                        // Go to foodsource
-                        else
-                        {
-                            currentAction = "moving to eat";
-                            agent.SetDestination(asr.closestFood.transform.position);
-                        }
-
-                    }
-                    // Animal wants to drink
-                    else if (thirst <= comfortableThirstLevel * maxThirst && asr.waterClose)
-                    {
-                        // If close enough, drink!
-                        if (Vector3.Distance(asr.closestWater, transform.position) <= interactRange)
-                        {
-                            currentAction = "drinking";
-                            thirst = maxThirst;
-                            agent.SetDestination(transform.position);
-                        }
-                        // Go to watersource
-                        else
-                        {
-                            currentAction = "moving to drink";
-                            agent.SetDestination(asr.closestWater);
-                        }
-                    }
-                    // If not found anything interesting, go explore
+                    // Go to foodsource
                     else
                     {
-                        currentAction = "exploring";
-                        if (!exploring)
-                        {
-                            StartCoroutine("Explore");
-                        }
-                        else
-                        {
-                            agent.SetDestination(prevExploreLocation);
-                        }
+                        currentAction = "moving to eat";
+                        agent.SetDestination(asr.closestFood.transform.position);
+                    }
+
+                }
+                // Animal wants to drink
+                else if (thirst <= comfortableThirstLevel * maxThirst && asr.waterClose)
+                {
+                    // If close enough, drink!
+                    if (Vector3.Distance(asr.closestWater, transform.position) <= interactRange)
+                    {
+                        currentAction = "drinking";
+                        thirst = maxThirst;
+                        agent.SetDestination(transform.position);
+                    }
+                    // Go to watersource
+                    else
+                    {
+                        currentAction = "moving to drink";
+                        agent.SetDestination(asr.closestWater);
+                    }
+                }
+                // If not found anything interesting, go explore
+                else
+                {
+                    currentAction = "exploring";
+                    if (!exploring)
+                    {
+                        StartCoroutine("Explore");
+                    }
+                    else
+                    {
+                        //agent.SetDestination(prevExploreLocation);
                     }
                 }
             }
@@ -334,9 +322,6 @@ public abstract class Animal : Lifeform
                 currentAction = "running away from pred";
                 Vector3 vToPred = Vector3.Normalize(asr.closestPredator.transform.position - transform.position);
                 agent.SetDestination(transform.position - vToPred * viewDistance);
-                scaredOfPredator = true;
-                scaredForTicks = 0;
-                prevPred = asr.closestPredator.transform;
             }
         }
     }
@@ -363,18 +348,6 @@ public abstract class Animal : Lifeform
             else
             {
                 desireToMate += 0.05f;
-            }
-
-            if(scaredOfPredator)
-            {
-                if(scaredForTicks < 4)
-                {
-                    scaredForTicks++;
-                }
-                else
-                {
-                    scaredOfPredator = false;
-                }
             }
 
             age += 0.1f;
