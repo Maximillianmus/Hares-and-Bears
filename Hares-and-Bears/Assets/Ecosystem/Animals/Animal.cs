@@ -276,6 +276,12 @@ public abstract class Animal : Lifeform
                         Destroy(asr.closestFood);
                         hunger = maxHunger;
                         agent.SetDestination(transform.position);
+
+                        if (animator != null)
+                        {
+                            eatOrDrink();
+                            StartCoroutine(waitEatDrink(4.5f));
+                        }
                     }
                     // Go to foodsource
                     else
@@ -294,6 +300,12 @@ public abstract class Animal : Lifeform
                         currentAction = "drinking";
                         thirst = maxThirst;
                         agent.SetDestination(transform.position);
+
+                        if (animator != null)
+                        {
+                            eatOrDrink();
+                            StartCoroutine(waitEatDrink(4.5f));
+                        }
                     }
                     // Go to watersource
                     else
