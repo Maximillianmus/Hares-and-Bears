@@ -187,17 +187,17 @@ public abstract class Animal : Lifeform
             // Check for mate and predator
             if (hitCollider.tag == "Animal")
             {
-                Animal animal;
-                hitCollider.TryGetComponent<Animal>(out animal);
+                AnimalBehavior animal;
+                hitCollider.TryGetComponent<AnimalBehavior>(out animal);
 
                 // Can only mate with other of its species and opposite sex
                 // potential mate must desire to mate and be of age
-                if (animal.species == species && animal.male != male && animal.desireToMate >= animal.requiredDesireForMating && animal.age >= animal.ageRequiredToMate)
+                if (animal.species == species && animal.male != male && animal.desireToMate >= animal.requredDesireToMate && animal.age >= animal.ageRequiredToMate)
                 {
                     dist = Vector3.Distance(transform.position, hitCollider.transform.position);
                     if (dist < distToMate)
                     {
-                        asr.closestMate = hitCollider.gameObject;
+                        asr.closestMate = animal;
                         distToMate = dist;
                     }
                 }
@@ -207,7 +207,7 @@ public abstract class Animal : Lifeform
                     dist = Vector3.Distance(transform.position, hitCollider.transform.position);
                     if (dist < distToPredator)
                     {
-                        asr.closestPredator = hitCollider.gameObject;
+                        //asr.closestPredator = hitCollider.gameObject;
                         distToPredator = dist;
                     }
                 }
@@ -233,7 +233,7 @@ public abstract class Animal : Lifeform
         else
         {
             // If no predator near
-            if (asr.closestPredator == null)
+            if (asr.nearbyPredators == null)
             {
                 // Look for Mate
                 if (asr.closestMate != null)
@@ -332,9 +332,7 @@ public abstract class Animal : Lifeform
             // If a predator is near, move away from it
             else
             {
-                currentAction = "running away from pred";
-                Vector3 vToPred = Vector3.Normalize(asr.closestPredator.transform.position - transform.position);
-                agent.SetDestination(transform.position - vToPred * viewDistance);
+                
             }
         }
     }

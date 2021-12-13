@@ -288,6 +288,111 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1143977311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1143977313}
+  - component: {fileID: 1143977312}
+  m_Layer: 0
+  m_Name: tmp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1143977312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143977311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe0b5eaf37b319e49bde5191c382b16a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  species: 0
+  prefab: {fileID: 0}
+  male: 0
+  diet: 
+  predators: 
+  movingAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+  eatingAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+  drinkingAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+  matingAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+  waitingAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+  fleeingAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+  currentAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+  currentTarget: {x: 0, y: 0, z: 0}
+  ticksUntillNewAction: 0
+  viewDistance: 0
+  interactDistance: 0
+  movementSpeed: 0
+  maxAge: 0
+  maxHunger: 0
+  comfortableHunger: 0
+  maxThirst: 0
+  comfortableThirst: 0
+  alive: 0
+  age: 0
+  hunger: 0
+  thirst: 0
+  timeManager: {fileID: 0}
+  agent: {fileID: 0}
+  player: {fileID: 0}
+  animator: {fileID: 0}
+  mateEffect: {fileID: 0}
+  watersplash: {fileID: 0}
+  skull: {fileID: 0}
+--- !u!4 &1143977313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143977311}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.8454895, y: -0.5156691, z: 1.27621}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1238662977
 GameObject:
   m_ObjectHideFlags: 0

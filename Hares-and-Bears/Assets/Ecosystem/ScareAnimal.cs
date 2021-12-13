@@ -9,7 +9,7 @@ public class ScareAnimal : MonoBehaviour
     public int scaredForTicks = 10;
     public int currentTicks = 0;
     public bool activated = false;
-    public List<Animal> animals;
+    public List<AnimalBehavior> animals;
 
     public void Start()
     {
@@ -22,15 +22,15 @@ public class ScareAnimal : MonoBehaviour
     public void scareAnimals()
     {
         activated = true;
-        animals = new List<Animal>();
+        animals = new List<AnimalBehavior>();
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, range);
 
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.tag == "Animal")
             {
-                Animal animal;
-                hitCollider.TryGetComponent<Animal>(out animal);
+                AnimalBehavior animal;
+                hitCollider.TryGetComponent<AnimalBehavior>(out animal);
 
                 animal.scaredOfPlayer = true;
                 animals.Add(animal);
