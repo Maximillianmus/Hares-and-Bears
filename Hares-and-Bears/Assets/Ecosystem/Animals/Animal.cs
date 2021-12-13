@@ -77,7 +77,7 @@ public abstract class Animal : Lifeform
     {
         if (waterFinder == null)
         {
-            if (!GameObject.FindGameObjectWithTag("WaterFinder").TryGetComponent<WaterFinder>(out waterFinder))
+            if (!GameObject.FindGameObjectWithTag("Terrain").TryGetComponent<WaterFinder>(out waterFinder))
             {
                 Debug.LogError("WaterFinder can not be found ! ");
                 return;
@@ -122,21 +122,22 @@ public abstract class Animal : Lifeform
         float distToMate = distToFood;
         float distToPredator = distToFood;
         float dist;
+        
 
         // Class that holds results from the scan
         AreaScanResult asr = new AreaScanResult();
 
         if (waterFinder.pointsGenerated)
         {
-            var waterNear = waterFinder.waterNear(transform.position, distToWater);
-            var orderingPoint = waterNear.OrderBy(point => Vector3.Distance(transform.position, point));
-            if (orderingPoint.Count() == 0)
+
+            var foundPoints = waterFinder.waterNear(transform.position, distToWater);
+            if (foundPoints.Count == 0)
             {
                 asr.waterClose = false;
             }
             else
             {
-                asr.closestWater = orderingPoint.First(); 
+                asr.closestWater = foundPoints[Random.Range(0,foundPoints.Count)]; 
                 asr.waterClose = true;
             }
         }

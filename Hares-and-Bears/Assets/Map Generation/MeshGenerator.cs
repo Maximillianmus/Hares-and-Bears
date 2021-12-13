@@ -79,9 +79,11 @@ public class MeshGenerator : MonoBehaviour
     private NavMeshSurface navMesh;
     private float positionOffsetX = 0;
     private float positionOffsetZ = 0;
-    private float[,] combinedNoiseMap;
+    [HideInInspector]
+    public float[,] combinedNoiseMap;
     private float highestPoint = 0;
     private Material material;
+    private WaterFinder waterFinder;
 
     public SpawnAnimalsPlants spawnAnimalsPlants;
 
@@ -91,6 +93,7 @@ public class MeshGenerator : MonoBehaviour
         mesh = new Mesh();
 
         GetComponent<MeshFilter>().mesh = mesh;
+        waterFinder = GetComponent<WaterFinder>();
         navMesh = gameObject.GetComponent<NavMeshSurface>();
         positionOffsetX = -TerrainSizeX / 2;
         positionOffsetZ = -TerrainSizeZ / 2;
@@ -142,6 +145,7 @@ public class MeshGenerator : MonoBehaviour
         else
         {
             UpdateMesh();
+            waterFinder.FindWater();
             //we are done with the generation
             gameObject.GetComponent<MeshCollider>().sharedMesh = mesh;
             navMesh.BuildNavMesh();
