@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3161f181bf72243b32064bef5ab7f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodPrefab: {fileID: 7010843797768227372, guid: 1a566da466d2b5d4ba3012c81ea58779,
+  foodPrefab: {fileID: 3028195517837113578, guid: 9ac9df52fb2367145b41fa637d1a4410,
     type: 3}
   arCam: {fileID: 1354141926}
 --- !u!4 &7689364
