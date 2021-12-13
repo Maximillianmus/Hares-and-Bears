@@ -48,7 +48,7 @@ public class SpawnAnimalsPlants : MonoBehaviour
 
         for (int i = 0; i < numberOfPlantsBegin; ++i)
         {
-            var plant = plantPrefabs[Random.Range(0, plantPrefabs.Count - 1)];
+            var plant = plantPrefabs[Random.Range(0, plantPrefabs.Count)];
             Spawn(plant);
         }
 
