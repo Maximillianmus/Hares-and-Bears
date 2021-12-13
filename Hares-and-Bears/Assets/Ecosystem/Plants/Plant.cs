@@ -27,12 +27,16 @@ public abstract class Plant : Lifeform
     [SerializeField] private LayerMask terrainLayer;
     [SerializeField] private GameObject prefabToPropagate;
     [SerializeField] private int maxPlants;
+    [SerializeField] private SpawnAnimalsPlants spawnAnimalPlants;
     
 
     // Start is called before the first frame update
     public virtual void Start()
     {
         TimeManager.onTimeAdvance += onTick;
+        var meshGenerator = GameObject.FindGameObjectWithTag("Terrain");
+        spawnAnimalPlants = meshGenerator.GetComponent<SpawnAnimalsPlants>();
+
 
     }
 
@@ -62,10 +66,18 @@ public abstract class Plant : Lifeform
 
     private void PropagatePlant()
     {
-        Vector3 noise = (new Vector3(Random.Range(0, RadiusAreaOfEffect), 0, Random.Range(0, RadiusAreaOfEffect)));
+        var x = Random.Range(Math.Max(spawnAnimalPlants.minBoundryX, transform.position.x - RadiusAreaOfEffect),
+            Math.Min(spawnAnimalPlants.maxBoundryX, transform.position.x + RadiusAreaOfEffect));
+        var z = Random.Range(Math.Max(spawnAnimalPlants.minBoundryZ, transform.position.z - RadiusAreaOfEffect),
+            Math.Min(spawnAnimalPlants.maxBoundryZ, transform.position.z + RadiusAreaOfEffect));
+        
+        
+        
+        
+        Vector3 noise = (new Vector3(x, 0, z));
         
         RaycastHit hit;
-        Vector3 sourcePoint = transform.position + noise + new Vector3(0, 20, 0);
+        Vector3 sourcePoint =  noise + new Vector3(0, 20, 0);
         if(Physics.Raycast(sourcePoint, Vector3.down, out hit, 1000, terrainLayer))
         {
             Instantiate(prefabToPropagate, hit.point, Quaternion.identity);

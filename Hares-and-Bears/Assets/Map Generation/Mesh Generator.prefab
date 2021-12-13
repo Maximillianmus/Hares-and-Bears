@@ -143,7 +143,7 @@ MonoBehaviour:
   _generator: {fileID: 0}
   pointInWater: []
   pointsGenerated: 0
-  _debugMode: 1
+  _debugMode: 0
   debugingNode: {fileID: 3560898501578713217, guid: 458814fb457e9694e9e927db22a63fec,
     type: 3}
   _waterThreshold: 0.01

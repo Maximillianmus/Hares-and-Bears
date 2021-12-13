@@ -21,7 +21,7 @@ public class SpawnAnimalsPlants : MonoBehaviour
     public float maxBoundryX;
     public float maxBoundryZ;
 
-    public int numberOfPlantsBegin = 3;
+    public int numberOfPlantsBegin = 6;
     public int numberOfEachAnimalsHerbivor = 4;
     public int minNumberOfTrees = 2;
     public int maxNumberOfTrees = 5;
