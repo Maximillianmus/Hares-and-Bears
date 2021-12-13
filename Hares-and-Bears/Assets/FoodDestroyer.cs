@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Ecosystem;
 using UnityEngine;
 
-public class FoodDestroyer : MonoBehaviour
+public class FoodDestroyer : MonoBehaviour, Eatable
 {
     private FoodSpawner FoodSpawner;
     // Start is called before the first frame update
@@ -17,5 +18,12 @@ public class FoodDestroyer : MonoBehaviour
     {
         FoodSpawner.EatFood();
 
+    }
+
+    public void Eat()
+    {
+        Handheld.Vibrate();
+        Destroy(this.gameObject);
+        
     }
 }

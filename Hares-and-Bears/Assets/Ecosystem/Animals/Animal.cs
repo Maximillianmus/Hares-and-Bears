@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Ecosystem;
 using UnityEngine.AI;
 using UnityEngine;
 
@@ -179,6 +180,7 @@ public abstract class Animal : Lifeform
                     if (dist < distToFood)
                     {
                         asr.closestFood = hitCollider.gameObject;
+                        asr.foodEatable = lf;
                         distToFood = dist;
 
                     }
@@ -219,6 +221,7 @@ public abstract class Animal : Lifeform
             && foodSpawner.Food != null)
         {
             asr.closestFood = foodSpawner.Food;
+            asr.foodEatable = foodSpawner.Food.GetComponent<FoodDestroyer>();
         }
         return asr;
     }
@@ -277,7 +280,7 @@ public abstract class Animal : Lifeform
                     // If close enough, eat!
                     if (Vector3.Distance(asr.closestFood.transform.position, transform.position) <= interactRange)
                     {
-                        Destroy(asr.closestFood);
+                        asr.foodEatable.Eat();
                         hunger = maxHunger;
                         agent.SetDestination(transform.position);
 
