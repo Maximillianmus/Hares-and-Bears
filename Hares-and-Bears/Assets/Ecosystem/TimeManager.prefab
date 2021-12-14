@@ -45,7 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inGameTimesteps: 0
-  timeStepDuration: 0.5
-  fastForwardMultiplier: 5
+  timeStepDuration: 0.1
   paused: 0
-  fastForward: 0
