@@ -1,0 +1,1 @@
+public enum AnimalActions { Moving, Eating, Drinking, Mating, Waiting, Fleeing, Exploring, FleeFromPlayer};

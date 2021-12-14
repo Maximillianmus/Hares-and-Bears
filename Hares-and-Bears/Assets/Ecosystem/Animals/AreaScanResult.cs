@@ -7,7 +7,13 @@ public class AreaScanResult
     public GameObject closestFood;
     public Vector3 closestWater;
     public bool waterClose;
-    public GameObject closestMate;
-    public GameObject closestPredator;
+    public AnimalBehavior closestMate;
+    public List<GameObject> nearbyPredators;
+
+    public AreaScanResult()
+    {
+        nearbyPredators = new List<GameObject>();
+    }
+
 
 }

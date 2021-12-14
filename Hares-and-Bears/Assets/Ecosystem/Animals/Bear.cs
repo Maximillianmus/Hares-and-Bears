@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bear : Animal
+public class Bear : AnimalBehavior
 {
     new void Start() {
 

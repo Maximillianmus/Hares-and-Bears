@@ -44,7 +44,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 3985607647021474161}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.06
+  m_Radius: 0.045
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -68,8 +68,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.038785934, y: 0.08864979, z: 0.099352926}
-  m_Center: {x: 0.00006580353, y: 0.044608336, z: 0.0118781775}
+  m_Size: {x: 0.038785934, y: 0.08864979, z: 0.07972069}
+  m_Center: {x: 0.00006580353, y: 0.044608336, z: 0.008155955}
 --- !u!114 &8296921701534112463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,41 +87,77 @@ MonoBehaviour:
   male: 0
   diet: 000000000100000002000000
   predators: 06000000
-  maxHunger: 40
-  maxThirst: 40
+  movingAction:
+    action: 0
+    actionDuration: 5
+    animationTag: 
+    ps: {fileID: 0}
+  eatingAction:
+    action: 1
+    actionDuration: 40
+    animationTag: Eat_Drink
+    ps: {fileID: 0}
+  drinkingAction:
+    action: 2
+    actionDuration: 40
+    animationTag: Eat_Drink
+    ps: {fileID: 0}
+  matingAction:
+    action: 3
+    actionDuration: 10
+    animationTag: 
+    ps: {fileID: 4588090793607289183, guid: c6f5051164fabd744864d1a1dd625c62, type: 3}
+  waitingAction:
+    action: 4
+    actionDuration: 20
+    animationTag: 
+    ps: {fileID: 0}
+  fleeingAction:
+    action: 5
+    actionDuration: 10
+    animationTag: 
+    ps: {fileID: 0}
+  exploringAction:
+    action: 6
+    actionDuration: 30
+    animationTag: 
+    ps: {fileID: 0}
+  currentAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+  currentTarget: {x: 0, y: 0, z: 0}
+  ticksUntillNewAction: 0
+  viewDistance: 0.4
+  interactDistance: 0.1
+  movementSpeed: 0.12
   maxAge: 120
   ageRequiredToMate: 30
-  requiredDesireForMating: 0.7
-  pregnantForTicks: 10
-  minOffspring: 1
-  maxOffspring: 2
-  maxMovespeed: 0.14
-  viewDistance: 0.2
-  interactRange: 0.1
-  timeBetweenExploring: 3
-  comfortableHungerLevel: 0.7
-  comfortableThirstLevel: 0.7
-  currentAction: default
+  maxHunger: 60
+  comfortableHunger: 40
+  maxThirst: 60
+  comfortableThirst: 40
+  requredDesireToMate: 20
+  pregnantForTicks: 20
+  minKids: 1
+  maxKids: 3
+  alive: 0
+  age: 0
   hunger: 0
   thirst: 0
-  age: 0
   desireToMate: 0
-  alive: 0
-  exploring: 0
-  prevExploreLocation: {x: 0, y: 0, z: 0}
   pregnant: 0
   currentPregnantTicks: 0
-  scaredOfPlayer: 0
   timeManager: {fileID: 0}
   agent: {fileID: 7218103330784423777}
   player: {fileID: 0}
+  animator: {fileID: 0}
   mateEffect: {fileID: 4588090793607289183, guid: c6f5051164fabd744864d1a1dd625c62,
     type: 3}
   watersplash: {fileID: 5095193951450511491, guid: 62bf19fee24404b0c95ba222a55b9470,
     type: 3}
   skull: {fileID: 6279519643462881522, guid: 974a7af97c7c2e64abf6a4bb587be385, type: 3}
-  animator: {fileID: 0}
-  eatingDrinking: 0
   maleModelMesh: {fileID: 2223670522894240929, guid: 7bdedc17e5de61f42b998c8580c68b58,
     type: 3}
 --- !u!1001 &4045412170771277415
