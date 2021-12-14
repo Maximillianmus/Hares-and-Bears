@@ -109,6 +109,11 @@ MonoBehaviour:
     actionDuration: 20
     animationTag: 
     ps: {fileID: 0}
+  fleeFromPlayerAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
   currentAction:
     action: 0
     actionDuration: 0
@@ -117,7 +122,7 @@ MonoBehaviour:
   currentTarget: {x: 0, y: 0, z: 0}
   ticksUntillNewAction: 0
   viewDistance: 0.23
-  interactDistance: 0.02
+  interactDistance: 0.03
   movementSpeed: 0.15
   maxAge: 60
   ageRequiredToMate: 10
@@ -136,6 +141,7 @@ MonoBehaviour:
   desireToMate: 0
   pregnant: 0
   currentPregnantTicks: 0
+  scaredOfPlayer: 0
   timeManager: {fileID: 0}
   agent: {fileID: 3489300068431621425}
   player: {fileID: 0}
