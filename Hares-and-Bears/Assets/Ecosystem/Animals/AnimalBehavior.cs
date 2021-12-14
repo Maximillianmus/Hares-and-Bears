@@ -84,7 +84,7 @@ public class AnimalBehavior : Lifeform
             GameObject.Find("TimeManager").TryGetComponent<TimeManager>(out timeManager);
 
         // Finding foodSpawner 
-        var foodSpawnerGo = GameObject.FindGameObjectWithTag("FoodSpawner");
+        var foodSpawnerGo = GameObject.FindGameObjectWithTag("HandFoodSpawner");
         if (foodSpawnerGo == null)
         {
             Debug.LogError("The object FoodSpawner is not in the scene or don't have the correct tag. \n" +
