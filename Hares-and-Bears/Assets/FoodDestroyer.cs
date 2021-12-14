@@ -6,17 +6,17 @@ using UnityEngine;
 
 public class FoodDestroyer : MonoBehaviour, Eatable
 {
-    private FoodSpawner FoodSpawner;
+    private HandFoodSpawner _handFoodSpawner;
     // Start is called before the first frame update
     void Start()
     {
-        FoodSpawner = GameObject.FindGameObjectWithTag("FoodSpawner").GetComponent<FoodSpawner>();
+        _handFoodSpawner = GameObject.FindGameObjectWithTag("FoodSpawner").GetComponent<HandFoodSpawner>();
 
     }
 
     private void OnDestroy()
     {
-        FoodSpawner.EatFood();
+        _handFoodSpawner.EatFood();
 
     }
 

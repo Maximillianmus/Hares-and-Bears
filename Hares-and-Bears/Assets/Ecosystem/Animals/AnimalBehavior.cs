@@ -73,6 +73,9 @@ public class AnimalBehavior : Lifeform
     public ParticleSystem mateEffect;
     public ParticleSystem watersplash;
     public ParticleSystem skull;
+    
+    [Header("Interaction with Hand recognition")]
+    private HandFoodSpawner _handFoodSpawner;
 
 
     public void Start()
@@ -80,6 +83,22 @@ public class AnimalBehavior : Lifeform
         if (timeManager == null)
             GameObject.Find("TimeManager").TryGetComponent<TimeManager>(out timeManager);
 
+        // Finding foodSpawner 
+        var foodSpawnerGo = GameObject.FindGameObjectWithTag("FoodSpawner");
+        if (foodSpawnerGo == null)
+        {
+            Debug.LogError("The object FoodSpawner is not in the scene or don't have the correct tag. \n" +
+                           "Needed for interaction with hand recognition");
+        }
+        else
+        {
+            _handFoodSpawner = foodSpawnerGo.GetComponent<HandFoodSpawner>();
+            if (_handFoodSpawner == null)
+                Debug.LogError("The object should have a FoodSpawner script.");
+        }
+
+        
+        
         // Make it so gameUpdate is called every in game tick
         TimeManager.onTimeAdvance += gameUpdate;
 
@@ -246,7 +265,7 @@ public class AnimalBehavior : Lifeform
                 continue;
 
             // Check for food
-            if (hitCollider.tag == "Animal" || hitCollider.tag == "Plant")
+            if (hitCollider.CompareTag("Animal") || hitCollider.CompareTag("Plant"))
             {
                 Lifeform lf;
                 hitCollider.TryGetComponent<Lifeform>(out lf);
@@ -259,6 +278,7 @@ public class AnimalBehavior : Lifeform
                     if (dist < distToFood)
                     {
                         asr.closestFood = hitCollider.gameObject;
+                        asr.foodEatable = lf;
                         distToFood = dist;
                     }
                 }
@@ -266,7 +286,7 @@ public class AnimalBehavior : Lifeform
             }
             
             // Check for mate and predator
-            if (hitCollider.tag == "Animal")
+            if (hitCollider.CompareTag("Animal"))
             {
                 AnimalBehavior animal;
                 hitCollider.TryGetComponent<AnimalBehavior>(out animal);
@@ -290,6 +310,14 @@ public class AnimalBehavior : Lifeform
                 }
             }
         }
+        if (_handFoodSpawner != null &&
+            _handFoodSpawner.Hand != null && Vector3.Distance(_handFoodSpawner.Hand.transform.position, transform.position) <= viewDistance
+            && _handFoodSpawner.Food != null)
+        {
+            asr.closestFood = _handFoodSpawner.Food;
+            asr.foodEatable = _handFoodSpawner.Food.GetComponent<FoodDestroyer>();
+        }
+        
     }
 
     public void decideNextAction()
@@ -381,7 +409,7 @@ public class AnimalBehavior : Lifeform
                 agent.SetDestination(currentTarget);
                 break;
             case AnimalActions.Eating:
-                Destroy(asr.closestFood);
+                asr.foodEatable.Eat();
                 hunger = maxHunger;
                 break;
             case AnimalActions.Drinking:

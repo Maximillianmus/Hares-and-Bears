@@ -5,7 +5,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering.UI;
 
-public class FoodSpawner : MonoBehaviour
+public class HandFoodSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject handPrefab;
     [SerializeField] private Camera arCam;

@@ -59,7 +59,7 @@ public abstract class Animal : Lifeform
     public Animator animator;
     public bool eatingDrinking;
 
-    private FoodSpawner foodSpawner;
+    private HandFoodSpawner _handFoodSpawner;
 
     public void Start()
     {
@@ -67,7 +67,7 @@ public abstract class Animal : Lifeform
             GameObject.Find("TimeManager").TryGetComponent<TimeManager>(out timeManager);
 
         var foodSpawnerGo = GameObject.FindGameObjectWithTag("FoodSpawner");
-        foodSpawner = foodSpawnerGo.GetComponent<FoodSpawner>();
+        _handFoodSpawner = foodSpawnerGo.GetComponent<HandFoodSpawner>();
 
         // Make it so gameUpdate is called every in game tick
         TimeManager.onTimeAdvance += gameUpdate;
@@ -171,7 +171,7 @@ public abstract class Animal : Lifeform
         foreach (var hitCollider in hitColliders)
         {
             // Check for food
-            if (hitCollider.tag == "Animal" || hitCollider.tag == "Plant")
+            if (hitCollider.CompareTag("Animal") || hitCollider.CompareTag("Plant"))
             {
                 Lifeform lf;
                 hitCollider.TryGetComponent<Lifeform>(out lf);
@@ -192,7 +192,7 @@ public abstract class Animal : Lifeform
 
             }
             // Check for mate and predator
-            if (hitCollider.tag == "Animal")
+            if (hitCollider.CompareTag("Animal"))
             {
                 AnimalBehavior animal;
                 hitCollider.TryGetComponent<AnimalBehavior>(out animal);
@@ -221,11 +221,12 @@ public abstract class Animal : Lifeform
             }
         }
 
-        if (foodSpawner.Hand != null && Vector3.Distance(foodSpawner.Hand.transform.position, transform.position) <= viewDistance
-            && foodSpawner.Food != null)
+        if (_handFoodSpawner != null && _handFoodSpawner.Hand != null && 
+            Vector3.Distance(_handFoodSpawner.Hand.transform.position, transform.position) <= viewDistance
+            && _handFoodSpawner.Food != null)
         {
-            asr.closestFood = foodSpawner.Food;
-            asr.foodEatable = foodSpawner.Food.GetComponent<FoodDestroyer>();
+            asr.closestFood = _handFoodSpawner.Food;
+            asr.foodEatable = _handFoodSpawner.Food.GetComponent<FoodDestroyer>();
         }
         return asr;
     }

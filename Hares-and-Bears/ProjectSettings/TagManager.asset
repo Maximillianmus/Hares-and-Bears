@@ -12,7 +12,9 @@ TagManager:
   - Terrain
   - baseSDK
   - HandFood
-  - FoodSpawner
+  - particle
+  - ExampleBlock
+  - HandFoodSpawner
   layers:
   - Default
   - TransparentFX
