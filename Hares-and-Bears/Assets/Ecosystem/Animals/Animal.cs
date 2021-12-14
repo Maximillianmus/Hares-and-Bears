@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Ecosystem;
 using UnityEngine.AI;
 using UnityEngine;
 
@@ -58,10 +59,15 @@ public abstract class Animal : Lifeform
     public Animator animator;
     public bool eatingDrinking;
 
+    private FoodSpawner foodSpawner;
+
     public void Start()
     {
         if(timeManager == null)
             GameObject.Find("TimeManager").TryGetComponent<TimeManager>(out timeManager);
+
+        var foodSpawnerGo = GameObject.FindGameObjectWithTag("FoodSpawner");
+        foodSpawner = foodSpawnerGo.GetComponent<FoodSpawner>();
 
         // Make it so gameUpdate is called every in game tick
         TimeManager.onTimeAdvance += gameUpdate;
@@ -178,6 +184,7 @@ public abstract class Animal : Lifeform
                     if (dist < distToFood)
                     {
                         asr.closestFood = hitCollider.gameObject;
+                        asr.foodEatable = lf;
                         distToFood = dist;
 
                     }
@@ -212,6 +219,13 @@ public abstract class Animal : Lifeform
                     }
                 }
             }
+        }
+
+        if (foodSpawner.Hand != null && Vector3.Distance(foodSpawner.Hand.transform.position, transform.position) <= viewDistance
+            && foodSpawner.Food != null)
+        {
+            asr.closestFood = foodSpawner.Food;
+            asr.foodEatable = foodSpawner.Food.GetComponent<FoodDestroyer>();
         }
         return asr;
     }
@@ -273,7 +287,7 @@ public abstract class Animal : Lifeform
                     if (Vector3.Distance(asr.closestFood.transform.position, transform.position) <= interactRange)
                     {
                         currentAction = "eating";
-                        Destroy(asr.closestFood);
+                        asr.foodEatable.Eat();
                         hunger = maxHunger;
                         agent.SetDestination(transform.position);
 
