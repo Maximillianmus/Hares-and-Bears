@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -600,35 +600,81 @@ MonoBehaviour:
   male: 0
   diet: 
   predators: 
-  maxHunger: 5
-  maxThirst: 5
+  movingAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+  eatingAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+  drinkingAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+  matingAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+  waitingAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+  fleeingAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+  exploringAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+  fleeFromPlayerAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+  currentAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+  currentTarget: {x: 0, y: 0, z: 0}
+  ticksUntillNewAction: 0
+  viewDistance: 5
+  interactDistance: 0
+  movementSpeed: 0
   maxAge: 10
   ageRequiredToMate: 2
-  requiredDesireForMating: 0.7
+  maxHunger: 5
+  comfortableHunger: 0
+  maxThirst: 5
+  comfortableThirst: 0
+  requredDesireToMate: 0
   pregnantForTicks: 10
-  minOffspring: 1
-  maxOffspring: 4
-  maxMovespeed: 1
-  viewDistance: 5
-  interactRange: 1
-  timeBetweenExploring: 2
-  comfortableHungerLevel: 0.5
-  comfortableThirstLevel: 0.5
+  minKids: 0
+  maxKids: 0
+  alive: 0
+  age: 0
   hunger: 0
   thirst: 0
-  age: 0
   desireToMate: 0
-  alive: 0
-  exploring: 0
   pregnant: 0
   currentPregnantTicks: 0
   scaredOfPlayer: 0
   timeManager: {fileID: 0}
   agent: {fileID: 0}
   player: {fileID: 0}
-  mateEffect: {fileID: 0}
   animator: {fileID: 0}
-  eatingDrinking: 0
+  mateEffect: {fileID: 0}
+  watersplash: {fileID: 0}
+  skull: {fileID: 0}
   maleModelMesh: {fileID: 0}
 --- !u!65 &892114392
 BoxCollider:
