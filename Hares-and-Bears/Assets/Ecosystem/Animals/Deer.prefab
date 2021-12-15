@@ -94,12 +94,12 @@ MonoBehaviour:
     ps: {fileID: 0}
   eatingAction:
     action: 1
-    actionDuration: 40
+    actionDuration: 50
     animationTag: Eat_Drink
     ps: {fileID: 0}
   drinkingAction:
     action: 2
-    actionDuration: 40
+    actionDuration: 50
     animationTag: Eat_Drink
     ps: {fileID: 0}
   matingAction:
@@ -109,7 +109,7 @@ MonoBehaviour:
     ps: {fileID: 4588090793607289183, guid: c6f5051164fabd744864d1a1dd625c62, type: 3}
   waitingAction:
     action: 4
-    actionDuration: 30
+    actionDuration: 45
     animationTag: Idle
     ps: {fileID: 0}
   fleeingAction:
