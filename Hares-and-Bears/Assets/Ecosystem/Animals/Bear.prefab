@@ -124,8 +124,8 @@ MonoBehaviour:
     ps: {fileID: 0}
   fleeFromPlayerAction:
     action: 0
-    actionDuration: 40
-    animationTag: Run
+    actionDuration: 60
+    animationTag: Scare
     ps: {fileID: 0}
   currentAction:
     action: 0
