@@ -2,7 +2,22 @@ fileFormatVersion: 2
 guid: e71e6609288d8a64ea194220aa7d0213
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -5125239538300701222
+    second: Hare Armature| Hare scare
+  - first:
+      74: 3990623288982266676
+    second: Hare Armature|Hare Eat
+  - first:
+      74: 7095644933708947151
+    second: Hare Armature|Hare Idle
+  - first:
+      74: 2097797704480265214
+    second: Hare Armature|Hare Run
+  - first:
+      74: 4159895794611899373
+    second: Hare Armature|Hare Walk
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -107,7 +122,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
