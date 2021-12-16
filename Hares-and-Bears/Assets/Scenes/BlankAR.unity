@@ -2473,6 +2473,7 @@ GameObject:
   - component: {fileID: 1354141927}
   - component: {fileID: 1354141931}
   - component: {fileID: 1354141932}
+  - component: {fileID: 1354141933}
   m_Layer: 0
   m_Name: AR Camera
   m_TagString: MainCamera
@@ -2638,6 +2639,14 @@ MonoBehaviour:
   currentTicks: 0
   activated: 0
   animals: []
+--- !u!81 &1354141933
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354141925}
+  m_Enabled: 1
 --- !u!1 &1438988076
 GameObject:
   m_ObjectHideFlags: 0
