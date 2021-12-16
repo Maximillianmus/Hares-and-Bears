@@ -45,7 +45,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 3489300068431621582}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.02
+  m_Radius: 0.01
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -102,7 +102,7 @@ MonoBehaviour:
     sound: {fileID: 0}
   waitingAction:
     action: 4
-    actionDuration: 35
+    actionDuration: 20
     animationTag: Idle
     ps: {fileID: 0}
     sound: {fileID: 8300000, guid: 5dce3a0d30ad04042871249896a59ffa, type: 3}
@@ -139,8 +139,10 @@ MonoBehaviour:
   ageRequiredToMate: 10
   maxHunger: 50
   comfortableHunger: 20
+  hungerRequiredToMate: 10
   maxThirst: 60
   comfortableThirst: 30
+  thirstRequiredToMate: 10
   requredDesireToMate: 10
   pregnantForTicks: 10
   minKids: 2
@@ -174,8 +176,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0190343, y: 0.032687314, z: 0.031074582}
-  m_Center: {x: 0.003289733, y: 0.014815833, z: 0.0008433694}
+  m_Size: {x: 0.008514876, y: 0.032687314, z: 0.018417142}
+  m_Center: {x: 0.0015101526, y: 0.014815833, z: 0.0009948965}
 --- !u!82 &6804024970039946044
 AudioSource:
   m_ObjectHideFlags: 0

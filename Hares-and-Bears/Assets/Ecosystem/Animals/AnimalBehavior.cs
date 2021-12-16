@@ -47,8 +47,10 @@ public class AnimalBehavior : Lifeform, Eatable
     public float ageRequiredToMate;
     public float maxHunger;
     public float comfortableHunger;
+    public float hungerRequiredToMate;
     public float maxThirst;
     public float comfortableThirst;
+    public float thirstRequiredToMate;
     public float requredDesireToMate;
     public float pregnantForTicks;
     public int minKids;
@@ -343,7 +345,7 @@ public class AnimalBehavior : Lifeform, Eatable
         if (asr.nearbyPredators.Count == 0)
         {
             // If there is a mate
-            if(asr.closestMate != null)
+            if(asr.closestMate != null && hunger >= hungerRequiredToMate && thirst >= thirstRequiredToMate)
             {
                 if(Vector3.Distance(asr.closestMate.transform.position, transform.position) <= interactDistance)
                 {
