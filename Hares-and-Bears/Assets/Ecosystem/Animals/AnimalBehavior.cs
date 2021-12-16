@@ -465,7 +465,7 @@ public class AnimalBehavior : Lifeform
 
         if(currentAction.sound != null)
         {
-            currentAction.sound.Play(0);
+            currentAction.sound.Play();
         }
 
     }
