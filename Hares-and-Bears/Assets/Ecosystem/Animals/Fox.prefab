@@ -79,7 +79,7 @@ MonoBehaviour:
   movingAction:
     action: 0
     actionDuration: 5
-    animationTag: 
+    animationTag: Walk
     ps: {fileID: 0}
     sound: {fileID: 0}
   eatingAction:
@@ -102,26 +102,26 @@ MonoBehaviour:
     sound: {fileID: 0}
   waitingAction:
     action: 4
-    actionDuration: 20
-    animationTag: 
+    actionDuration: 35
+    animationTag: Idle
     ps: {fileID: 0}
     sound: {fileID: 0}
   fleeingAction:
     action: 5
-    actionDuration: 10
-    animationTag: 
+    actionDuration: 40
+    animationTag: Run
     ps: {fileID: 0}
     sound: {fileID: 0}
   exploringAction:
     action: 6
     actionDuration: 20
-    animationTag: 
+    animationTag: Walk
     ps: {fileID: 0}
     sound: {fileID: 0}
   fleeFromPlayerAction:
     action: 0
-    actionDuration: 0
-    animationTag: 
+    actionDuration: 60
+    animationTag: Scare
     ps: {fileID: 0}
     sound: {fileID: 0}
   currentAction:
@@ -340,6 +340,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5534311889995501070, guid: 5a70942ebcabeaf42907bd9b34d7446a,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 10a8faee206aec548b4447776488a77b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a70942ebcabeaf42907bd9b34d7446a, type: 3}
 --- !u!4 &6385866827244073172 stripped
