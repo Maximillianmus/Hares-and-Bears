@@ -150,6 +150,11 @@ public class MeshGenerator : MonoBehaviour
             gameObject.GetComponent<MeshCollider>().sharedMesh = mesh;
             navMesh.BuildNavMesh();
             spawnAnimalsPlants.startSpawn();
+            AudioSource audioSource;
+            if (gameObject.TryGetComponent(out audioSource))
+            {
+                audioSource.Play();
+            }
             this.enabled = false;
         }
     }

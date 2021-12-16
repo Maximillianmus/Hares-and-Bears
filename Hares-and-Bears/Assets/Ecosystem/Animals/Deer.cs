@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Deer : Animal
+public class Deer : AnimalBehavior
 {
     // Deer male mesh
     public Mesh maleModelMesh;

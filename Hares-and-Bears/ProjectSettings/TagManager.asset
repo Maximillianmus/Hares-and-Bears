@@ -10,6 +10,11 @@ TagManager:
   - Spawnable
   - WaterFinder
   - Terrain
+  - baseSDK
+  - HandFood
+  - particle
+  - ExampleBlock
+  - HandFoodSpawner
   layers:
   - Default
   - TransparentFX

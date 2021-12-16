@@ -2,7 +2,22 @@ fileFormatVersion: 2
 guid: 8fd696ed51aae654fa8fd6bbd6fd232b
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -8939234368751925865
+    second: Fox rig|Fox Idle
+  - first:
+      74: -4632136874226498719
+    second: Fox rig|Fox Run
+  - first:
+      74: 5090604274699979878
+    second: Fox rig|Fox Scared
+  - first:
+      74: 4980048502706822903
+    second: Fox rig|Fox Walking
+  - first:
+      74: 8335207710606995986
+    second: Fox rig|Fox_eat
   externalObjects:
   - first:
       type: UnityEngine:Material
