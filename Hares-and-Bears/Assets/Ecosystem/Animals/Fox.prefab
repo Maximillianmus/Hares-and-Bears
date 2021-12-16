@@ -45,7 +45,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2368727691363587633}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.03
+  m_Radius: 0.02
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -55,7 +55,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.05
-  m_BaseOffset: 0
+  m_BaseOffset: -0.01
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &1803952118715159693
@@ -102,7 +102,7 @@ MonoBehaviour:
     sound: {fileID: 0}
   waitingAction:
     action: 4
-    actionDuration: 35
+    actionDuration: 20
     animationTag: Idle
     ps: {fileID: 0}
     sound: {fileID: 0}
@@ -133,14 +133,16 @@ MonoBehaviour:
   currentTarget: {x: 0, y: 0, z: 0}
   ticksUntillNewAction: 0
   viewDistance: 0.25
-  interactDistance: 0.06
+  interactDistance: 0.08
   movementSpeed: 0.12
   maxAge: 80
   ageRequiredToMate: 10
   maxHunger: 80
   comfortableHunger: 50
+  hungerRequiredToMate: 40
   maxThirst: 80
   comfortableThirst: 50
+  thirstRequiredToMate: 40
   requredDesireToMate: 20
   pregnantForTicks: 15
   minKids: 3
@@ -174,8 +176,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.042637832, y: 0.03131933, z: 0.06547303}
-  m_Center: {x: 0.00036300998, y: 0.016573707, z: -0.0076642297}
+  m_Size: {x: 0.019360408, y: 0.03543472, z: 0.037139352}
+  m_Center: {x: -0.00075110607, y: 0.0186314, z: 0.0004754644}
 --- !u!82 &1029899340988657474
 AudioSource:
   m_ObjectHideFlags: 0
@@ -197,8 +199,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.25
-  MaxDistance: 1
+  MinDistance: 0.15
+  MaxDistance: 0.35
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -303,7 +305,7 @@ PrefabInstance:
     - target: {fileID: 1886444757079217268, guid: 5a70942ebcabeaf42907bd9b34d7446a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.0111
       objectReference: {fileID: 0}
     - target: {fileID: 1886444757079217268, guid: 5a70942ebcabeaf42907bd9b34d7446a,
         type: 3}

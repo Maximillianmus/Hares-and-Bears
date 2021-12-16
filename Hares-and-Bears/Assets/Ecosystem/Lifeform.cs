@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using Ecosystem;
 using UnityEngine;
 
-public abstract class Lifeform : MonoBehaviour, Eatable
+public abstract class Lifeform : MonoBehaviour
 {
     public Species species;
     
     
-    public void Eat()
-    {
-        Destroy(this.gameObject);
-    }
 }

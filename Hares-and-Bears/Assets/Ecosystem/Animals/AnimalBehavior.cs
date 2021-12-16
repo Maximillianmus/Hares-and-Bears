@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Ecosystem;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AnimalBehavior : Lifeform
+public class AnimalBehavior : Lifeform, Eatable
 {
 
     public GameObject prefab;
@@ -46,8 +47,10 @@ public class AnimalBehavior : Lifeform
     public float ageRequiredToMate;
     public float maxHunger;
     public float comfortableHunger;
+    public float hungerRequiredToMate;
     public float maxThirst;
     public float comfortableThirst;
+    public float thirstRequiredToMate;
     public float requredDesireToMate;
     public float pregnantForTicks;
     public int minKids;
@@ -82,6 +85,8 @@ public class AnimalBehavior : Lifeform
     public float addedViewDistanceForHandFood;
 
 
+    
+    
     public void Start()
     {
         if (timeManager == null)
@@ -186,6 +191,8 @@ public class AnimalBehavior : Lifeform
             }
         }
     }
+    
+    
 
     public void updateAnimalValues()
     {
@@ -282,7 +289,14 @@ public class AnimalBehavior : Lifeform
                     if (dist < distToFood)
                     {
                         asr.closestFood = hitCollider.gameObject;
-                        asr.foodEatable = lf;
+                        if (hitCollider.CompareTag("Animal"))
+                        {
+                            asr.foodEatable = hitCollider.gameObject.GetComponent<AnimalBehavior>();
+                        }
+                        else
+                        {
+                            asr.foodEatable = hitCollider.gameObject.GetComponent<Plant>();
+                        }
                         distToFood = dist;
                     }
                 }
@@ -331,7 +345,7 @@ public class AnimalBehavior : Lifeform
         if (asr.nearbyPredators.Count == 0)
         {
             // If there is a mate
-            if(asr.closestMate != null)
+            if(asr.closestMate != null && hunger >= hungerRequiredToMate && thirst >= thirstRequiredToMate)
             {
                 if(Vector3.Distance(asr.closestMate.transform.position, transform.position) <= interactDistance)
                 {
@@ -473,4 +487,10 @@ public class AnimalBehavior : Lifeform
 
     }
 
+    public void Eat()
+    {
+        Quaternion rotation = Quaternion.Euler(-90, 0, 0);
+        Instantiate(skull, transform.position, rotation);
+        Destroy(gameObject);
+    }
 }

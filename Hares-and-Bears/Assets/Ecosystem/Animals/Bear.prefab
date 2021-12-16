@@ -45,7 +45,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6328454639450985751}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.05
+  m_Radius: 0.03
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -55,7 +55,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.09
-  m_BaseOffset: 0
+  m_BaseOffset: -0.01
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!65 &1488286220350739802
@@ -69,8 +69,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.054763675, y: 0.111513644, z: 0.11380559}
-  m_Center: {x: 0.0029642545, y: 0.051446274, z: 0.006461352}
+  m_Size: {x: 0.049513623, y: 0.111513644, z: 0.055359967}
+  m_Center: {x: 0.00033922866, y: 0.051446274, z: 0.00062549487}
 --- !u!114 &5433577910056985657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
     sound: {fileID: 0}
   waitingAction:
     action: 4
-    actionDuration: 40
+    actionDuration: 30
     animationTag: Idle
     ps: {fileID: 0}
     sound: {fileID: 8300000, guid: 6996c5ba4f62a344b8488b284e079b99, type: 3}
@@ -146,14 +146,16 @@ MonoBehaviour:
   currentTarget: {x: 0, y: 0, z: 0}
   ticksUntillNewAction: 0
   viewDistance: 0.4
-  interactDistance: 0.13
+  interactDistance: 0.09
   movementSpeed: 0.1
   maxAge: 200
   ageRequiredToMate: 50
   maxHunger: 80
   comfortableHunger: 60
+  hungerRequiredToMate: 40
   maxThirst: 80
   comfortableThirst: 60
+  thirstRequiredToMate: 40
   requredDesireToMate: 20
   pregnantForTicks: 30
   minKids: 1
@@ -197,8 +199,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.4
-  MaxDistance: 1
+  MinDistance: 0.2
+  MaxDistance: 0.6
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

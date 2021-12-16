@@ -547,5 +547,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mesh Generator (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6807361741705916533, guid: 7183d9db1fec0e343a93ecc6c67adbb5,
+        type: 3}
+      propertyPath: plantSpawnNumber.Array.data[0]
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7183d9db1fec0e343a93ecc6c67adbb5, type: 3}

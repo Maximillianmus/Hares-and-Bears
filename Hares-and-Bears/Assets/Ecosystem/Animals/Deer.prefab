@@ -45,7 +45,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 3985607647021474161}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.045
+  m_Radius: 0.025
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -55,7 +55,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.08
-  m_BaseOffset: 0
+  m_BaseOffset: -0.01
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!65 &844819842661630490
@@ -69,8 +69,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.038785934, y: 0.08864979, z: 0.07972069}
-  m_Center: {x: 0.00006580353, y: 0.044608336, z: 0.008155955}
+  m_Size: {x: 0.021595009, y: 0.08864979, z: 0.045480877}
+  m_Center: {x: -0.0002899766, y: 0.044608336, z: 0.00043611135}
 --- !u!114 &8296921701534112463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
     sound: {fileID: 0}
   waitingAction:
     action: 4
-    actionDuration: 45
+    actionDuration: 20
     animationTag: Idle
     ps: {fileID: 0}
     sound: {fileID: 0}
@@ -152,9 +152,11 @@ MonoBehaviour:
   ageRequiredToMate: 30
   maxHunger: 60
   comfortableHunger: 40
+  hungerRequiredToMate: 30
   maxThirst: 60
   comfortableThirst: 40
-  requredDesireToMate: 20
+  thirstRequiredToMate: 30
+  requredDesireToMate: 30
   pregnantForTicks: 20
   minKids: 1
   maxKids: 3
@@ -199,8 +201,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.4
-  MaxDistance: 1
+  MinDistance: 0.2
+  MaxDistance: 0.6
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
