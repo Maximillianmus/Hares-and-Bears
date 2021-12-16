@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Ecosystem;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,7 +12,7 @@ struct AreaPlantScan
 }
 
 
-public abstract class Plant : Lifeform
+public abstract class Plant : Lifeform, Eatable
 {
     public float nutritionValue;
     [SerializeField] private float fruitProducing = 0.0f;
@@ -45,6 +46,12 @@ public abstract class Plant : Lifeform
         var aps = ScanArea();
         Act(aps);
 
+    }
+    
+    
+    public void Eat()
+    {
+        Destroy(this.gameObject);
     }
 
     private void Act(AreaPlantScan aps)
