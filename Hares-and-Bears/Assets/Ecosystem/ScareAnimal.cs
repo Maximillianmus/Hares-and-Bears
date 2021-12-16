@@ -10,6 +10,7 @@ public class ScareAnimal : MonoBehaviour
     public int currentTicks = 0;
     public bool activated = false;
     public List<AnimalBehavior> animals;
+    public AudioSource Audiosource;
 
     public void Start()
     {
@@ -21,6 +22,7 @@ public class ScareAnimal : MonoBehaviour
 
     public void scareAnimals()
     {
+        Audiosource.Play();
         activated = true;
         animals = new List<AnimalBehavior>();
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, range);
