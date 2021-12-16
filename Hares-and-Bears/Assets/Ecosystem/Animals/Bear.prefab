@@ -90,43 +90,57 @@ MonoBehaviour:
   movingAction:
     action: 0
     actionDuration: 5
-    animationTag: 
+    animationTag: Walk
     ps: {fileID: 0}
+    sound: {fileID: 0}
   eatingAction:
     action: 1
-    actionDuration: 40
+    actionDuration: 50
     animationTag: Eat_Drink
     ps: {fileID: 0}
+    sound: {fileID: 0}
   drinkingAction:
     action: 2
-    actionDuration: 40
+    actionDuration: 50
     animationTag: Eat_Drink
     ps: {fileID: 0}
+    sound: {fileID: 0}
   matingAction:
     action: 3
     actionDuration: 10
     animationTag: 
     ps: {fileID: 4588090793607289183, guid: c6f5051164fabd744864d1a1dd625c62, type: 3}
+    sound: {fileID: 0}
   waitingAction:
     action: 4
-    actionDuration: 20
-    animationTag: 
+    actionDuration: 40
+    animationTag: Idle
     ps: {fileID: 0}
+    sound: {fileID: 1245696823682100969, guid: 928dcb79ca685834bb2da068584042c6, type: 3}
   fleeingAction:
     action: 5
-    actionDuration: 10
-    animationTag: 
+    actionDuration: 40
+    animationTag: Run
     ps: {fileID: 0}
+    sound: {fileID: 0}
   exploringAction:
     action: 6
     actionDuration: 40
-    animationTag: 
+    animationTag: Walk
     ps: {fileID: 0}
+    sound: {fileID: 0}
+  fleeFromPlayerAction:
+    action: 0
+    actionDuration: 60
+    animationTag: Scare
+    ps: {fileID: 0}
+    sound: {fileID: 0}
   currentAction:
     action: 0
     actionDuration: 0
     animationTag: 
     ps: {fileID: 0}
+    sound: {fileID: 0}
   currentTarget: {x: 0, y: 0, z: 0}
   ticksUntillNewAction: 0
   viewDistance: 0.4
@@ -149,6 +163,7 @@ MonoBehaviour:
   desireToMate: 0
   pregnant: 0
   currentPregnantTicks: 0
+  scaredOfPlayer: 0
   timeManager: {fileID: 0}
   agent: {fileID: 7548149703321834635}
   player: {fileID: 0}
