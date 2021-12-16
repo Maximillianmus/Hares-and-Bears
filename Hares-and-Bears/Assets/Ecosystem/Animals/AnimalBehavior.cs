@@ -18,6 +18,7 @@ public class AnimalBehavior : Lifeform
         public int actionDuration;
         public string animationTag;
         public ParticleSystem ps;
+        public AudioSource sound;
     }
     [Header("Animal Actions")]
     public Action movingAction;
@@ -460,6 +461,11 @@ public class AnimalBehavior : Lifeform
         if(currentAction.animationTag != "" && animator != null)
         {
             animator.SetTrigger(currentAction.animationTag);
+        }
+
+        if(currentAction.sound != null)
+        {
+            currentAction.sound.Play(0);
         }
 
     }
