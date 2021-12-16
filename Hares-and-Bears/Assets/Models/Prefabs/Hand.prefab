@@ -128,6 +128,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnackPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 3933838357645831213, guid: 592c7b52c8c710e4685ccd672289065e,
+        type: 3}
+      propertyPath: m_TagString
+      value: HandFood
+      objectReference: {fileID: 0}
     - target: {fileID: 4457470202450900631, guid: 592c7b52c8c710e4685ccd672289065e,
         type: 3}
       propertyPath: m_RootOrder
