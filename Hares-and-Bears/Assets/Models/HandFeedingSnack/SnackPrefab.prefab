@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4457470202450900631}
   - component: {fileID: 753163390758058290}
   - component: {fileID: 3285148693827063288}
+  - component: {fileID: 3872081717446513088}
   m_Layer: 0
   m_Name: SnackPrefab
   m_TagString: Untagged
@@ -85,3 +86,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3872081717446513088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3933838357645831213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca9f6adc8ff3ed489b660dd1d83e566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
