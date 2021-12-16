@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Ecosystem;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AnimalBehavior : Lifeform
+public class AnimalBehavior : Lifeform, Eatable
 {
 
     public GameObject prefab;
@@ -84,6 +85,8 @@ public class AnimalBehavior : Lifeform
     public float addedViewDistanceForHandFood;
 
 
+    
+    
     public void Start()
     {
         if (timeManager == null)
@@ -188,6 +191,8 @@ public class AnimalBehavior : Lifeform
             }
         }
     }
+    
+    
 
     public void updateAnimalValues()
     {
@@ -284,7 +289,14 @@ public class AnimalBehavior : Lifeform
                     if (dist < distToFood)
                     {
                         asr.closestFood = hitCollider.gameObject;
-                        asr.foodEatable = lf;
+                        if (hitCollider.CompareTag("Animal"))
+                        {
+                            asr.foodEatable = hitCollider.gameObject.GetComponent<AnimalBehavior>();
+                        }
+                        else
+                        {
+                            asr.foodEatable = hitCollider.gameObject.GetComponent<Plant>();
+                        }
                         distToFood = dist;
                     }
                 }
@@ -475,4 +487,10 @@ public class AnimalBehavior : Lifeform
 
     }
 
+    public void Eat()
+    {
+        Quaternion rotation = Quaternion.Euler(-90, 0, 0);
+        Instantiate(skull, transform.position, rotation);
+        Destroy(gameObject);
+    }
 }
