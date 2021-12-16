@@ -49,7 +49,12 @@ public class ScareAnimal : MonoBehaviour
                 foreach (var animal in animals)
                 {
                     if (animal != null)
+                    {
                         animal.scaredOfPlayer = false;
+                        // Force next action
+                        animal.ticksUntillNewAction = 1000;
+                    }
+
                 }
                 currentTicks = 0;
                 activated = false;
