@@ -105,7 +105,7 @@ MonoBehaviour:
     actionDuration: 10
     animationTag: 
     ps: {fileID: 0}
-    sound: {fileID: 0}
+    sound: {fileID: 5915046101687440867, guid: 4af4a0d0883391e43a64299ce18f8d35, type: 3}
   fleeingAction:
     action: 5
     actionDuration: 10
