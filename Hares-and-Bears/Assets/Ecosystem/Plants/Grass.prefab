@@ -72,7 +72,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   prefabToPropagate: {fileID: 4160767914834271692}
-  maxPlants: 30
+  maxPlants: 60
   spawnAnimalPlants: {fileID: 0}
 --- !u!1001 &4698144224365256343
 PrefabInstance:
