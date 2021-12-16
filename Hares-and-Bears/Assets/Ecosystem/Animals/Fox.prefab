@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1223488629655169899}
   - component: {fileID: 1803952118715159693}
   - component: {fileID: 7821145117636878085}
+  - component: {fileID: 1029899340988657474}
   m_Layer: 0
   m_Name: Fox
   m_TagString: Animal
@@ -74,46 +75,61 @@ MonoBehaviour:
   male: 0
   diet: 03000000
   predators: 
+  Audiosource: {fileID: 1029899340988657474}
   movingAction:
     action: 0
     actionDuration: 5
     animationTag: 
     ps: {fileID: 0}
+    sound: {fileID: 0}
   eatingAction:
     action: 1
     actionDuration: 40
     animationTag: Eat_Drink
     ps: {fileID: 0}
+    sound: {fileID: 0}
   drinkingAction:
     action: 2
     actionDuration: 40
     animationTag: Eat_Drink
     ps: {fileID: 0}
+    sound: {fileID: 0}
   matingAction:
     action: 3
     actionDuration: 10
     animationTag: 
     ps: {fileID: 4588090793607289183, guid: c6f5051164fabd744864d1a1dd625c62, type: 3}
+    sound: {fileID: 0}
   waitingAction:
     action: 4
     actionDuration: 20
     animationTag: 
     ps: {fileID: 0}
+    sound: {fileID: 0}
   fleeingAction:
     action: 5
     actionDuration: 10
     animationTag: 
     ps: {fileID: 0}
+    sound: {fileID: 0}
   exploringAction:
     action: 6
     actionDuration: 20
     animationTag: 
     ps: {fileID: 0}
+    sound: {fileID: 0}
+  fleeFromPlayerAction:
+    action: 0
+    actionDuration: 0
+    animationTag: 
+    ps: {fileID: 0}
+    sound: {fileID: 0}
   currentAction:
     action: 0
     actionDuration: 0
     animationTag: 
     ps: {fileID: 0}
+    sound: {fileID: 0}
   currentTarget: {x: 0, y: 0, z: 0}
   ticksUntillNewAction: 0
   viewDistance: 0.25
@@ -136,6 +152,7 @@ MonoBehaviour:
   desireToMate: 0
   pregnant: 0
   currentPregnantTicks: 0
+  scaredOfPlayer: 0
   timeManager: {fileID: 0}
   agent: {fileID: 1223488629655169899}
   player: {fileID: 0}
@@ -145,6 +162,7 @@ MonoBehaviour:
   watersplash: {fileID: 5095193951450511491, guid: 62bf19fee24404b0c95ba222a55b9470,
     type: 3}
   skull: {fileID: 6279519643462881522, guid: 974a7af97c7c2e64abf6a4bb587be385, type: 3}
+  addedViewDistanceForHandFood: 0.25
 --- !u!65 &7821145117636878085
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -158,6 +176,103 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.042637832, y: 0.03131933, z: 0.06547303}
   m_Center: {x: 0.00036300998, y: 0.016573707, z: -0.0076642297}
+--- !u!82 &1029899340988657474
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2368727691363587633}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 628511622046471453, guid: ae390307872129640a5356b9bf07d048,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 0.25
+  MaxDistance: 1
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &4806140734406108320
 PrefabInstance:
   m_ObjectHideFlags: 0

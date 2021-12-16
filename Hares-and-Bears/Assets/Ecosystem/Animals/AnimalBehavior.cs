@@ -11,6 +11,8 @@ public class AnimalBehavior : Lifeform
     public List<Species> diet;
     public List<Species> predators;
 
+    public AudioSource Audiosource;
+
     [System.Serializable]
     public class Action
     {
@@ -18,7 +20,7 @@ public class AnimalBehavior : Lifeform
         public int actionDuration;
         public string animationTag;
         public ParticleSystem ps;
-        public AudioSource sound;
+        public AudioClip sound;
     }
     [Header("Animal Actions")]
     public Action movingAction;
@@ -77,6 +79,7 @@ public class AnimalBehavior : Lifeform
     
     [Header("Interaction with Hand recognition")]
     private HandFoodSpawner _handFoodSpawner;
+    public float addedViewDistanceForHandFood;
 
 
     public void Start()
@@ -312,7 +315,7 @@ public class AnimalBehavior : Lifeform
             }
         }
         if (_handFoodSpawner != null &&
-            _handFoodSpawner.Hand != null && Vector3.Distance(_handFoodSpawner.Hand.transform.position, transform.position) <= viewDistance
+            _handFoodSpawner.Hand != null && Vector3.Distance(_handFoodSpawner.Hand.transform.position, transform.position) <= viewDistance + addedViewDistanceForHandFood
             && _handFoodSpawner.Food != null)
         {
             asr.closestFood = _handFoodSpawner.Food;
@@ -465,7 +468,7 @@ public class AnimalBehavior : Lifeform
 
         if(currentAction.sound != null)
         {
-            currentAction.sound.Play(0);
+            Audiosource.PlayOneShot(currentAction.sound);
         }
 
     }

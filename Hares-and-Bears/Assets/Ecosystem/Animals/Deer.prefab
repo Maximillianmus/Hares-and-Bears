@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7218103330784423777}
   - component: {fileID: 844819842661630490}
   - component: {fileID: 8296921701534112463}
+  - component: {fileID: 5440122704726339244}
   m_Layer: 0
   m_Name: Deer
   m_TagString: Animal
@@ -87,51 +88,61 @@ MonoBehaviour:
   male: 0
   diet: 000000000100000002000000
   predators: 06000000
+  Audiosource: {fileID: 5440122704726339244}
   movingAction:
     action: 0
     actionDuration: 5
     animationTag: Walk
     ps: {fileID: 0}
+    sound: {fileID: 0}
   eatingAction:
     action: 1
     actionDuration: 50
     animationTag: Eat_Drink
     ps: {fileID: 0}
+    sound: {fileID: 0}
   drinkingAction:
     action: 2
     actionDuration: 50
     animationTag: Eat_Drink
     ps: {fileID: 0}
+    sound: {fileID: 0}
   matingAction:
     action: 3
     actionDuration: 10
     animationTag: 
     ps: {fileID: 4588090793607289183, guid: c6f5051164fabd744864d1a1dd625c62, type: 3}
+    sound: {fileID: 0}
   waitingAction:
     action: 4
     actionDuration: 45
     animationTag: Idle
     ps: {fileID: 0}
+    sound: {fileID: 0}
   fleeingAction:
     action: 5
     actionDuration: 40
     animationTag: Run
     ps: {fileID: 0}
+    sound: {fileID: 0}
   exploringAction:
     action: 6
     actionDuration: 30
     animationTag: Walk
     ps: {fileID: 0}
+    sound: {fileID: 0}
   fleeFromPlayerAction:
     action: 0
     actionDuration: 60
     animationTag: Scare
     ps: {fileID: 0}
+    sound: {fileID: 0}
   currentAction:
     action: 0
     actionDuration: 0
     animationTag: 
     ps: {fileID: 0}
+    sound: {fileID: 8300000, guid: b2c1c44d8c6f04d47bf34d91d48f2d15, type: 3}
   currentTarget: {x: 0, y: 0, z: 0}
   ticksUntillNewAction: 0
   viewDistance: 0.4
@@ -164,8 +175,106 @@ MonoBehaviour:
   watersplash: {fileID: 5095193951450511491, guid: 62bf19fee24404b0c95ba222a55b9470,
     type: 3}
   skull: {fileID: 6279519643462881522, guid: 974a7af97c7c2e64abf6a4bb587be385, type: 3}
+  addedViewDistanceForHandFood: 0.4
   maleModelMesh: {fileID: 2223670522894240929, guid: 7bdedc17e5de61f42b998c8580c68b58,
     type: 3}
+--- !u!82 &5440122704726339244
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3985607647021474161}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 628511622046471453, guid: ae390307872129640a5356b9bf07d048,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 0.4
+  MaxDistance: 1
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &4045412170771277415
 PrefabInstance:
   m_ObjectHideFlags: 0
