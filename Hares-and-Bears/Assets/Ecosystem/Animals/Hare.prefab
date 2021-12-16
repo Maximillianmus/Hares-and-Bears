@@ -79,7 +79,7 @@ MonoBehaviour:
   movingAction:
     action: 0
     actionDuration: 5
-    animationTag: 
+    animationTag: Walk
     ps: {fileID: 0}
     sound: {fileID: 0}
   eatingAction:
@@ -102,26 +102,26 @@ MonoBehaviour:
     sound: {fileID: 0}
   waitingAction:
     action: 4
-    actionDuration: 10
-    animationTag: 
+    actionDuration: 35
+    animationTag: Idle
     ps: {fileID: 0}
     sound: {fileID: 8300000, guid: 5dce3a0d30ad04042871249896a59ffa, type: 3}
   fleeingAction:
     action: 5
-    actionDuration: 10
-    animationTag: 
+    actionDuration: 35
+    animationTag: Run
     ps: {fileID: 0}
     sound: {fileID: 0}
   exploringAction:
     action: 6
     actionDuration: 20
-    animationTag: 
+    animationTag: Walk
     ps: {fileID: 0}
     sound: {fileID: 0}
   fleeFromPlayerAction:
     action: 0
-    actionDuration: 0
-    animationTag: 
+    actionDuration: 60
+    animationTag: Scare
     ps: {fileID: 0}
     sound: {fileID: 0}
   currentAction:
