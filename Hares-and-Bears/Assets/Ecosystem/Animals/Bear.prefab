@@ -133,7 +133,7 @@ MonoBehaviour:
     sound: {fileID: 0}
   fleeFromPlayerAction:
     action: 7
-    actionDuration: 60
+    actionDuration: 22
     animationTag: Scare
     ps: {fileID: 0}
     sound: {fileID: 0}
