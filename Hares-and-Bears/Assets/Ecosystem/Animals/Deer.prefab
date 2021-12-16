@@ -118,7 +118,7 @@ MonoBehaviour:
     actionDuration: 20
     animationTag: Idle
     ps: {fileID: 0}
-    sound: {fileID: 0}
+    sound: {fileID: 8300000, guid: 0e7b1caab5670488da4a73fdf34a0679, type: 3}
   fleeingAction:
     action: 5
     actionDuration: 40
@@ -142,7 +142,7 @@ MonoBehaviour:
     actionDuration: 0
     animationTag: 
     ps: {fileID: 0}
-    sound: {fileID: 8300000, guid: b2c1c44d8c6f04d47bf34d91d48f2d15, type: 3}
+    sound: {fileID: 0}
   currentTarget: {x: 0, y: 0, z: 0}
   ticksUntillNewAction: 0
   viewDistance: 0.4
