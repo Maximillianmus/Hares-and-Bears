@@ -56,7 +56,9 @@ header {
     text-align: center;
     height: 500px;
     padding-top: 200px;
-    background-color: var(--main-color1A);
+    /*background-color: var(--main-color1A);
+    background: linear-gradient(rgba(26, 26, 26, 0.6), rgba(168, 0, 0, 0.2)), url(Nature1-Transparent.png);*/
+    background-image: url(Nature1-Transparent.png);
 }
 
 .AR-text {
