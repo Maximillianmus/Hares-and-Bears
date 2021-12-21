@@ -39,7 +39,7 @@ main {
     
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     color: var(--main-color2);
 }
 
@@ -57,6 +57,10 @@ header {
     height: 500px;
     padding-top: 200px;
     background-color: var(--main-color1A);
+}
+
+.AR-text {
+    /*color: var(--main-color4);*/
 }
 
 .download-button {
@@ -84,14 +88,14 @@ header {
 
 .info-section {
     /*background-color: red;*/
-    height: 300px;
+    /*height: 300px;*/
 }
 
 .info-section-light {
     background-color: var(--main-color1A);
 }
 
-.info-card, h3 {
+.info-card, h3, h4 {
     text-align: center;
 }
 
