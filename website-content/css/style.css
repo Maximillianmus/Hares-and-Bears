@@ -1,5 +1,6 @@
 :root {
   --main-color1: #D3FCD5;
+  --main-color1A: #edffee;
   --main-color2: #44344F;
   --main-color3: #FFFFFF;
   --main-color4: #C2F970;
@@ -13,6 +14,7 @@
 
 body {
     background-color: var(--main-color1); 
+    font-family: sans-serif;
 }
 
 .nav-bar {
@@ -41,11 +43,20 @@ h1, h2, h3 {
     color: var(--main-color2);
 }
 
+.subtitle-header {
+    font-size: 15px;
+    padding-bottom: 30px;
+}
+
+.fa {
+    color: var(--main-color2);
+}
+
 header {
     text-align: center;
     height: 500px;
     padding-top: 200px;
-    background-color: aliceblue;
+    background-color: var(--main-color1A);
 }
 
 .download-button {
@@ -55,6 +66,14 @@ header {
     border-radius: 10px;
     border-width: 1px;
     background-color: var(--main-color4);
+    transition: 0.2s;
+}
+
+.download-button:hover {
+    cursor: pointer;
+    transition: 0.2s;
+    background-color: var(--main-color2);
+    color: var(--main-color4)
 }
 
 .section-title {
@@ -66,6 +85,10 @@ header {
 .info-section {
     /*background-color: red;*/
     height: 300px;
+}
+
+.info-section-light {
+    background-color: var(--main-color1A);
 }
 
 .info-card, h3 {
@@ -83,8 +106,8 @@ header {
     text-align: justify;
     font-size: 12px;
     padding: 10px;
-    /*background-color: var(--main-color3);*/
-    background-color: var(--main-color1);
+    /*background-color: var(--main-color3);
+    background-color: var(--main-color1);*/
     height: 100%;
     width: 400px;
     /*min-width: 500px;
@@ -108,4 +131,11 @@ header {
       flex-direction: column;
       justify-content: center;
     }
+}
+
+footer {
+    height: 50px;
+    background-color: var(--main-color4);
+    text-align: center;
+    padding-top: 10px;
 }
