@@ -1,6 +1,10 @@
 :root {
   --main-color1: #D3FCD5;
-  --main-color2: #3e3e3e;
+  --main-color2: #44344F;
+  --main-color3: #FFFFFF;
+  --main-color4: #C2F970;
+  --main-color5: #98A6D4;
+  --main-color6: #564D80;
   --section-title-background: black;
   --heading-text-color: white;
   --text-color: #f0f0f0;
@@ -11,16 +15,97 @@ body {
     background-color: var(--main-color1); 
 }
 
+.nav-bar {
+    background-color: var(--main-color4);
+    color: var(--main-color2);
+}
+
+.nav-button {
+    text-decoration: none;
+}
+
+.nav-button:hover {
+    font-weight: bold;
+}
+
+#nav-title {
+    font-weight: bold;
+    text-decoration: none;
+}
+
 main {
     
 }
 
+h1, h2, h3 {
+    color: var(--main-color2);
+}
+
 header {
     text-align: center;
-    height: 300px;
-    padding-top: 100px;
+    height: 500px;
+    padding-top: 200px;
+    background-color: aliceblue;
+}
+
+.download-button {
+    height: 30px;
+    color: var(--main-color2);
+    border-color: var(--main-color2);
+    border-radius: 10px;
+    border-width: 1px;
+    background-color: var(--main-color4);
 }
 
 .section-title {
+    padding-top: 50px;
+    padding-bottom: 30px;
     text-align: center;
+}
+
+.info-section {
+    /*background-color: red;*/
+    height: 300px;
+}
+
+.info-card, h3 {
+    text-align: center;
+}
+
+
+.info-card, p {
+    /*background-color: var(--main-color3);
+    padding: 10px;*/
+}
+
+.info-card {
+    margin: auto;
+    text-align: justify;
+    font-size: 12px;
+    padding: 10px;
+    /*background-color: var(--main-color3);*/
+    background-color: var(--main-color1);
+    height: 100%;
+    width: 400px;
+    /*min-width: 500px;
+    max-width: 600px;*/
+}
+
+.column {
+  margin-bottom: 10px;
+  padding: 0 8px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+@media screen and (max-width: 650px) {
+    
+    .row {
+      flex-direction: column;
+      justify-content: center;
+    }
 }
