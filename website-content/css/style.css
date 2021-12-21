@@ -1,9 +1,9 @@
 :root {
-  --main-color1: #D3FCD5;
-  --main-color1A: #edffee;
+  --main-color1: #d7efd8;
+  --main-color1A: #ebf4ec;
   --main-color2: #44344F;
   --main-color3: #FFFFFF;
-  --main-color4: #C2F970;
+  --main-color4: #c1ea84;
   --main-color5: #98A6D4;
   --main-color6: #564D80;
   --section-title-background: black;
@@ -148,4 +148,8 @@ footer {
 
 .img1 {
     height: 250px;
+}
+
+.img2 {
+    height: 200px;;
 }
