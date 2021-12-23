@@ -6,10 +6,10 @@
   --main-color4: #c1ea84;
   --main-color5: #98A6D4;
   --main-color6: #564D80;
-  --section-title-background: black;
-  --heading-text-color: white;
-  --text-color: #f0f0f0;
-  --section-content-background: rgba(255, 255, 255, 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -18,8 +18,8 @@ body {
 }
 
 .nav-bar {
-    background-color: var(--main-color4);
-    color: var(--main-color2);
+    background-color: var(--main-color2);
+    color: var(--main-color4);
 }
 
 .nav-button {
@@ -67,19 +67,17 @@ header {
 
 .download-button {
     height: 30px;
-    color: var(--main-color2);
-    border-color: var(--main-color2);
-    border-radius: 10px;
-    border-width: 1px;
-    background-color: var(--main-color4);
+    color: var(--main-color4);
+    border: none;
+    background-color: var(--main-color2);
     transition: 0.2s;
 }
 
 .download-button:hover {
     cursor: pointer;
     transition: 0.2s;
-    background-color: var(--main-color2);
-    color: var(--main-color4)
+    background-color: var(--main-color4);
+    color: var(--main-color2)
 }
 
 .section-title {
@@ -115,14 +113,8 @@ header {
     /*background-color: var(--main-color3);
     background-color: var(--main-color1);*/
     height: 100%;
-    width: 400px;
-    /*min-width: 500px;
-    max-width: 600px;*/
-}
-
-.column {
-  margin-bottom: 10px;
-  padding: 0 8px;
+    min-width: 200px;
+    max-width: 600px;
 }
 
 .row {
@@ -131,25 +123,38 @@ header {
   justify-content: center;
 }
 
-@media screen and (max-width: 650px) {
-    
-    .row {
-      flex-direction: column;
-      justify-content: center;
-    }
+.column {
+  margin-bottom: 10px;
+  padding: 0 8px;
 }
 
 footer {
     height: 50px;
-    background-color: var(--main-color4);
+    background-color: var(--main-color2);
     text-align: center;
     padding-top: 10px;
 }
 
-.img1 {
-    height: 250px;
+.image {
+    height: 250px;   
 }
 
-.img2 {
-    height: 200px;;
+@media screen and (max-width: 650px) {
+    
+    .row {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .info-card {
+        width: 100%;
+    }
+    
+    .img-broad {
+    height: 170px;
+    }
+}
+
+@media screen and (max-width: 320px) {
 }
