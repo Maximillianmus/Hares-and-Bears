@@ -160,14 +160,40 @@ header {
 }
 
 footer {
-    height: 50px;
+    height: 70px;
     background-color: var(--main-color2);
     text-align: center;
     padding-top: 10px;
+    padding-bottom: 20px;
+    color: var(--main-color4);
 }
 
 .image {
-    height: 250px;   
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    
+}
+
+.mySlides {
+    display:none;
+}
+
+.mySlidesFirst {
+    display: block;
+}
+
+.image-gallery{
+    width: 100%;
+}
+
+.slideshow-btn {
+    background-color: var(--main-color2);
+    border-style: none;
+    color: var(--main-color4);
+    height: 25px;
+    width: 25px;
 }
 
 .team-member-img {
@@ -193,9 +219,7 @@ footer {
         width: 100%;
     }
     
-    .img-broad {
-    height: 170px;
-    }
+    .image {width: 60%}
 }
 
 .section-bg-img-1 {
