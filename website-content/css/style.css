@@ -20,6 +20,7 @@ body {
 .nav-bar {
     background-color: var(--main-color2);
     color: var(--main-color4);
+    box-shadow: 5px 5px 10px 0px rgba(68, 52, 79, 0.25);
 }
 
 .nav-button {
@@ -43,6 +44,11 @@ h1, h2, h3, h4 {
     color: var(--main-color2);
 }
 
+h3 {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
 .subtitle-header {
     font-size: 15px;
     padding-bottom: 30px;
@@ -50,6 +56,19 @@ h1, h2, h3, h4 {
 
 .fa {
     color: var(--main-color2);
+}
+
+.goals-icon-container {
+    text-align: center; 
+}
+
+.goals-text {
+        color: var(--main-color2);
+    text-align: center;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+    
 }
 
 header {
@@ -89,6 +108,8 @@ header {
 .info-section {
     /*background-color: red;*/
     /*height: 300px;*/
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .info-section-light {
@@ -117,6 +138,16 @@ header {
     max-width: 600px;
 }
 
+.member-card {
+  padding: 10px;
+  max-width: 400px;
+  text-align: center;
+}
+
+.content-text {
+    text-align: justify;
+}
+
 .row {
   display: flex;
   flex-direction: row;
@@ -139,6 +170,17 @@ footer {
     height: 250px;   
 }
 
+.team-member-img {
+    border-style: solid;
+    border-color: var(--main-color2);
+    border-width: 1px;
+    max-width: 300px;
+    max-height: 300px;
+    margin: 10px;
+    width: 75%;
+    
+}
+
 @media screen and (max-width: 650px) {
     
     .row {
@@ -156,5 +198,10 @@ footer {
     }
 }
 
-@media screen and (max-width: 320px) {
+.section-bg-img-1 {
+
+}
+
+.section-bg-img-2 {
+
 }
