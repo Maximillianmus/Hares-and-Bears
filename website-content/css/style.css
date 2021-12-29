@@ -232,7 +232,7 @@ footer {
 
 .slideshow-btn:hover {
     transition: 0.2s;
-    color: background-color: var(--main-color2);
+    color: var(--main-color2);
     background-color: var(--main-color4);
 }
 
