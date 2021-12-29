@@ -58,9 +58,9 @@
                     <div class="column">
                         <div class="info-card">
                             <div class="info-containter">
-                            <p>
-Hares and Bears is an ecosystem simulation in Augmented reality (AR). With the application you can observe a virtual ecosystem containing the four animal species hares, foxes, bears and deers. The animals will need to eat and drink to survive. What the animals eat depend on their respective species, they can either eat the plants growing within the ecosystem (grass, blueberries and lingonberries) or by hunting other animals. The animals will also reproduce. As a user you have some control over the ecosystem as you can spawn in new animals to explore what it takes to create a balanced ecosystem. The project was developed in the course DH2413 Advanced Graphics and Interaction at KTH in the autumn of 2021.
-                            </p>
+                                <p>
+                                    Hares and Bears is an ecosystem simulation in Augmented reality (AR). With the application you can observe a virtual ecosystem containing the four animal species hares, foxes, bears and deers. The animals will need to eat and drink to survive. What the animals eat depend on their respective species, they can either eat the plants growing within the ecosystem (grass, blueberries and lingonberries) or by hunting other animals. The animals will also reproduce. As a user you have some control over the ecosystem as you can spawn in new animals to explore what it takes to create a balanced ecosystem. The project was developed in the course DH2413 Advanced Graphics and Interaction at KTH in the autumn of 2021.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,8 @@ Hares and Bears is an ecosystem simulation in Augmented reality (AR). With the a
                         <div class="info-card">
                             <div class="info-containter">
                             <h3>Motivation</h3>
-                            <p>The main motivation behind the project was to explore the area of what the future of STEAM learning might look like, specifically within the area of biology. We wanted to develop an AR application that helps younger students (7-9 year olds) learn about the food chain and how the balance in a simple ecosystem works. We also wanted to learn more about AR development and AR interaction.
+                            <p>
+                                The main motivation behind the project was to explore the area of what the future of STEM learning might look like, specifically within the area of biology. We wanted to develop an AR application that helps younger students (7-9 year olds) learn about the food chain and how the balance in a simple ecosystem works. We also wanted to learn more about AR interaction and development.
                             </p>
                             </div>
                         </div>
@@ -121,7 +122,11 @@ Hares and Bears is an ecosystem simulation in Augmented reality (AR). With the a
                     <div class="column">
                         <div class="info-card">
                         <h3>Challenges and learnings</h3>
-                        <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</p>
+                        <p>
+                            One of our initial challenges was to understand how the plane detection worked in the Unity AR foundation, as well as adapt the size of objects (the ground plane as well as the animals) to make them a reasonable size while being viewed in AR. We also had some challenges with implementing the navigation of the animals, especially regarding water finding, where the initial implementation caused the application to lag. This was solved by only saving and searching for the border points of the water when an animal got thirsty which greatly improved the performance. There were also some challenges with the hand tracking as it required the learning of a new library for the person working with implementing this functionality.
+                            <br><br>
+                            We have learned the basics of working with Unity’s AR Foundation which includes placing a plane/surface and navigating around it in the real world to look at it from different angles through a mobile phone. We have also learned more about how to animate 3D models as well as procedural map generation using an overlapping noise technique. Furthermore, we have experimented with hand tracking in AR by implementing an animal feeding functionality.
+                        </p>
                         </div>
                     </div>
                     <div class="column">
@@ -133,11 +138,28 @@ Hares and Bears is an ecosystem simulation in Augmented reality (AR). With the a
             </div>
             
             <div class="info-section">
+                <h3>Related work</h3>
                 <div class="row">
                     <div class="column">
                         <div class="info-card">
-                        <h3>Related work</h3>
-                        <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</p>
+                            <p>
+                                <h4><a class="related-work-title" href="https://store.steampowered.com/app/853550/Equilinox/">Equilinox</a></h4>
+                                <br>
+                                Equilinox is a game where you can create and manage your own ecosystem. You can place plants and animals and observe as the ecosystem grows. If the ecosystem flourish the animals can earn the player points which can be used to purchase different in-game resources.
+                                <br><br>
+                                We took some inspiration from this game, and if we were to continue to work on Hares and Bears our envision would be to have a richer variety of animals and plants, just as in Equilinox. One difference between Equilinox and our project is that our ecosystem is viewed using AR with the main goal is to experiment and see what it takes to create a balanced ecosystem as well as observe the ecosystem that you have created. Thus we did not want to have functionalities as currencies which are more gameplay focused.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="info-card">
+                            <p>
+                                <h4><a class="related-work-title" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.713.2276&rep=rep1&type=pdf">The Table Mystery</a></h4>
+                                <br>
+                                Table Mystery is an AR collaboration educational game with the focus of teaching younger students about the periodic table.
+                                <br><br>
+                                This project is quite a lot different from our project as it is focused within teaching about the field of chemistry while ours is focused on teaching within the field of biology. The Table Mystery is also more gameplay focused with a story where students need to work together to solve a problem. The main similarity between this project and our project is that they both use Augmented reality and therefore we thought that it was interesting to read more about it in order to better understand how AR can be used in an educational setting.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -149,20 +171,24 @@ Hares and Bears is an ecosystem simulation in Augmented reality (AR). With the a
                     <div class="column">
                         <div class="info-card">
                         <h4>Unity</h4>
-                        <p>The project was developed in the Unity game engine, which is a cross-platform game engine. For the AR using Unity's AR foundation. All group members had previous experience of working with Unity which is why we thought it was a good choice for creating this project. Since none of us had worked with AR before Unity’s AR foundation was a good tool to start learning about AR development without the need to implement everything that is required in an AR application from scratch. </p>
+                        <p>
+                            The project was developed in the Unity game engine, which is a cross-platform game engine. For the AR implementation we used Unity's AR foundation. All group members had previous experience of working with Unity which is why we thought it was a good choice for creating this project. Since none of us had worked with AR before, Unity’s AR foundation was a good tool to start learning about AR development without the need to implement everything that is required in an AR application from scratch.
+                        </p>
                         </div>
                     </div>
                     <div class="column">
                         <div class="info-card">
                         <h4>Blender</h4>
-                        <p>Blender is an open source software that can be used to for example create 3D models and animations. Blender was used to create the 3D models for the animals and plants as well as to create some of the textures. Blender was also used for rigging and animating the animals. We choose to use Blender as the group members working with models and animations had previous experience with the software. We also chose to use Blender because it is a powerful open source software.</p>
+                        <p>
+                            Blender is an open source software that can be used to for example create 3D models and animations. Blender was used to create the 3D models of the animals and plants as well as to create some of the textures. Blender was also used for rigging and animating the animals. We choose to use Blender as the group members working with models and animations had previous experience with the software. We also chose to use Blender because it is a powerful open source software.
+                        </p>
                         </div>
                     </div>
                     <div class="column">
                         <div class="info-card">
                         <h4>ManoMotion</h4>
                         <p>
-                            ManoMotion is a library which can be used for real time 2D and 3D hand tracking. ManoMotion was used to create a feeding function which enables the user to hold their hand in front of their mobile camera to create a virtual hand holding a fruit in the AR scene. The user can then feed this fruit to one of the closeby animals. We decided to use ManoMotion as the hand tracking library as it had a free version available and because it could be used in Unity.
+                            ManoMotion is a library which can be used for real time 2D and 3D hand tracking. ManoMotion was used to create a feeding functionality that enables the user to hold their hand in front of their mobile camera to create a virtual hand holding a fruit in the AR scene. The user can then feed this fruit to one of the animals. We decided to use ManoMotion as the hand tracking library as it had a free version available and because it could be used in Unity.
                         </p>
                         </div>
                     </div>
@@ -171,13 +197,17 @@ Hares and Bears is an ecosystem simulation in Augmented reality (AR). With the a
                     <div class="column">
                         <div class="info-card">
                         <h4>Adobe Substance</h4>
-                        <p>We used Substance Painter and Substance Designer to create textures for some of the animals. We used it because it is a powerful tool for creating textures. So by using it we had the flexibility to create textures suitable for the style we wanted for our application.</p>
+                        <p>
+                            We used Adobe Substance Painter and Substance Designer to create textures for some of the animals. We used it because it is a powerful tool for creating textures. So by using it we had the flexibility to create textures suitable for the style we wanted for our application.
+                        </p>
                         </div>
                     </div>
                     <div class="column">
                         <div class="info-card">
                         <h4>GitHub</h4>
-                        <p>GitHub is a service which provides hosting for software development as well as version control. We chose to use GitHub for our projects as it makes it much easier for different people to work simultaneously with different parts of the project by having separate branches. We could also use GitHub to plan and divide work between group members using a GitHub project board as well as through creating issues. Furthermore we use GitHub pages to host our project website.</p>
+                        <p>
+                            GitHub is a service which provides hosting for software development as well as version control. We chose to use GitHub for our projects as it makes it much easier for different people to work simultaneously with different parts of the project by having separate branches. We could also use GitHub to plan and divide work between group members using a GitHub project board as well as through creating issues. Furthermore, we use GitHub pages to host our project website.
+                        </p>
                         </div>
                     </div>
                     <div class="column">
@@ -210,23 +240,23 @@ Hares and Bears is an ecosystem simulation in Augmented reality (AR). With the a
                 <h2>GALLERY</h2>
             </div>
             
-            <div class="info-section section-bg-img-2">
+            <div class="info-section info-section-gallery section-bg-img-2">
             
-            <div class="w3-content w3-display-container">
+                <div class="w3-content w3-display-container">
             
-            <div class="w3-display-container mySlides mySlidesFirst">
-            <img class="image-gallery" src="website-content/img/AppImg1.jpg">
-            <div class="w3-display-bottommiddle w3-container">Overview of the AR ecosystem</div>
-            </div>
+                    <div class="w3-display-container gallery-slides gallery-slides-first">
+                    <img class="image-gallery" src="website-content/img/AppImg1.jpg">
+                    </div>
+                    <div class="gallery-slide-description gallery-slides-first">Overview of the AR ecosystem</div>
             
-            <div class="w3-display-container mySlides">
-            <img class="image-gallery" src="website-content/img/AppImg2.jpg">
-            <div class="w3-display-bottommiddle w3-container">Feeding functionality</div>
-            </div>
+                    <div class="w3-display-container gallery-slides">
+                    <img class="image-gallery" src="website-content/img/AppImg2.jpg">
+                    </div>
+                    <div class="gallery-slide-description">Feeding functionality using hand tracking</div>
             
-            <button class="w3-display-left slideshow-btn" onclick="plusDivs(-1)">&#10094;</button>
-            <button class="w3-display-right slideshow-btn" onclick="plusDivs(1)">&#10095;</button>
-            </div>
+                    <button class="w3-display-left slideshow-btn" onclick="plusDivs(-1)">&#10094;</button>
+                    <button class="w3-display-right slideshow-btn" onclick="plusDivs(1)">&#10095;</button>
+                </div>
             
             </div>
             
@@ -294,7 +324,9 @@ Hares and Bears is an ecosystem simulation in Augmented reality (AR). With the a
                             <a href="https://github.com/malinliedholm"><i class="fa fa-github social-icon" style="font-size: 30px;"></i></a>
                             <a href="https://www.linkedin.com/in/malin-liedholm-9b8913173/  "><i class="fa fa-linkedin-square social-icon" style="font-size: 30px;"></i></a>
                             
-                            <p class="content-text">Individual contribution here...</p>
+                            <p class="content-text">
+                                I have been working on creating the plant 3D models and textures for the plants, as well as for the deer and the bear. I have also created animations for the deer and the bear. Furthermore, I have been working on implementing all the animations into Unity. I was also responsible for creating the project website.
+                            </p>
                           </div>
                         </div>
                       </div>

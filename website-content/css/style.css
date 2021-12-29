@@ -54,6 +54,16 @@ h3 {
     padding-bottom: 30px;
 }
 
+.related-work-title {
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.related-work-title:hover {
+    transition: 0.2s;
+    color: #85C822;
+}
+
 .fa {
     color: var(--main-color2);
     transition: 0.2s;
@@ -166,11 +176,11 @@ header {
 }
 
 footer {
-    height: 70px;
+    height: 100px;
     background-color: var(--main-color2);
     text-align: center;
-    padding-top: 10px;
-    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 30px;
     color: var(--main-color4);
 }
 
@@ -181,17 +191,28 @@ footer {
     width: 50%;   
 }
 
-.mySlides {
-    display:none;
+.gallery-slides {
+    display: none;
     color: white;
     font-size: 12px;
 }
 
-.mySlidesFirst {
+.gallery-slide-description {
+    display: none;
+    text-align: center;
+    padding-top: 20px;
+    font-style: italic;
+}
+
+.gallery-slides-first {
     display: block;
 }
 
-.image-gallery{
+.info-section-gallery {
+    padding-bottom: 60px;
+}
+
+.image-gallery {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -226,6 +247,10 @@ footer {
     
 }
 
+.img-broad {
+    padding-top: 15%;
+}
+
 @media screen and (max-width: 650px) {
     
     .row {
@@ -239,6 +264,10 @@ footer {
     }
     
     .image {width: 60%}
+
+    .img-broad {
+        padding-top: 0%;
+    }
 }
 
 .section-bg-img-1 {
@@ -250,11 +279,11 @@ footer {
 }
 
 .video-container {
-  position: relative;
-  margin: 0 auto;
-  overflow: hidden;
-  width: 90%;
-  padding-top: 46.25%;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 90%;
+    padding-top: 46.25%;
 }
 
 .video {

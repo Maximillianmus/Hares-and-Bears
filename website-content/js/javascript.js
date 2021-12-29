@@ -22,11 +22,18 @@ function plusDivs(n) {
 
 function showDivs(n) {
   var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
+  var img = document.getElementsByClassName("gallery-slides");
+  var description = document.getElementsByClassName("gallery-slide-description");
+  if (n > img.length) {
+        slideIndex = 1
+    }
+  if (n < 1) {
+        slideIndex = img.length
+    }
+  for (i = 0; i < img.length; i++) {
+      img[i].style.display = "none";
+      description[i].style.display = "none";
   }
-  x[slideIndex-1].style.display = "block";  
+    img[slideIndex - 1].style.display = "block";
+    description[slideIndex - 1].style.display = "block";
 }
